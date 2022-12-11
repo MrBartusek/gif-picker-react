@@ -1,0 +1,16 @@
+body {
+    background: #30364c;
+}
+  
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+.show-gif {
+    padding-bottom: 15px;
+}
