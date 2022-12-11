@@ -35,6 +35,7 @@ module.exports = {
 		'@typescript-eslint/no-this-alias': 'off',
 		'@typescript-eslint/ban-ts-comment': 'off',
 		'@typescript-eslint/no-empty-interface': 'off',
-		'array-bracket-spacing': [ 'error', 'always' ]
+		'array-bracket-spacing': [ 'error', 'always' ],
+		'@typescript-eslint/no-use-before-define': 'off'
 	}
 };

@@ -1,0 +1,40 @@
+.GifPickerReact .gpr-search-container {
+    display: block;
+    min-width: 0;
+    position: relative;
+}
+  
+.GifPickerReact input.gpr-search {
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    color: var(--gpr-search-input-text-color);
+    border-radius: var(--gpr-search-input-border-radius);
+    padding: var(--gpr-search-input-padding);
+    height: var(--gpr-search-input-height);
+    background-color: var(--gpr-search-input-bg-color);
+    border: 1px solid var(--gpr-search-input-bg-color);
+    width: 100%;
+}
+
+.GifPickerReact .gpr-search-container .gpr-icn-search {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: var(--gpr-search-bar-inner-padding);
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: svg-load(./svg/magnifier.svg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 20px;
+}
+
+.GifPickerReact .gpr-search-container input.gpr-search::placeholder {
+    color: var(--gpr-search-input-placeholder-color);
+}
+
+.GifPickerReact .gpr-search-container input.gpr-search:focus {
+    background-color: var(--gpr-search-input-bg-color-active);
+    border: 1px solid var(--gpr-search-border-color);
+}
