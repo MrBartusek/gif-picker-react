@@ -1,7 +1,12 @@
 import * as React from 'react';
-
 import GifPickerReact, { GifPickerReactProps } from './GifPickerReact';
 import ErrorBoundary from './components/ErrorBoundary';
+
+export {
+	ContentFilter,
+	Theme,
+	TenorImage
+} from './types/exposedTypes';
 
 export interface GifPickerProps extends GifPickerReactProps { }
 

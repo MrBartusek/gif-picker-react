@@ -13,4 +13,12 @@ body {
 
 .show-gif {
     padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gif-preview {
+    height: 150px;
+    object-fit: contain;
 }

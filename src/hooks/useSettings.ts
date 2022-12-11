@@ -1,11 +1,12 @@
 import { GifPickerReactProps } from '../GifPickerReact';
-import { ContentFilter } from '../types/exposedTypes';
+import { ContentFilter, TenorImage } from '../types/exposedTypes';
 
 /**
  * This is a parsed version of props with filled defaults
  */
 export type GifPickerSettings = {
     tenorApiKey: string;
+	onGifClick?: (gif: TenorImage) => void;
 	clientKey: string;
 	country: string;
 	locale: string;
@@ -22,6 +23,7 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
 
 	return {
 		tenorApiKey: props.tenorApiKey,
+		onGifClick: props.onGifClick ?? undefined,
 		clientKey: props.clientKey ?? 'gif-picker-react',
 		country: props.country ?? 'US',
 		locale: props.locale ?? 'en_US',

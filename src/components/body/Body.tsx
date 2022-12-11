@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
+import PickerContext from '../../context/PickerContext';
 import TenorContext from '../../context/TenorContext';
 import { TenorCategory } from '../../managers/TenorManager';
 import CategoryList from './CategoryList';
+import SearchResult from './SearchResult';
 
 function Body(): JSX.Element {
-	const tenor = useContext(TenorContext);
 	const [ categories, setCategories ] = useState<TenorCategory[] | undefined>(undefined);
+	const [ pickerContext ] = useContext(PickerContext);
+	const tenor = useContext(TenorContext);
 
 	useEffect(() => {
 		(async (): Promise<any> => {
@@ -15,7 +18,14 @@ function Body(): JSX.Element {
 	}, []);
 
 	return (
-		<CategoryList categories={categories} />
+		<>
+			{pickerContext.searchTerm ? (
+				<SearchResult term={pickerContext.searchTerm} />
+			) : (
+				<CategoryList categories={categories} />
+			)}
+
+		</>
 	);
 }
 

@@ -1,8 +1,9 @@
-import * as React from 'react';
 import 'react-app-polyfill/ie11';
+
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
-import './style.css'
+import './style.css';
 
 ReactDOM.render((
 	<React.StrictMode>

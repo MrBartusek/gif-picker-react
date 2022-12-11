@@ -9,11 +9,11 @@ import './GifPickerReact.css';
 import usePickerContext from './hooks/usePickerContext';
 import useSettings from './hooks/useSettings';
 import TenorManager from './managers/TenorManager';
-import { ContentFilter } from './types/exposedTypes';
+import { ContentFilter, TenorImage } from './types/exposedTypes';
 
 export interface GifPickerReactProps {
 	tenorApiKey: string;
-	onGifClick?: () => void;
+	onGifClick?: (gif: TenorImage) => void;
 	contentFilter?: ContentFilter;
 	clientKey?: string;
 	country?: string;
