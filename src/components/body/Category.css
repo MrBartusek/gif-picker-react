@@ -1,7 +1,7 @@
 .GifPickerReact .gpr-category {
     position: relative;
     border-radius: var(--gpr-category-border-radius);
-    transition: box-shadow ease-in-out 0.1s;
+    transition: box-shadow ease-in-out 0.15s;
     cursor: pointer;
 }
 
@@ -15,7 +15,7 @@
 .GifPickerReact .gpr-category-overlay {
     background-color: rgba(0, 0, 0, var(--gpr-category-background-opacity));
     border-radius: var(--gpr-category-border-radius);
-    transition: background-color ease-in-out 0.1s;
+    transition: background-color ease-in-out 0.15s;
 
     position: absolute;
     top: 0;
