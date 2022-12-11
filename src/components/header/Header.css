@@ -1,4 +1,5 @@
 .GifPickerReact .gpr-header {
     padding: var(--gpr-header-padding);
     min-height: 0;
+    border-bottom: 1px solid var(--gpr-picker-border-color);
 }

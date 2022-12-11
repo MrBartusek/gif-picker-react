@@ -1,4 +1,5 @@
 import React from 'react';
+import Body from './components/body/Body';
 import Header from './components/header/Header';
 import PickerMain from './components/PickerMain';
 import PickerContext from './context/PickerContext';
@@ -26,6 +27,7 @@ function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 			<PickerContext.Provider value={pickerContext}>
 				<PickerMain>
 					<Header />
+					<Body />
 				</PickerMain>
 			</PickerContext.Provider>
 		</SettingsContext.Provider>

@@ -22,6 +22,11 @@
     --gpr-search-input-text-color: var(--gpr-text-color);
     --gpr-search-input-placeholder-color: var(--gpr-text-color);
     --gpr-search-bar-inner-padding: var(--gpr-horizontal-padding);
+
+    /* Body */
+    --gpr-category-list-padding: var(--gpr-horizontal-padding);
+    --gpr-category-height: 100px;
+    --gpr-category-border-radius: 4px;
 }
 
 .GifPickerReact * {

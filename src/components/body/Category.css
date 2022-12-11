@@ -1,0 +1,10 @@
+.GifPickerReact .gpr-category {
+    height: var(--gpr-category-height);
+}
+
+.GifPickerReact .gpr-category img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--gpr-category-border-radius);
+}
