@@ -6,7 +6,7 @@ export interface PickerContextType {
 
 function usePickerContext(): [PickerContextType, Dispatch<SetStateAction<PickerContextType>>] {
     const DEFAULT_SETTINGS: PickerContextType = {
-        searchTerm: 'patrick bateman'
+        searchTerm: ''
     }
 
 	const [ pickerContext, setPickerContext ] = useState<PickerContextType>(DEFAULT_SETTINGS);
