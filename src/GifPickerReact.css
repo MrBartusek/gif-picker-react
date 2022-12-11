@@ -11,7 +11,6 @@
     --gpr-picker-border-radius: 8px;
 
     /* Header */
-    --gpr-search-border-color: var(--gpr-highlight-color);
     --gpr-header-padding: 15px var(--gpr-horizontal-padding);
 
     /* Search */
@@ -22,11 +21,18 @@
     --gpr-search-input-text-color: var(--gpr-text-color);
     --gpr-search-input-placeholder-color: var(--gpr-text-color);
     --gpr-search-bar-inner-padding: var(--gpr-horizontal-padding);
+    --gpr-search-border-color-active: var(--gpr-highlight-color);
 
     /* Body */
     --gpr-category-list-padding: var(--gpr-horizontal-padding);
-    --gpr-category-height: 100px;
     --gpr-category-border-radius: 4px;
+    --gpr-category-background-opacity: 40%;
+    --gpr-category-font-color: var(--gpr-picker-border-color);
+    --gpr-category-font-size: 16px;
+    --gpr-category-font-weight: 600;
+    --gpr-category-shadow-opacity: 60%;
+    --gpr-category-shadow-opacity-hover: 65%;
+    --gpr-category-border-color-hover: var(--gpr-highlight-color);
 }
 
 .GifPickerReact * {

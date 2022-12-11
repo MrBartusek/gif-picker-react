@@ -1,5 +1,4 @@
 .GifPickerReact .gpr-category-list {
-    color: red;
     display: grid;
     grid-gap: var(--gpr-category-list-padding);
     padding: var(--gpr-category-list-padding);

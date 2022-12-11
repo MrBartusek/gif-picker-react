@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { GifPickerReactProps } from '../GifPickerReact';
+import { GifPickerSettings } from '../hooks/useSettings';
 
-const SettingsContext = React.createContext<GifPickerReactProps>(null!);
+const SettingsContext = React.createContext<GifPickerSettings>(null!);
 
 export default SettingsContext;

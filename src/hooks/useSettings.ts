@@ -6,10 +6,13 @@ import { ContentFilter } from '../types/exposedTypes';
  */
 export type GifPickerSettings = {
     tenorApiKey: string;
-	contentFilter: ContentFilter;
+	clientKey: string;
+	country: string;
 	locale: string;
+	contentFilter: ContentFilter;
 	height: string;
 	width: string;
+	categoryHeight: string;
 }
 
 function useSettings(props: GifPickerReactProps): GifPickerSettings {
@@ -19,10 +22,13 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
 
 	return {
 		tenorApiKey: props.tenorApiKey,
-		contentFilter: props.contentFilter ?? ContentFilter.OFF,
+		clientKey: props.clientKey ?? 'gif-picker-react',
+		country: props.country ?? 'US',
 		locale: props.locale ?? 'en_US',
+		contentFilter: props.contentFilter ?? ContentFilter.OFF,
 		height: praseDimension(props.height ?? 450),
-		width: praseDimension(props.width ?? 350)
+		width: praseDimension(props.width ?? 350),
+		categoryHeight: praseDimension(props.categoryHeight ?? 100)
 	};
 }
 

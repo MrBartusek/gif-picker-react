@@ -1,19 +1,18 @@
 import React from 'react';
+import { TenorCategory } from '../../managers/TenorManager';
 import Category from './Category';
 import './CategoryList.css';
 
-function CategoryList(): JSX.Element {
+export interface CategoryListProps {
+	categories?: TenorCategory[];
+}
+
+function CategoryList({ categories }: CategoryListProps): JSX.Element {
 	return (
 		<div className='gpr-category-list'>
-			<Category />
-			<Category />
-			<Category />
-			<Category />
-			<Category />
-			<Category />
-			<Category />
-			<Category />
-			<Category />
+			{categories && categories.map((cat) => (
+				<Category key={cat.name} image={cat.image} name={cat.name} />
+			))}
 		</div>
 	);
 }
