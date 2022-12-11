@@ -12,7 +12,13 @@ function App(): JSX.Element{
 			<div className="show-gif">
                 Your selected GIF is:
 				{selected && (
-					<img src={selected.url} className="gif-preview" />
+					<>
+						<img src={selected.url} className="gif-preview" />
+						<a href={selected.shortTenorUrl} target="_blank" rel="noreferrer">
+							{selected.shortTenorUrl}
+						</a>
+					</>
+
 				)}
 			</div>
 

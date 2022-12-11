@@ -24,6 +24,7 @@
     --gpr-search-border-color-active: var(--gpr-highlight-color);
 
     /* Body */
+    --gpr-body-padding: var(--gpr-header-padding) 0px;
     --gpr-category-list-padding: var(--gpr-horizontal-padding);
     --gpr-category-border-radius: 4px;
     --gpr-category-background-opacity: 40%;

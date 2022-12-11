@@ -1,6 +1,10 @@
 body {
     background: #30364c;
 }
+
+a {
+    color: #fff;
+}
   
 .App {
     font-family: sans-serif;

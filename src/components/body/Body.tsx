@@ -4,6 +4,7 @@ import TenorContext from '../../context/TenorContext';
 import { TenorCategory } from '../../managers/TenorManager';
 import CategoryList from './CategoryList';
 import SearchResult from './SearchResult';
+import './Body.css';
 
 function Body(): JSX.Element {
 	const [ categories, setCategories ] = useState<TenorCategory[] | undefined>(undefined);
@@ -18,14 +19,14 @@ function Body(): JSX.Element {
 	}, []);
 
 	return (
-		<>
+		<div className='gpr-body'>
 			{pickerContext.searchTerm ? (
 				<SearchResult term={pickerContext.searchTerm} />
 			) : (
 				<CategoryList categories={categories} />
 			)}
 
-		</>
+		</div>
 	);
 }
 

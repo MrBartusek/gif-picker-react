@@ -1,9 +1,7 @@
 .GifPickerReact .gpr-search-result {
-    padding: var(--gpr-category-list-padding);
     display: flex;
     flex-direction: row;
     gap: var(--gpr-category-list-padding);
-    overflow-y: scroll;
     flex: 1;
 }
 
