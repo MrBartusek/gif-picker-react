@@ -7,7 +7,7 @@ function Button(props: PropsProps): JSX.Element {
 		<button
 			type="button"
 			{...props}
-			className={'GifPickerReact gpr-search ' + props.className}
+			className={'gpr-btn ' + props.className}
 		>
 			{props.children}
 		</button>

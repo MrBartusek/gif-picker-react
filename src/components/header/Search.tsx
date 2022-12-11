@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PickerContext from '../../context/PickerContext';
+import Button from '../Button';
 import './Search.css';
 
 function Search(): JSX.Element {
@@ -8,6 +9,12 @@ function Search(): JSX.Element {
 	function onChange(event: React.ChangeEvent<HTMLInputElement>): void {
 		const contextCopy = Object.assign({}, pickerContext);
 		contextCopy.searchTerm = event.target.value;
+		setPickerContext(contextCopy);
+	}
+
+	function onClear(): void {
+		const contextCopy = Object.assign({}, pickerContext);
+		contextCopy.searchTerm = '';
 		setPickerContext(contextCopy);
 	}
 
@@ -23,6 +30,11 @@ function Search(): JSX.Element {
 				onChange={onChange}
 			/>
 			<div className="gpr-icn-search" />
+			{pickerContext.searchTerm.length > 0 && (
+				<Button className={'gpr-btn-clear-search'} onClick={onClear}>
+					<div className="gpr-icn-clear-search" />
+				</Button>
+			)}
 		</div>
 	);
 }
