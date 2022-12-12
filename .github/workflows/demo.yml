@@ -12,23 +12,22 @@ jobs:
       run:
         working-directory: example
     steps:
-  
-    - name: Checkout repo
-      uses: actions/checkout@v2
-
-    - name: Setup node 18.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 18.x
-
-    - name: Install deps and build (with cache)
-      uses: bahmutov/npm-install@v1
-
-    - name: Build
-      run: yarn build
-  
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+      - name: 📥 Checkout the repository
+        uses: actions/checkout@v3
+      
+      - name: 🛠️ Set up Node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      
+      - name: 📦 Install dependencies
+        uses: bahmutov/npm-install@v1
+      
+      - name: 🏗️ Build
+        run: yarn build
+    
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

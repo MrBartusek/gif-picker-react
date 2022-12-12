@@ -2,32 +2,47 @@ name: Build, Lint and Test
 on: [push]
 
 jobs:
+  lint:
+    name: 'Link'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout the repository
+        uses: actions/checkout@v3
+      
+      - name: 🛠️ Set up Node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      
+      - name: 📦 Install dependencies
+        uses: bahmutov/npm-install@v1
+      
+      - name: 🧹 Lint with EsLint
+        run: yarn lint
+  
   build:
-    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
-
+    name: 🔍 Build & test on Node ${{ matrix.node }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    needs: lint
     strategy:
       matrix:
-        node: ['10.x', '12.x', '14.x']
+        node: ['14', '16', '18', '19']
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v1
+      - name: 📥 Checkout the repository
+        uses: actions/checkout@v3
+      
+      - name: 🛠️ Set up Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-
-      - name: Install deps and build (with cache)
+      
+      - name: 📦 Install dependencies
         uses: bahmutov/npm-install@v1
-
-      - name: Lint
-        run: yarn lint
-
-      - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
-
-      - name: Build
+      
+      - name: 🏗️ Build
         run: yarn build
+
+      - name: 🔍 Run Tests
+        run: yarn test --ci --coverage --maxWorkers=2
