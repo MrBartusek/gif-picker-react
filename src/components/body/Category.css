@@ -1,0 +1,44 @@
+.GifPickerReact .gpr-category {
+    position: relative;
+    border-radius: var(--gpr-category-border-radius);
+    transition: box-shadow ease-in-out 0.15s;
+    cursor: pointer;
+}
+
+.GifPickerReact .gpr-category img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--gpr-category-border-radius);
+}
+
+.GifPickerReact .gpr-category-overlay {
+    background-color: rgba(0, 0, 0, var(--gpr-category-background-opacity));
+    border-radius: var(--gpr-category-border-radius);
+    transition: background-color ease-in-out 0.15s;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.GifPickerReact .gpr-category-overlay .gpr-category-name {
+    color: var(--gpr-category-font-color);
+    font-size: var(--gpr-category-font-size);
+    font-weight: var(--gpr-category-font-weight);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, var(--gpr-category-shadow-opacity));
+}
+
+.GifPickerReact .gpr-category:hover {
+    box-shadow: 0 0 0 2px var(--gpr-category-border-color-hover);
+}
+
+.GifPickerReact .gpr-category:hover .gpr-category-overlay {
+    background-color: rgba(0, 0, 0, var(--gpr-category-shadow-opacity-hover));
+}
