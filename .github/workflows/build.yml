@@ -1,5 +1,6 @@
-name: CI
+name: Build, Lint and Test
 on: [push]
+
 jobs:
   build:
     name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
