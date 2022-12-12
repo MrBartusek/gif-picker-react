@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import GifPicker, { TenorImage } from '../../.';
+import GifPicker, {
+	TenorImage,
+	Theme,
+	ContentFilter
+} from '../../.';
 
 const TENOR_API_KEY = 'AIzaSyA0y2NMijXxqwxnk6oWfJiC_usUc8Q4dUA';
 
@@ -22,10 +26,15 @@ function App(): JSX.Element{
 				)}
 			</div>
 
-			<GifPicker
-				tenorApiKey={TENOR_API_KEY}
-				onGifClick={setSelected}
-			/>
+			{!TENOR_API_KEY ? (
+				<span>TENOR_API_KEY is missing</span>
+			): (
+				<GifPicker
+					tenorApiKey={TENOR_API_KEY}
+					onGifClick={setSelected}
+				/>
+			)}
+
 		</div>
 	);
 }
