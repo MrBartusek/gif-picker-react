@@ -20,7 +20,7 @@ In order to use `GifPicker` element you are reqired to provide Tenor API key via
 1. In Google Cloud Marketplace navigate to [Tenor API](https://console.cloud.google.com/marketplace/product/google/tenor.googleapis.com)
 1. Click on `Enable`
 1. In navigation menu go to *APIs and services* tab and select [Credentials](https://console.cloud.google.com/apis/credentials)
-1. Click `+ create credentials` and ceate *API key*, copy generated API key
+1. Click `+ create credentials` and create *API key*, copy generated API key
 1. Pass this key as prop to `tenorApiKey`
 
 ## Usage
