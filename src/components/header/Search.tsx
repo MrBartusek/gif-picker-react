@@ -25,6 +25,7 @@ function Search(): JSX.Element {
 				aria-label={'Search Tenor'}
 				placeholder={'Search Tenor'}
 				className="gpr-search"
+				data-testid="gpr-search-input"
 				type="text"
 				value={pickerContext.searchTerm}
 				onChange={onChange}

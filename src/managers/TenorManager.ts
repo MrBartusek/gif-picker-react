@@ -14,13 +14,25 @@ export interface TenorSearchResult {
 }
 
 class TenorManager {
+	private apiKey: string;
+	private clientKey: string;
+	private country: string;
+	private locale: string;
+	private contentFilter: ContentFilter;
+
 	constructor(
-        private apiKey: string,
-        private clientKey: string,
-        private country: string,
-        private locale: string,
-        private contentFilter: ContentFilter
-	) {}
+        apiKey: string,
+        clientKey: string,
+        country: string,
+        locale: string,
+        contentFilter: ContentFilter
+	) {
+		this.apiKey = apiKey;
+		this.clientKey = clientKey;
+		this.country = country;
+		this.locale = locale;
+		this.contentFilter = contentFilter;
+	}
 
 	private async callApi(endpoint: string, params: any): Promise<AxiosResponse<any, any>> {
 		return axios.get(endpoint, {
