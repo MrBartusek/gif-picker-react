@@ -10,6 +10,9 @@
       "import": "./dist/index.mjs"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build": "tsup"
