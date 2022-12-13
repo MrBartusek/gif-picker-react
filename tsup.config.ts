@@ -15,5 +15,6 @@ module.exports ={
     external: [
         "react",
         "axios"
-    ]
+    ],
+    injectStyle: true
 }
