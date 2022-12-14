@@ -1,5 +1,12 @@
 # Gif Picker React | [Live Demo](https://codesandbox.io/s/gif-picker-react-fxgi9t)
 
+[![npm](https://img.shields.io/npm/v/gif-picker-react)](npm)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/MrBartusek/gif-picker-react/Build,%20Lint%20and%20Test)](https://github.com/MrBartusek/gif-picker-react/actions)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/gif-picker-react)](npm)
+[![downloads](https://img.shields.io/npm/dm/gif-picker-react)](npm)
+
+[npm]: https://www.npmjs.com/package/gif-picker-react
+
 ![demo](https://i.imgur.com/zVxBlkB.png)
 
 An [Tenor](https://tenor.comt) GIF picker component for React applications that runs on [Tenor API V2](https://developers.google.com/tenor/guides/quickstart). This picker fits styling of [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) and can be used next to it.
@@ -46,7 +53,7 @@ The following props are accepted by the picker:
 | tenorApiKey | `string` | **Reqired** | Tenor v2 API key, obtained from [Google Cloud Console](https://console.cloud.google.com) |
 | onGifClick | `function` | | Callback function that is called when an gif is clicked. The function receives the [`TenorImage`](#tenorimage) object as a parameter. |
 | autoFocusSearch | `boolean` | `true` | Controls the auto focus of the search input. |
-| contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [Content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use `ContentFilter` enum. For Javascript project you can use strings. Available options are: <ul><li><code>ContentFilter.HIGH</code> or <code>high</code> - G</li><li><code>ContentFilter.MEDIUM</code> or <code>medium</code> - G and PG</li><li><code>ContentFilter.LOW</code> or <code>low</code> - G, PG, and PG-13</li><li><code>ContentFilter.OFF</code> or <code>off</code> - G, PG, PG-13, and R (no nudity)</li></ul>  |
+| contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [Content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use `ContentFilter` enum. Possible values are `high`, `medium`, `low`, `off`  |
 | clientKey | `string` | `gif-picker-react` | Name of your aplicattion. Used to diffircante multiple applications using same API key. |
 | country | `string` | `US` | Specify the country of origin for the request. To do so, provide its two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
 | locale | `string (xx_YY)` | `en_US` | Specify the default language to interpret the search string. xx is the language's [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code, while the optional _YY value is the two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code.
