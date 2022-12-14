@@ -61,7 +61,7 @@ The following props are accepted by the picker:
 | height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | categoryHeight | `number / string` | `100` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 
-## TenorImage
+### TenorImage
 
 This object is provided as an argument to callback specified in `onGifClick`:
 
@@ -92,3 +92,29 @@ This is an example `TenorImage` object:
   width: 244
 }
 ```
+
+## Customization
+
+### Custom Picker Width and Height
+
+To customize the dimensions of the picker, use the height and width props. You can pass in a number that will be treated as pixel size, or your any accepted css width/height as string.
+
+```jsx
+<GifPicker height={500} width={400} />
+```
+
+```jsx
+<GifPicker height="100%" width="15em" />
+```
+
+### CSS Variables
+
+The picker can be customized via CSS variables. The root selector for the picker is `.GifPickerReact`, when overriding, make sure to provide a more specific selector.
+
+The list of possible variables is quite extensive, but the main ones you may want to override are:
+
+- `--gpr-bg-color` - Background color of the picker.
+- `--gpr-text-color` - Font color on the picker.
+- `--gpr-highlight-color` - Color on the hover on focus on some search bar, caregories and gif.
+
+You can find full list of all varables in [GifPickerReact.css](https://github.com/MrBartusek/gif-picker-react/blob/master/src/GifPickerReact.css).
