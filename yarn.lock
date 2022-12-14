@@ -2704,7 +2704,7 @@
     "semver" "^7.3.7"
     "tsutils" "^3.21.0"
 
-"@typescript-eslint/parser@^5.0.0":
+"@typescript-eslint/parser@^5.0.0", "@typescript-eslint/parser@^5.46.1":
   "integrity" "sha512-RelQ5cGypPh4ySAtfIMBzBGyrNerQcmfA1oJvPj5f+H4jI59rl9xxpn4bonC0tQvUKOEN7eGBFWxFLK3Xepneg=="
   "resolved" "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-5.46.1.tgz"
   "version" "5.46.1"
