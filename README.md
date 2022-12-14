@@ -2,7 +2,7 @@
 
 ![demo](https://i.imgur.com/zVxBlkB.png)
 
-An [Tenor](https://tenor.comt) gif picker component for React applications that runs on [Tenor API V2](https://developers.google.com/tenor/guides/quickstart). This picker fits styling of [emoji-picker-react]([emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react)) and can be used next to it.
+An [Tenor](https://tenor.comt) GIF picker component for React applications that runs on [Tenor API V2](https://developers.google.com/tenor/guides/quickstart). This picker fits styling of [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) and can be used next to it.
 
 ## Installation
 
@@ -10,7 +10,7 @@ An [Tenor](https://tenor.comt) gif picker component for React applications that 
 npm install gif-picker-react
 ```
 
-## Obtaining Tenor API key
+## Obtaining Tenor API v2 key
 
 In order to use `GifPicker` element you are reqired to provide Tenor API key via
 `tenorApiKey` prop. To obtain this key please follow this simple guide:
