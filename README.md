@@ -84,7 +84,7 @@ This is an example `TenorImage` object:
   id: "16596569648018104856",
   tenorUrl: "https://tenor.com/view/american-psycho-patrick-bateman-american-psycho-gif-7212093",
   shortTenorUrl: "https://tenor.com/Eqmf.gif",
-  description: "American Psycho Patrick Bateman GIF"
+  description: "American Psycho Patrick Bateman GIF",
   createdAt: Date,
   tags: [ "American Psycho", "Patrick Bateman", "American", "psycho"],
   url: "https://media.tenor.com/5lLcKZgmIhgAAAAC/american-psycho-patrick-bateman.gif",
