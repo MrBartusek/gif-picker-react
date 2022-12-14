@@ -1,8 +1,8 @@
 module.exports = {
-    plugins: [
-        require('postcss-inline-svg'),
-        require('postcss-svgo'),
-        require('autoprefixer'),
-        require('cssnano')
-    ],
-  }
+	plugins: [
+		require('postcss-inline-svg'),
+		require('postcss-svgo'),
+		require('autoprefixer'),
+		require('cssnano')
+	]
+};
