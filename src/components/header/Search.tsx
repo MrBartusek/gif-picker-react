@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import PickerContext from '../../context/PickerContext';
 import SettingsContext from '../../context/SettingsContext';
 import Button from '../Button';
+import ClearButton from './ClearButton';
 import './Search.css';
 
 function Search(): JSX.Element {
@@ -34,9 +35,7 @@ function Search(): JSX.Element {
 			/>
 			<div className="gpr-icn-search" />
 			{pickerContext.searchTerm.length > 0 && (
-				<Button className={'gpr-btn-clear-search'} onClick={onClear}>
-					<div className="gpr-icn-clear-search" />
-				</Button>
+				<ClearButton onClick={onClear} />
 			)}
 		</div>
 	);

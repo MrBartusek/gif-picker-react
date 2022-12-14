@@ -8,7 +8,7 @@ export interface TenorCategory {
 	name: string;
 }
 
-export interface TenorSearchResult {
+export interface TenorResult {
 	next: string;
 	images: TenorImage[];
 }
@@ -34,7 +34,7 @@ class TenorManager {
 		this.contentFilter = contentFilter;
 	}
 
-	private async callApi(endpoint: string, params: {[key: string]: string}): Promise<Response> {
+	private async callApi(endpoint: string, params?: {[key: string]: any}): Promise<Response> {
 		const urlParams = new URLSearchParams({
 			'key': this.apiKey,
 			'client_key': this.clientKey,
@@ -60,6 +60,21 @@ class TenorManager {
 			});
 	}
 
+	private praseResult(img: any): TenorImage {
+		const gif = img['media_formats']['gif'];
+		return {
+			id: img.id,
+			tenorUrl: img['itemurl'] ,
+			shortTenorUrl: img.url,
+			description: img['content_description'],
+			createdAt: new Date(img.created * 1000),
+			tags: img.tags,
+			url: gif.url,
+			width: gif.dims[0],
+			height: gif.dims[1]
+		};
+	}
+
 	public async categories(): Promise<TenorCategory[]> {
 		return this.callApi('categories', {
 			type: 'featured'
@@ -73,27 +88,30 @@ class TenorManager {
 			});
 	}
 
-	public async search(term: string): Promise<TenorSearchResult> {
+	public async search(term: string, limit = 20): Promise<TenorResult> {
 		return this.callApi('search', {
 			q: term,
-			'ar_range': 'all'
+			'ar_range': 'all',
+			limit
 		})
 			.then((data: any) => {
 				const results = data.results;
-				const images = results.map((img: any) => {
-					const gif = img['media_formats']['gif'];
-					return {
-						id: img.id,
-						tenorUrl: img['itemurl'] ,
-						shortTenorUrl: img.url,
-						description: img['content_description'],
-						createdAt: new Date(img.created * 1000),
-						tags: img.tags,
-						url: gif.url,
-						width: gif.dims[0],
-						height: gif.dims[1]
-					};
-				});
+				const images = results.map(this.praseResult);
+				return {
+					next: data.next,
+					images: images
+				};
+			});
+	}
+
+	public async trending(limit = 20): Promise<TenorResult> {
+		return this.callApi('featured', {
+			'ar_range': 'all',
+			limit
+		})
+			.then((data: any) => {
+				const results = data.results;
+				const images = results.map(this.praseResult);
 				return {
 					next: data.next,
 					images: images

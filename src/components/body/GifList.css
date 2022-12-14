@@ -1,11 +1,11 @@
-.GifPickerReact .gpr-search-result {
+.GifPickerReact .gpr-gif-list {
     display: flex;
     flex-direction: row;
     gap: var(--gpr-category-list-padding);
     flex: 1;
 }
 
-.GifPickerReact .gpr-search-result-column {
+.GifPickerReact .gpr-gif-list-column {
     flex: 1;
     display: grid;
     grid-gap: var(--gpr-category-list-padding);

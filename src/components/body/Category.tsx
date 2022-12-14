@@ -1,22 +1,15 @@
 import React, { useContext } from 'react';
-import PickerContext from '../../context/PickerContext';
 import SettingsContext from '../../context/SettingsContext';
 import './Category.css';
 
 export interface CategoryProps {
 	image: string;
-	name: string;
+	text: React.ReactNode | string;
+	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function Category({ image, name}: CategoryProps): JSX.Element {
+function Category({ image, text, onClick}: CategoryProps): JSX.Element {
 	const settings = useContext(SettingsContext);
-	const [ pickerContext, setPickerContext ] = useContext(PickerContext);
-
-	function onClick(): void {
-		const contextCopy = Object.assign({}, pickerContext);
-		contextCopy.searchTerm = name;
-		setPickerContext(contextCopy);
-	}
 
 	return (
 		<button
@@ -28,7 +21,7 @@ function Category({ image, name}: CategoryProps): JSX.Element {
 			<img src={image}/>
 			<div className='gpr-category-overlay'>
 				<div className='gpr-category-name'>
-					{name}
+					{text}
 				</div>
 			</div>
 		</button>

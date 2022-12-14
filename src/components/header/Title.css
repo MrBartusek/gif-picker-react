@@ -1,0 +1,17 @@
+.GifPickerReact .gpr-title-container {
+	flex: 1;
+	display: block;
+	min-width: 0;
+	position: relative;
+}
+
+.GifPickerReact .gpr-title-container .gpr-title {
+	color: var(--gpr-search-input-text-color);
+	border-radius: var(--gpr-search-input-border-radius);
+	padding: var(--gpr-horizontal-padding);
+	height: var(--gpr-search-input-height);
+	background-color: var(--gpr-search-input-bg-color);
+	width: 100%;
+	display: flex;
+	align-items: center;
+}

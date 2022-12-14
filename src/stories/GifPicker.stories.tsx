@@ -53,5 +53,13 @@ HomeCategory.play = async ({ args, canvasElement }) => {
 	const canvas = within(canvasElement);
 
 	await waitFor(() => expect(canvas.getAllByTestId('gpr-category')[0]).toBeInTheDocument());
+	await userEvent.click(canvas.getAllByTestId('gpr-category')[1]);
+};
+
+export const Trending = Template.bind({});
+Trending.play = async ({ args, canvasElement }) => {
+	const canvas = within(canvasElement);
+
+	await waitFor(() => expect(canvas.getAllByTestId('gpr-category')[0]).toBeInTheDocument());
 	await userEvent.click(canvas.getAllByTestId('gpr-category')[0]);
 };

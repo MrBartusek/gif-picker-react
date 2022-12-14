@@ -1,0 +1,14 @@
+.GifPickerReact .gpr-icn-trending {
+	background-image: svg-load(./svg/chart.svg);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 20px;
+	height: 20px;
+	width: 20px;
+}
+
+.GifPickerReact .gpr-category .gpr-text-trending-category {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

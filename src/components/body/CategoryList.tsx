@@ -1,21 +1,29 @@
 import React from 'react';
+import { TenorImage } from '../../../dist';
 import { TenorCategory } from '../../managers/TenorManager';
 import CategoryPlaceholder from '../placeholders/CategoryPlaceholder';
-import Category from './Category';
 import './CategoryList.css';
+import FeaturedCategory from './FeaturedCategory';
+import TrendingCategory from './TrendingCategory';
 
 export interface CategoryListProps {
 	categories?: TenorCategory[];
+	trending?: TenorImage;
 }
 
-function CategoryList({ categories }: CategoryListProps): JSX.Element {
+function CategoryList({ categories, trending }: CategoryListProps): JSX.Element {
 	return (
 		<div className='gpr-category-list'>
-			{categories ? categories.map((cat) => (
-				<Category key={cat.name} image={cat.image} name={cat.name} />
-			)) : (
+			{categories && trending ? (
 				<>
-					{[ ...Array(10) ].map((i) => (
+					<TrendingCategory image={trending.url} />
+					{categories.map((cat, i) => (
+						<FeaturedCategory key={i} image={cat.image} name={cat.name} />
+					))}
+				</>
+			) : (
+				<>
+					{[ ...Array(10) ].map((_, i) => (
 						<CategoryPlaceholder key={i} />
 					))}
 				</>
