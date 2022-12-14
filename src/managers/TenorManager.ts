@@ -1,7 +1,7 @@
-import { AxiosResponse, Axios } from 'axios';
 import { ContentFilter, TenorImage } from '../types/exposedTypes';
 
 const MEDIA_FILTER = 'gif';
+const BASE_URL = 'https://tenor.googleapis.com/v2/';
 
 export interface TenorCategory {
 	image: string;
@@ -19,7 +19,6 @@ class TenorManager {
 	private country: string;
 	private locale: string;
 	private contentFilter: ContentFilter;
-	private client: Axios;
 
 	constructor(
 		apiKey: string,
@@ -33,26 +32,28 @@ class TenorManager {
 		this.country = country;
 		this.locale = locale;
 		this.contentFilter = contentFilter;
-		this.client = new Axios({
-			baseURL: 'https://tenor.googleapis.com/v2/',
-			params: {
-				'key': this.apiKey,
-				'client_key': this.clientKey,
-				'contentfilter': this.contentFilter,
-				'media_filter': MEDIA_FILTER,
-				'locale': this.locale,
-				'country': this.country
-			},
-			// This should happen automatically but doesn't for some reason
-			transformResponse: [ (data, headers) => {
-				return JSON.parse(data);
-			} ]
-		});
 	}
 
-	private async callApi(endpoint: string, params: any): Promise<AxiosResponse<any, any>> {
-		return this.client.get(endpoint, { params })
-			.then((res) => res.data)
+	private async callApi(endpoint: string, params: {[key: string]: string}): Promise<Response> {
+		const urlParams = new URLSearchParams({
+			'key': this.apiKey,
+			'client_key': this.clientKey,
+			'contentfilter': this.contentFilter,
+			'media_filter': MEDIA_FILTER,
+			'locale': this.locale,
+			'country': this.country,
+			...params
+		});
+		const url = BASE_URL + endpoint + '?' + urlParams;
+		return fetch(url)
+			.then((res) => {
+				if(!res.ok) {
+					console.error(res);
+					console.error('[gif-picker-react] Failed to fetch data from Tenor API');
+				}
+				return res;
+			})
+			.then(res => res.json())
 			.catch((error) => {
 				console.error(error);
 				console.error('[gif-picker-react] Failed to fetch data from Tenor API');

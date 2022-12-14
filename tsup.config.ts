@@ -13,8 +13,7 @@ module.exports ={
 		'esm'
 	],
 	external: [
-		'react',
-		'axios'
+		'react'
 	],
 	injectStyle: true
 };
