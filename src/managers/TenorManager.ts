@@ -21,11 +21,11 @@ class TenorManager {
 	private contentFilter: ContentFilter;
 
 	constructor(
-        apiKey: string,
-        clientKey: string,
-        country: string,
-        locale: string,
-        contentFilter: ContentFilter
+		apiKey: string,
+		clientKey: string,
+		country: string,
+		locale: string,
+		contentFilter: ContentFilter
 	) {
 		this.apiKey = apiKey;
 		this.clientKey = clientKey;
