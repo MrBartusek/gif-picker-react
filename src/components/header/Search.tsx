@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import PickerContext from '../../context/PickerContext';
+import SettingsContext from '../../context/SettingsContext';
 import Button from '../Button';
 import './Search.css';
 
 function Search(): JSX.Element {
 	const [ pickerContext, setPickerContext ] = useContext(PickerContext);
+	const settings = useContext(SettingsContext);
 
 	function onChange(event: React.ChangeEvent<HTMLInputElement>): void {
 		const contextCopy = Object.assign({}, pickerContext);
@@ -21,7 +23,7 @@ function Search(): JSX.Element {
 	return (
 		<div className='gpr-search-container'>
 			<input
-				autoFocus={true}
+				autoFocus={settings.autoFocusSearch}
 				aria-label={'Search Tenor'}
 				placeholder={'Search Tenor'}
 				className="gpr-search"

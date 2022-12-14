@@ -43,4 +43,45 @@ The following props are accepted by the picker:
 
 | Prop | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| tenorApiKey | string | **Reqired** | Tenor v2 API key |
+| tenorApiKey | `string` | **Reqired** | Tenor v2 API key, obtained from [Google Cloud Console](https://console.cloud.google.com) |
+| onGifClick | `function` | | Callback function that is called when an gif is clicked. The function receives the [`TenorImage`](#tenorimage) object as a parameter. |
+| autoFocusSearch | `boolean` | `true` | Controls the auto focus of the search input. |
+| contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [Content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use `ContentFilter` enum. For Javascript project you can use strings. Available options are: <ul><li><code>ContentFilter.HIGH</code> or <code>high</code> - G</li><li><code>ContentFilter.MEDIUM</code> or <code>medium</code> - G and PG</li><li><code>ContentFilter.LOW</code> or <code>low</code> - G, PG, and PG-13</li><li><code>ContentFilter.OFF</code> or <code>off</code> - G, PG, PG-13, and R (no nudity)</li></ul>  |
+| clientKey | `string` | `gif-picker-react` | Name of your aplicattion. Used to diffircante multiple applications using same API key. |
+| country | `string` | `US` | Specify the country of origin for the request. To do so, provide its two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
+| locale | `string (xx_YY)` | `en_US` | Specify the default language to interpret the search string. xx is the language's [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code, while the optional _YY value is the two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code.
+| width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
+| height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
+| categoryHeight | `number / string` | `100` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
+
+## TenorImage
+
+This object is provided as an argument to callback specified in `onGifClick`:
+
+| Property      | Type       | Description |
+| ------------- | ---------- | ----------- |
+| id            | `string`   | Tenor result identifier |
+| tenorUrl      | `string`   | The full URL to view the post on [tenor.com](https://tenor.com/) |
+| shortTenorUrl | `string`   | Short URL to view the post on [tenor.com](https://tenor.com/) |
+| description   | `string`   | Textual description of the content. You can use this do populate image object `alt` attributte |
+| createdAt     | `Date`     | Date object that represents when this post was created. |
+| tags          | `string[]` | Array of tags for the post |
+| url           | `string`   | Direct URL to the image source |
+| height        | `number`   | Height of the image in pixels |
+| width         | `number`   | Width of the image in pixels |
+
+This is an example `TenorImage` object:
+
+```js
+{
+  id: "16596569648018104856",
+  tenorUrl: "https://tenor.com/view/american-psycho-patrick-bateman-american-psycho-gif-7212093",
+  shortTenorUrl: "https://tenor.com/Eqmf.gif",
+  description: "American Psycho Patrick Bateman GIF"
+  createdAt: Date,
+  tags: [ "American Psycho", "Patrick Bateman", "American", "psycho"],
+  url: "https://media.tenor.com/5lLcKZgmIhgAAAAC/american-psycho-patrick-bateman.gif",
+  height: 240,
+  width: 244
+}
+```

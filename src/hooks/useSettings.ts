@@ -7,6 +7,7 @@ import { ContentFilter, TenorImage } from '../types/exposedTypes';
 export type GifPickerSettings = {
     tenorApiKey: string;
 	onGifClick?: (gif: TenorImage) => void;
+	autoFocusSearch: boolean;
 	clientKey: string;
 	country: string;
 	locale: string;
@@ -24,6 +25,7 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
 	return {
 		tenorApiKey: props.tenorApiKey,
 		onGifClick: props.onGifClick ?? undefined,
+		autoFocusSearch: props.autoFocusSearch ?? true,
 		clientKey: props.clientKey ?? 'gif-picker-react',
 		country: props.country ?? 'US',
 		locale: props.locale ?? 'en_US',

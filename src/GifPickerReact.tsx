@@ -14,6 +14,7 @@ import { ContentFilter, TenorImage } from './types/exposedTypes';
 export interface GifPickerReactProps {
 	tenorApiKey: string;
 	onGifClick?: (gif: TenorImage) => void;
+	autoFocusSearch?: boolean;
 	contentFilter?: ContentFilter;
 	clientKey?: string;
 	country?: string;

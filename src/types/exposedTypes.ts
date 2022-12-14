@@ -15,7 +15,7 @@ export interface TenorImage {
     tenorUrl: string;
     shortTenorUrl: string;
     description: string;
-    createdAt: number;
+    createdAt: Date;
     tags: string[];
     url: string;
     height: number;
