@@ -11,6 +11,12 @@
 
 An [Tenor](https://tenor.comt) GIF picker component for React applications that runs on [Tenor API V2](https://developers.google.com/tenor/guides/quickstart). This picker fits styling of [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) and can be used next to it.
 
+## What to know before using
+
+- In order to access Tenor API you are **required** to provide API key. This is a free and simple process that takes 60 seconds.
+- Tenor requires [attribution]([https://developers.google.com/tenor/guides/attribution]) from products that use their API. This
+  library comply with that rule by adding *Search Tenor* placeholder to the search bar.
+
 ## Installation
 
 ```bash
@@ -19,7 +25,7 @@ npm install gif-picker-react
 
 ## Obtaining Tenor API v2 key
 
-In order to use `GifPicker` element you are reqired to provide Tenor API key via
+In order to use `GifPicker` element you are required to provide Tenor API key via
 `tenorApiKey` prop. To obtain this key please follow this simple guide:
 
 1. Login in to [Google Cloud Console](https://console.cloud.google.com)
@@ -54,7 +60,7 @@ The following props are accepted by the picker:
 | onGifClick | `function` | | Callback function that is called when an gif is clicked. The function receives the [`TenorImage`](#tenorimage) object as a parameter. |
 | autoFocusSearch | `boolean` | `true` | Controls the auto focus of the search input. |
 | contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [Content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use `ContentFilter` enum. Possible values are `high`, `medium`, `low`, `off`  |
-| clientKey | `string` | `gif-picker-react` | Name of your aplicattion. Used to diffircante multiple applications using same API key. |
+| clientKey | `string` | `gif-picker-react` | Name of your application. Used to differentiate multiple applications using same API key. |
 | country | `string` | `US` | Specify the country of origin for the request. To do so, provide its two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
 | locale | `string (xx_YY)` | `en_US` | Specify the default language to interpret the search string. xx is the language's [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code, while the optional _YY value is the two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code.
 | width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
@@ -70,7 +76,7 @@ This object is provided as an argument to callback specified in `onGifClick`:
 | id            | `string`   | Tenor result identifier |
 | tenorUrl      | `string`   | The full URL to view the post on [tenor.com](https://tenor.com/) |
 | shortTenorUrl | `string`   | Short URL to view the post on [tenor.com](https://tenor.com/) |
-| description   | `string`   | Textual description of the content. You can use this do populate image object `alt` attributte |
+| description   | `string`   | Textual description of the content. You can use this do populate image object `alt` attribute |
 | createdAt     | `Date`     | Date object that represents when this post was created. |
 | tags          | `string[]` | Array of tags for the post |
 | url           | `string`   | Direct URL to the image source |
@@ -115,6 +121,6 @@ The list of possible variables is quite extensive, but the main ones you may wan
 
 - `--gpr-bg-color` - Background color of the picker.
 - `--gpr-text-color` - Font color on the picker.
-- `--gpr-highlight-color` - Color on the hover on focus on some search bar, caregories and gif.
+- `--gpr-highlight-color` - Color on the hover on focus on some search bar, categories and gif.
 
-You can find full list of all varables in [GifPickerReact.css](https://github.com/MrBartusek/gif-picker-react/blob/master/src/GifPickerReact.css).
+You can find full list of all variables in [GifPickerReact.css](https://github.com/MrBartusek/gif-picker-react/blob/master/src/GifPickerReact.css).
