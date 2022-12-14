@@ -1,7 +1,22 @@
 {
   "name": "gif-picker-react",
+  "description": "Tenor Gif Picker for React",
   "version": "0.4.1",
-  "description": "",
+  "author": "Bartosz Dokurno",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "tenor",
+    "gif"
+  ],
+  "repository": {
+    "type": "gif",
+    "url": "https://github.com/MrBartusek/gif-picker-react"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build": "tsup"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
@@ -13,12 +28,6 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "build": "tsup"
-  },
-  "author": "Bartosz Dokurno",
-  "license": "MIT",
   "devDependencies": {
     "@mdx-js/react": "^2.1.5",
     "@storybook/addon-actions": "^6.5.14",

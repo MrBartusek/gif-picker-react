@@ -1,6 +1,6 @@
 # Gif Picker React | [Live Demo](https://codesandbox.io/s/gif-picker-react-fxgi9t)
 
-[hero]
+![demo](https://i.imgur.com/zVxBlkB.png)
 
 An [Tenor](https://tenor.comt) gif picker component for React applications that runs on [Tenor API V2](https://developers.google.com/tenor/guides/quickstart). This picker fits styling of [emoji-picker-react]([emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react)) and can be used next to it.
 

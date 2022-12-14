@@ -1,6 +1,5 @@
 import GifPickerReact, { GifPickerReactProps } from './GifPickerReact';
 import ErrorBoundary from './components/ErrorBoundary';
-import React from 'react';
 
 export {
 	ContentFilter,
