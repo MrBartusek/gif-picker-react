@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse, Axios } from 'axios';
 import { ContentFilter, TenorImage } from '../types/exposedTypes';
 
 const MEDIA_FILTER = 'gif';
@@ -19,6 +19,7 @@ class TenorManager {
 	private country: string;
 	private locale: string;
 	private contentFilter: ContentFilter;
+	private client: Axios;
 
 	constructor(
 		apiKey: string,
@@ -32,10 +33,7 @@ class TenorManager {
 		this.country = country;
 		this.locale = locale;
 		this.contentFilter = contentFilter;
-	}
-
-	private async callApi(endpoint: string, params: any): Promise<AxiosResponse<any, any>> {
-		return axios.get(endpoint, {
+		this.client = new Axios({
 			baseURL: 'https://tenor.googleapis.com/v2/',
 			params: {
 				'key': this.apiKey,
@@ -43,10 +41,17 @@ class TenorManager {
 				'contentfilter': this.contentFilter,
 				'media_filter': MEDIA_FILTER,
 				'locale': this.locale,
-				'country': this.country,
-				...params
-			}
-		})
+				'country': this.country
+			},
+			// This should happen automatically but doesn't for some reason
+			transformResponse: [ (data, headers) => {
+				return JSON.parse(data);
+			} ]
+		});
+	}
+
+	private async callApi(endpoint: string, params: any): Promise<AxiosResponse<any, any>> {
+		return this.client.get(endpoint, { params })
 			.then((res) => res.data)
 			.catch((error) => {
 				console.error(error);

@@ -18,7 +18,8 @@
     "build": "npm run lint && tsup",
     "storybook": "start-storybook -p 6006",
     "lint": "eslint src",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "version": "npm run build"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
