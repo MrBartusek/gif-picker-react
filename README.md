@@ -13,7 +13,7 @@ An [Tenor](https://tenor.comt) GIF picker component for React applications that 
 
 ## What to know before using
 
-- In order to access Tenor API you are **required** to provide API key. This is a free and simple process that takes 60 seconds.
+- In order to access Tenor API you are **required** to provide API key. This is a free and simple process that takes less than 60 seconds.
 - Tenor requires [attribution]([https://developers.google.com/tenor/guides/attribution]) from products that use their API. This
   library comply with that rule by adding *Search Tenor* placeholder to the search bar.
 

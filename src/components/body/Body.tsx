@@ -21,7 +21,7 @@ function Body(): JSX.Element {
 	return (
 		<div className='gpr-body'>
 			{pickerContext.searchTerm ? (
-				<SearchResult term={pickerContext.searchTerm} />
+				<SearchResult searchTerm={pickerContext.searchTerm} />
 			) : (
 				<CategoryList categories={categories} />
 			)}

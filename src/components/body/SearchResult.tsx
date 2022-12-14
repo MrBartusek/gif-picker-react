@@ -6,22 +6,22 @@ import ResultImage from './ResultImage';
 import './SearchResult.css';
 
 export interface CategoryListProps {
-	term: string;
+	searchTerm: string;
 }
 
-function SearchResult({ term }: CategoryListProps): JSX.Element {
+function SearchResult({ searchTerm }: CategoryListProps): JSX.Element {
 	const [ searchResult, setSearchResult ] = useState<TenorSearchResult | undefined>(undefined);
 	const tenor = useContext(TenorContext);
 
 	useEffect(() => {
 		setSearchResult(undefined);
 		async function search(): Promise<any> {
-			const result = await tenor.search(term);
+			const result = await tenor.search(searchTerm);
 			setSearchResult(result);
 		}
 		const debounce = setTimeout(() => search(), 800);
 		return (): void => clearTimeout(debounce);
-	}, [ term ]);
+	}, [ searchTerm ]);
 
 	const columns = useMemo(() => calculateColumns(searchResult), [ searchResult ]);
 
@@ -30,7 +30,7 @@ function SearchResult({ term }: CategoryListProps): JSX.Element {
 			{searchResult && columns.map((col, i) => (
 				<div className='gpr-search-result-column' key={i}>
 					{col.map((img) => (
-						<ResultImage key={img.id} image={img} />
+						<ResultImage key={img.id} image={img} searchTerm={searchTerm} />
 					))}
 				</div>
 			))}

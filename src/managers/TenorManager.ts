@@ -100,6 +100,13 @@ class TenorManager {
 				};
 			});
 	}
+
+	public async registerShare(image: TenorImage, searchTerm?: string): Promise<void> {
+		const params: any = { id: image.id };
+		if(searchTerm) params['q'] = searchTerm;
+		await this.callApi('registershare', params);
+		return;
+	}
 }
 
 export default TenorManager;
