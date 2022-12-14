@@ -34,6 +34,9 @@
     --gpr-category-shadow-opacity: 60%;
     --gpr-category-shadow-opacity-hover: 65%;
     --gpr-category-border-color-hover: var(--gpr-highlight-color);
+
+    /* Placeholder */
+    --gpr-placeholder-color: #d3d3d3;
 }
 
 .GifPickerReact * {

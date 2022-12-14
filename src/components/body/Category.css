@@ -6,6 +6,7 @@
 }
 
 .GifPickerReact .gpr-category img {
+    background-color: lightgray;
     height: 100%;
     width: 100%;
     object-fit: cover;

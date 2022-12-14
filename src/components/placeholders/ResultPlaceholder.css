@@ -1,0 +1,3 @@
+.GifPickerReact .gpr-result-placeholder {
+    border-radius: var(--gpr-category-border-radius);
+}

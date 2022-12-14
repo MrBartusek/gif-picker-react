@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import TenorContext from '../../context/TenorContext';
 import { TenorSearchResult } from '../../managers/TenorManager';
 import { TenorImage } from '../../types/exposedTypes';
+import ResultPlaceholder from '../placeholders/ResultPlaceholder';
 import ResultImage from './ResultImage';
 import './SearchResult.css';
 
@@ -27,13 +28,26 @@ function SearchResult({ searchTerm }: CategoryListProps): JSX.Element {
 
 	return (
 		<div className='gpr-search-result'>
-			{searchResult && columns.map((col, i) => (
+			{searchResult ? columns.map((col, i) => (
 				<div className='gpr-search-result-column' key={i}>
 					{col.map((img) => (
 						<ResultImage key={img.id} image={img} searchTerm={searchTerm} />
 					))}
 				</div>
-			))}
+			)) : (
+				<>
+					<div className='gpr-search-result-column'>
+						{[ 120, 70, 90, 175, 154 ].map((height, i) => (
+							<ResultPlaceholder key={i} height={height} />
+						))}
+					</div>
+					<div className='gpr-search-result-column'>
+						{[ 150, 115, 135, 154, 145 ].map((height, i) => (
+							<ResultPlaceholder key={i} height={height} />
+						))}
+					</div>
+				</>
+			)}
 		</div>
 	);
 }
