@@ -1,4 +1,4 @@
-# Gif Picker React | [Live Demo](https://codesandbox.io/s/gif-picker-react-fxgi9t)
+# Gif Picker React | [Live Demo](https://dokurno.dev/gif-picker-react/)
 
 [![npm](https://img.shields.io/npm/v/gif-picker-react)][npm]
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/MrBartusek/gif-picker-react/Build,%20Lint%20and%20Test)](https://github.com/MrBartusek/gif-picker-react/actions)
