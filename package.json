@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "tsup --watch",
-    "build": "npm run lint && tsup",
+    "build": "tsup",
     "storybook": "start-storybook -p 6006",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
