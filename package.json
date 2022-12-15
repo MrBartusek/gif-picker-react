@@ -19,7 +19,8 @@
     "storybook": "start-storybook -p 6006",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
-    "version": "npm run build"
+    "version": "npm run build",
+    "update-example": "npm install && cd example && npm update gif-picker-react && npm install && cd .."
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
