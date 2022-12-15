@@ -3,6 +3,7 @@ import { TenorResult } from '../../managers/TenorManager';
 import { TenorImage } from '../../types/exposedTypes';
 import ResultPlaceholder from '../placeholders/ResultPlaceholder';
 import './GifList.css';
+import GifListPlaceholder from './GifListPlaceholder';
 import ResultImage from './ResultImage';
 
 export interface GifListProps {
@@ -13,42 +14,31 @@ export interface GifListProps {
 
 function GifList({ isLoading, result, searchTerm }: GifListProps): JSX.Element {
 	const columns = useMemo(() => calculateColumns(result), [ result ]);
+	const isEmpty = !result || result.images.length <= 0;
+
 	if(isLoading) {
-		return (
-			<div className='gpr-gif-list'>
-				<div className='gpr-gif-list-column'>
-					{[ 120, 70, 90, 175, 154 ].map((height, i) => (
-						<ResultPlaceholder key={i} height={height} />
-					))}
-				</div>
-				<div className='gpr-gif-list-column'>
-					{[ 150, 115, 135, 154, 145 ].map((height, i) => (
-						<ResultPlaceholder key={i} height={height} />
-					))}
-				</div>
-			</div>
-		);
+		return <GifListPlaceholder />;
 	}
-	else if(result && result.images.length > 0) {
-		return (
-			<div className='gpr-gif-list'>
-				{columns.map((col, i) => (
-					<div className='gpr-gif-list-column' key={i}>
-						{col.map((img) => (
-							<ResultImage key={img.id} image={img} searchTerm={searchTerm} />
-						))}
-					</div>
-				))}
-			</div>
-		);
-	}
-	else {
+
+	if(isEmpty) {
 		return (
 			<div className='gpr-gif-list-no-result'>
 				<span>No GIFs found!</span>
 			</div>
 		);
 	}
+
+	return (
+		<div className='gpr-gif-list'>
+			{columns.map((col, i) => (
+				<div className='gpr-gif-list-column' key={i}>
+					{col.map((img) => (
+						<ResultImage key={img.id} image={img} searchTerm={searchTerm} />
+					))}
+				</div>
+			))}
+		</div>
+	);
 }
 
 // TODO: Support multiple columns
