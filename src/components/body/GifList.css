@@ -14,3 +14,10 @@
     grid-template-rows: auto 1fr;
 }
 
+.GifPickerReact .gpr-gif-list-no-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding-bottom: 30%;
+}

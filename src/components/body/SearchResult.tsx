@@ -8,21 +8,23 @@ export interface SearchResultProps {
 }
 
 function SearchResult({ searchTerm }: SearchResultProps) {
+	const [ searchResult, setSearchResult ] = useState<TenorResult>(null!);
+	const [ isLoading, setLoading ] = useState(true);
 	const tenor = useContext(TenorContext);
-	const [ searchResult, setSearchResult ] = useState<TenorResult | undefined>(undefined);
 
 	useEffect(() => {
-		setSearchResult(undefined);
+		setLoading(true);
 		async function search(): Promise<any> {
 			const result = await tenor.search(searchTerm);
 			setSearchResult(result);
+			setLoading(false);
 		}
 		const debounce = setTimeout(() => search(), 800);
 		return (): void => clearTimeout(debounce);
 	}, [ searchTerm ]);
 
 	return (
-		<GifList result={searchResult} searchTerm={searchTerm} />
+		<GifList isLoading={isLoading} result={searchResult} searchTerm={searchTerm} />
 	);
 }
 

@@ -4,19 +4,23 @@ import { TenorResult } from '../../managers/TenorManager';
 import GifList from './GifList';
 
 function TrendingResult() {
+	const [ trendingResult, setSearchResult ] = useState<TenorResult>(null!);
+	const [ isLoading, setLoading ] = useState(true);
+
 	const tenor = useContext(TenorContext);
-	const [ trendingResult, setSearchResult ] = useState<TenorResult | undefined>(undefined);
 
 	useEffect(() => {
+		setLoading(true);
 		(async () => {
 			const result = await tenor.trending();
 			setSearchResult(result);
+			setLoading(false);
 		})();
 
 	}, [ ]);
 
 	return (
-		<GifList result={trendingResult} />
+		<GifList isLoading={isLoading} result={trendingResult} />
 	);
 }
 

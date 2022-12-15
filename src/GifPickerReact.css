@@ -52,6 +52,7 @@
     flex-direction: column;
     position: relative;
     background-color: var(--gpr-bg-color);
+    color: var(--gpr-text-color);
 }
 
 .GifPickerReact button.gpr-btn {
