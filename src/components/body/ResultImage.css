@@ -9,6 +9,7 @@
     width: 100%;
     object-fit: cover;
     border-radius: var(--gpr-category-border-radius);
+    background-color: var(--gpr-placeholder-color);
 }
 
 .GifPickerReact .gpr-result-image:hover {
