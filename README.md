@@ -1,7 +1,7 @@
 # Gif Picker React | [Live Demo](https://dokurno.dev/gif-picker-react/)
 
 [![npm](https://img.shields.io/npm/v/gif-picker-react)][npm]
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/MrBartusek/gif-picker-react/Build,%20Lint%20and%20Test)](https://github.com/MrBartusek/gif-picker-react/actions)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/MrBartusek/gif-picker-react/build.yml?branch=master)](https://github.com/MrBartusek/gif-picker-react/actions)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/gif-picker-react)](https://bundlephobia.com/package/gif-picker-react)
 [![downloads](https://img.shields.io/npm/dm/gif-picker-react)][npm]
 
