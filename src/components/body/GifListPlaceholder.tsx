@@ -1,7 +1,7 @@
 import React from 'react';
 import ResultPlaceholder from '../placeholders/ResultPlaceholder';
 
-const SHOW_DELAY = 90;
+const SHOW_DELAY = 70;
 
 function GifListPlaceholder() {
 	return (
