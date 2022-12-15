@@ -18,7 +18,7 @@ function Category({ image, text, onClick}: CategoryProps): JSX.Element {
 			data-testid='gpr-category'
 			onClick={onClick}
 		>
-			<img src={image}/>
+			<img src={image} loading="lazy"/>
 			<div className='gpr-category-overlay'>
 				<div className='gpr-category-name'>
 					{text}
