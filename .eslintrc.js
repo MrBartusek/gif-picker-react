@@ -1,7 +1,7 @@
 module.exports = {
 	env: {
 		'browser': true,
-		"jest": true
+		'jest': true
 	},
 	extends: [
 		'eslint:recommended',
@@ -10,6 +10,11 @@ module.exports = {
 	],
 	overrides: [
 	],
+	settings: {
+		react: {
+			version: 'detect'
+		}
+	},
 	ignorePatterns: [ '*.html' ],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {

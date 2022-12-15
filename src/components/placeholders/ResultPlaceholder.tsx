@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import SettingsContext from '../../context/SettingsContext';
+import React from 'react';
 import Placeholder from './Placeholder';
 import './ResultPlaceholder.css';
 
@@ -8,8 +7,6 @@ export interface ResultPlaceholderProps {
 }
 
 function ResultPlaceholder({ height }: ResultPlaceholderProps) {
-	const settings = useContext(SettingsContext);
-
 	return (
 		<Placeholder className="gpr-result-placeholder" height={height} width='100%' />
 	);
