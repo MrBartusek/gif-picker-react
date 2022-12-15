@@ -7,7 +7,7 @@
 
 [npm]: https://www.npmjs.com/package/gif-picker-react
 
-![demo](https://i.imgur.com/zVxBlkB.png)
+![demo](https://i.imgur.com/e1DzHa4.gif)
 
 An [Tenor](https://tenor.comt) GIF picker component for React applications that runs on [Tenor API V2](https://developers.google.com/tenor/guides/quickstart). This picker fits styling of [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) and can be used next to it.
 
