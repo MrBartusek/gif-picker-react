@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import PickerContext from '../../context/PickerContext';
 import TenorContext from '../../context/TenorContext';
 import { TenorCategory } from '../../managers/TenorManager';
-import CategoryList from './CategoryList';
-import './Body.css';
 import { TenorImage } from '../../types/exposedTypes';
+import './Body.css';
+import CategoryList from './CategoryList';
 import SearchResult from './SearchResult';
 import TrendingResult from './TrendingResult';
 

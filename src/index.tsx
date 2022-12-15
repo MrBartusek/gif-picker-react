@@ -1,11 +1,9 @@
-import GifPickerReact, { GifPickerReactProps } from './GifPickerReact';
-import ErrorBoundary from './components/ErrorBoundary';
 import React from 'react';
+import ErrorBoundary from './components/ErrorBoundary';
+import GifPickerReact, { GifPickerReactProps } from './GifPickerReact';
 
 export {
-	ContentFilter,
-	Theme,
-	TenorImage
+	ContentFilter, TenorImage, Theme
 } from './types/exposedTypes';
 
 export interface GifPickerProps extends GifPickerReactProps { }

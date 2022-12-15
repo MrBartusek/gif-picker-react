@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import Search from './Search';
-import './Header.css';
 import PickerContext from '../../context/PickerContext';
+import './Header.css';
+import Search from './Search';
 import Title from './Title';
 
 function Header(): JSX.Element {

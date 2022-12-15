@@ -1,8 +1,8 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import GifPicker from '..';
-import { userEvent, waitFor, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { userEvent, waitFor, within } from '@storybook/testing-library';
+import React from 'react';
+import GifPicker from '..';
 
 export default {
 	title: 'Library/GifPicker',

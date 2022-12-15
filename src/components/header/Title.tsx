@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import PickerContext from '../../context/PickerContext';
-import SettingsContext from '../../context/SettingsContext';
 import Button from '../Button';
 import './Title.css';
 

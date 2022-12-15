@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import TenorContext from '../../context/TenorContext';
+import React, { useMemo } from 'react';
 import { TenorResult } from '../../managers/TenorManager';
 import { TenorImage } from '../../types/exposedTypes';
 import ResultPlaceholder from '../placeholders/ResultPlaceholder';
-import ResultImage from './ResultImage';
 import './GifList.css';
+import ResultImage from './ResultImage';
 
 export interface GifListProps {
 	result?: TenorResult;

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import SettingsContext from '../../context/SettingsContext';
-import Placeholder from './Placeholder';
 import './CategoryPlaceholder.css';
+import Placeholder from './Placeholder';
 
 function CategoryPlaceholder() {
 	const settings = useContext(SettingsContext);
