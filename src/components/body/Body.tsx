@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PickerContext from '../../context/PickerContext';
 import TenorContext from '../../context/TenorContext';
 import { TenorCategory } from '../../managers/TenorManager';

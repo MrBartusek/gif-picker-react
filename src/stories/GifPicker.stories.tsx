@@ -3,7 +3,6 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { userEvent, waitFor, within } from '@storybook/testing-library';
 import React from 'react';
 import GifPicker from '..';
-import crypto from 'crypto';
 
 export default {
 	title: 'Library/GifPicker',
