@@ -29,6 +29,7 @@ function Search(): JSX.Element {
 				className="gpr-search"
 				data-testid="gpr-search-input"
 				type="text"
+				maxLength={500}
 				value={pickerContext.searchTerm}
 				onChange={onChange}
 			/>
