@@ -124,3 +124,9 @@ The list of possible variables is quite extensive, but the main ones you may wan
 - `--gpr-highlight-color` - Color on the hover on focus on some search bar, categories and gif.
 
 You can find full list of all variables in [GifPickerReact.css](https://github.com/MrBartusek/gif-picker-react/blob/master/src/GifPickerReact.css).
+
+## Contributing
+
+Want to contribute to the project?
+
+First of all, thanks! Check [`CONTRIBUTING.md`](CONTRIBUTING.md) for more details.
