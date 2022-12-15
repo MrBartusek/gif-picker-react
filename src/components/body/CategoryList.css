@@ -1,7 +1,9 @@
 .GifPickerReact .gpr-category-list {
     display: grid;
     grid-gap: var(--gpr-category-list-padding);
+    padding: var(--gpr-body-padding);
     grid-template-columns: 1fr 1fr;
     flex: 1;
     grid-auto-rows: min-content;
+    overflow-y: scroll;
 }

@@ -1,6 +1,5 @@
 .GifPickerReact .gpr-body {
-    padding: var(--gpr-body-padding);
     flex: 1;
-    display: flex;    
-    overflow-y: scroll;
+    display: flex;
+    min-height: 0;
 }

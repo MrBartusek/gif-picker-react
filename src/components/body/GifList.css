@@ -1,8 +1,10 @@
 .GifPickerReact .gpr-gif-list {
+    padding: var(--gpr-body-padding);
     display: flex;
     flex-direction: row;
     gap: var(--gpr-category-list-padding);
     flex: 1;
+    overflow-y: scroll;
 }
 
 .GifPickerReact .gpr-gif-list-column {

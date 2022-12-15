@@ -12,7 +12,6 @@ function Body(): JSX.Element {
 	const [ categories, setCategories ] = useState<TenorCategory[] | undefined>(undefined);
 	const [ trending, setTrending ] = useState<TenorImage | undefined>(undefined);
 	const [ pickerContext ] = useContext(PickerContext);
-	const bodyRef = useRef<HTMLDivElement>(null);
 	const tenor = useContext(TenorContext);
 
 	useEffect(() => {
@@ -24,10 +23,8 @@ function Body(): JSX.Element {
 		})();
 	}, []);
 
-	bodyRef.current?.scrollTo(0,0);
-
 	return (
-		<div className='gpr-body' ref={bodyRef}>
+		<div className='gpr-body'>
 			{((): JSX.Element => {
 				if(pickerContext.showTrending) {
 					return <TrendingResult />;
