@@ -3,6 +3,7 @@
   "version": "1,0.0",
   "author": "MrBartusek <bartosz@dokurno.dev>",
   "license": "MIT",
+  "homepage": "/gif-picker-react",
   "repository": {
     "type": "gif",
     "url": "https://github.com/MrBartusek/gif-picker-react"
