@@ -1,3 +1,4 @@
 .GifPickerReact .gpr-placeholder {
-    background-color: var(--gpr-placeholder-color)
+    background-color: var(--gpr-placeholder-color);
+    transition: opacity 0.2s ease-in-out;
 }

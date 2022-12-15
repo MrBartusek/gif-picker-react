@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import { TenorResult } from '../../managers/TenorManager';
 import { TenorImage } from '../../types/exposedTypes';
-import ResultPlaceholder from '../placeholders/ResultPlaceholder';
 import './GifList.css';
 import GifListPlaceholder from './GifListPlaceholder';
 import ResultImage from './ResultImage';
