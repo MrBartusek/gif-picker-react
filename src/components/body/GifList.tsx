@@ -48,13 +48,13 @@ function calculateColumns(result?: TenorResult): TenorImage[][] {
 
 	for(const img of result.images) {
 		const aspectRatio = img.height / img.width;
-		if(columnHeight[0] < columnHeight[1]) {
-			columns[0].push(img);
-			columnHeight[0] += aspectRatio;
-		}
-		else {
+		if(columnHeight[0] > columnHeight[1]) {
 			columns[1].push(img);
 			columnHeight[1] += aspectRatio;
+		}
+		else {
+			columns[0].push(img);
+			columnHeight[0] += aspectRatio;
 		}
 	}
 	return columns;
