@@ -13,6 +13,7 @@
     "type": "gif",
     "url": "https://github.com/MrBartusek/gif-picker-react"
   },
+  "homepage": "https://dokurno.dev/gif-picker-react",
   "scripts": {
     "start": "tsup --watch",
     "build": "tsup",
