@@ -1,5 +1,5 @@
 import { GifPickerReactProps } from '../GifPickerReact';
-import { ContentFilter, MediaFilter, TenorImage } from '../types/exposedTypes';
+import { ContentFilter, MediaFilter, TenorImage, Theme } from '../types/exposedTypes';
 
 /**
  * This is a parsed version of props with filled defaults
@@ -16,6 +16,7 @@ export type GifPickerSettings = {
 	width: string;
 	categoryHeight: string;
 	mediaFilter: MediaFilter;
+	theme: Theme;
 }
 
 function useSettings(props: GifPickerReactProps): GifPickerSettings {
@@ -34,7 +35,8 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
 		mediaFilter: props.mediaFilter ?? MediaFilter.BASIC,
 		height: praseDimension(props.height ?? 450),
 		width: praseDimension(props.width ?? 350),
-		categoryHeight: praseDimension(props.categoryHeight ?? 100)
+		categoryHeight: praseDimension(props.categoryHeight ?? 100),
+		theme: props.theme ?? Theme.LIGHT,
 	};
 }
 

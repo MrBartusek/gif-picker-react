@@ -67,7 +67,7 @@ The following props are accepted by the picker:
 | width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | categoryHeight | `number / string` | `100` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
-| theme | `Theme` | `Theme.DARK` | controls the theme set for the tenor picker on render. Dark theme is on by default. If you are using Typescript you can use `Theme` enum.
+| theme | `Theme` | `Theme.LIGHT` | controls the theme set for the tenor picker on render. Light theme is on by default. If you are using Typescript you can use `Theme` enum.
 
 ### TenorImage
 
