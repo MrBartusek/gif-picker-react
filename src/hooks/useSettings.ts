@@ -36,7 +36,7 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
 		height: praseDimension(props.height ?? 450),
 		width: praseDimension(props.width ?? 350),
 		categoryHeight: praseDimension(props.categoryHeight ?? 100),
-		theme: props.theme ?? Theme.LIGHT,
+		theme: props.theme ?? Theme.LIGHT
 	};
 }
 

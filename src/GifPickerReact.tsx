@@ -23,7 +23,7 @@ export interface GifPickerReactProps {
 	width?: number | string;
 	height?: number | string;
 	categoryHeight?: number | string;
-	theme?: Theme
+	theme?: Theme;
 }
 
 function GifPickerReact(props: GifPickerReactProps): JSX.Element {
@@ -33,8 +33,8 @@ function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 		new TenorManager(settings.tenorApiKey, settings.clientKey,
 			settings.country, settings.locale, settings.contentFilter, settings.mediaFilter)
 	), [ ]);
-	const newTheme = props.theme === Theme.LIGHT ? "light" : "dark"
-	document.body.dataset.theme = newTheme
+	const newTheme = props.theme === Theme.LIGHT ? 'light' : 'dark';
+	document.body.dataset.theme = newTheme;
 	return (
 		<SettingsContext.Provider value={settings}>
 			<PickerContext.Provider value={pickerContext}>
