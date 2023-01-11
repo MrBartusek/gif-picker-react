@@ -1,7 +1,7 @@
 import { ContentFilter, MediaFilter, TenorImage } from '../types/exposedTypes';
 
 const BASE_URL = 'https://tenor.googleapis.com/v2/';
-
+const MINIMAL_MEDIA_FILTER = 'minimal';
 export interface TenorCategory {
 	image: string;
 	name: string;
@@ -38,7 +38,7 @@ class TenorManager {
 			'key': this.apiKey,
 			'client_key': this.clientKey,
 			'contentfilter': this.contentFilter,
-			'media_filter': MediaFilter.TINYGIF,
+			'media_filter': MINIMAL_MEDIA_FILTER,
 			'locale': this.locale,
 			'country': this.country,
 			...params
@@ -60,7 +60,10 @@ class TenorManager {
 	}
 
 	private praseResult(img: any): TenorImage {
-		const gif = img['media_formats'][MediaFilter.TINYGIF];
+		//Use tinygif object for compnent render. Tenor urls are the same betweent tinygif and gif
+		const tinyGif = img['media_formats'][MediaFilter.TINYGIF];
+		//Use gif object returned to get full dimensions
+		const gif = img['media_formats'][MediaFilter.GIF];
 		return {
 			id: img.id,
 			tenorUrl: img['itemurl'] ,
@@ -68,7 +71,7 @@ class TenorManager {
 			description: img['content_description'],
 			createdAt: new Date(img.created * 1000),
 			tags: img.tags,
-			url: gif.url,
+			url: tinyGif.url,
 			width: gif.dims[0],
 			height: gif.dims[1]
 		};
