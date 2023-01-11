@@ -5,7 +5,6 @@
     --gpr-text-color: #858585;
     --gpr-search-input-bg-color: #f6f6f6;
     --gpr-picker-border-color: #e7e7e7;
-    --gpr-body-category-font-color: #e7e7e7;
     --gpr-bg-color: #fff;
     --gpr-horizontal-padding: 10px;
     --gpr-picker-border-radius: 8px;
@@ -28,7 +27,7 @@
     --gpr-category-list-padding: var(--gpr-horizontal-padding);
     --gpr-category-border-radius: 4px;
     --gpr-category-background-opacity: 40%;
-    --gpr-category-font-color: var(--gpr-body-category-font-color);
+    --gpr-category-font-color: #e7e7e7;
     --gpr-category-font-size: 16px;
     --gpr-category-font-weight: 600;
     --gpr-category-shadow-opacity: 60%;

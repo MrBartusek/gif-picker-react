@@ -12,9 +12,8 @@ function PickerMain({ children }: PickerMainProps): JSX.Element {
 		height: settings.height,
 		width: settings.width
 	};
-	const pickerClass = 'GifPickerReact gpr-main' + (settings.theme === Theme.DARK ? ' gpr-dark-theme' : '');
 	return (
-		<aside className={pickerClass} style={style}>
+		<aside className={`GifPickerReact gpr-main ${settings.theme === Theme.DARK ? ' gpr-dark-theme' : ''}`} style={style}>
 			{children}
 		</aside>
 	);
