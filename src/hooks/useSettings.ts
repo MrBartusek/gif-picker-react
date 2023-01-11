@@ -1,5 +1,5 @@
 import { GifPickerReactProps } from '../GifPickerReact';
-import { ContentFilter, MediaFilter, TenorImage, Theme } from '../types/exposedTypes';
+import { ContentFilter, TenorImage, Theme } from '../types/exposedTypes';
 
 /**
  * This is a parsed version of props with filled defaults
@@ -22,7 +22,6 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
 	if(!props.tenorApiKey) {
 		throw new Error('tenorApiKey is a required prop that is missing');
 	}
-
 	return {
 		tenorApiKey: props.tenorApiKey,
 		onGifClick: props.onGifClick ?? undefined,

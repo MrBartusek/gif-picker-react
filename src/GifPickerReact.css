@@ -1,4 +1,4 @@
-body[data-theme="light"] {
+.GifPickerReact {
     --gpr-highlight-color: #007aeb;
     --gpr-hover-bg-color: #f1f8ff;
     --gpr-focus-bg-color: #e0f0ff;
@@ -7,21 +7,6 @@ body[data-theme="light"] {
     --gpr-picker-border-color: #e7e7e7;
     --gpr-cat-font-color: #e7e7e7;
     --gpr-bg-color: #fff;
-}
-
-body[data-theme="dark"] {
-    --gpr-highlight-color: #8961a7;
-    --gpr-hover-bg-color: #858688;
-    --gpr-focus-bg-color: #9a9a9b;
-    --gpr-text-color: #f6f6f6;
-    --gpr-search-input-bg-color: #3b3b3b;
-    --gpr-picker-border-color: #2b2b2b;
-    --gpr-bg-color: rgb(42, 41, 41);
-    --gpr-cat-font-color: #f6f6f6;
-}
-
-
-.GifPickerReact {
     --gpr-horizontal-padding: 10px;
     --gpr-picker-border-radius: 8px;
 
@@ -52,6 +37,17 @@ body[data-theme="dark"] {
 
     /* Placeholder */
     --gpr-placeholder-color: #d3d3d3;
+}
+
+.GifPickerReact.gpr-dark-theme {
+    --gpr-highlight-color: #8961a7;
+    --gpr-hover-bg-color: #858688;
+    --gpr-focus-bg-color: #9a9a9b;
+    --gpr-text-color: #f6f6f6;
+    --gpr-search-input-bg-color: #3b3b3b;
+    --gpr-picker-border-color: #2b2b2b;
+    --gpr-bg-color: rgb(42, 41, 41);
+    --gpr-cat-font-color: #f6f6f6;
 }
 
 .GifPickerReact * {

@@ -32,8 +32,6 @@ function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 		new TenorManager(settings.tenorApiKey, settings.clientKey,
 			settings.country, settings.locale, settings.contentFilter)
 	), [ ]);
-	const newTheme = props.theme === Theme.LIGHT ? 'light' : 'dark';
-	document.body.dataset.theme = newTheme;
 	return (
 		<SettingsContext.Provider value={settings}>
 			<PickerContext.Provider value={pickerContext}>

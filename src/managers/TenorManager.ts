@@ -24,7 +24,7 @@ class TenorManager {
 		clientKey: string,
 		country: string,
 		locale: string,
-		contentFilter: ContentFilter,
+		contentFilter: ContentFilter
 	) {
 		this.apiKey = apiKey;
 		this.clientKey = clientKey;
