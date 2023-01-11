@@ -11,8 +11,10 @@ export enum Theme {
 }
 
 export enum MediaFilter {
-    BASIC = 'basic',
-    MINIMAL = 'minimal',
+    TINYGIF = 'tinygif',
+    GIF = 'gif',
+    TINYMP4 = 'tinymp4',
+    MP4 = 'mp4'
 }
 
 export interface TenorImage {

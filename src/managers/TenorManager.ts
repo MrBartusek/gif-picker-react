@@ -38,7 +38,7 @@ class TenorManager {
 			'key': this.apiKey,
 			'client_key': this.clientKey,
 			'contentfilter': this.contentFilter,
-			'media_filter': MediaFilter.BASIC,
+			'media_filter': MediaFilter.TINYGIF,
 			'locale': this.locale,
 			'country': this.country,
 			...params
@@ -60,7 +60,7 @@ class TenorManager {
 	}
 
 	private praseResult(img: any): TenorImage {
-		const gif = img['media_formats']['tinygif'];
+		const gif = img['media_formats'][MediaFilter.TINYGIF];
 		return {
 			id: img.id,
 			tenorUrl: img['itemurl'] ,
