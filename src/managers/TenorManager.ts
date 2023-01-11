@@ -18,7 +18,6 @@ class TenorManager {
 	private country: string;
 	private locale: string;
 	private contentFilter: ContentFilter;
-	private mediaFilter: MediaFilter;
 
 	constructor(
 		apiKey: string,
@@ -26,14 +25,12 @@ class TenorManager {
 		country: string,
 		locale: string,
 		contentFilter: ContentFilter,
-		mediaFilter: MediaFilter
 	) {
 		this.apiKey = apiKey;
 		this.clientKey = clientKey;
 		this.country = country;
 		this.locale = locale;
 		this.contentFilter = contentFilter;
-		this.mediaFilter = mediaFilter;
 	}
 
 	private async callApi(endpoint: string, params?: {[key: string]: any}): Promise<Response> {
@@ -41,7 +38,7 @@ class TenorManager {
 			'key': this.apiKey,
 			'client_key': this.clientKey,
 			'contentfilter': this.contentFilter,
-			'media_filter': this.mediaFilter,
+			'media_filter': MediaFilter.BASIC,
 			'locale': this.locale,
 			'country': this.country,
 			...params
