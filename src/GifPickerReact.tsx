@@ -9,19 +9,21 @@ import './GifPickerReact.css';
 import usePickerContext from './hooks/usePickerContext';
 import useSettings from './hooks/useSettings';
 import TenorManager from './managers/TenorManager';
-import { ContentFilter, TenorImage } from './types/exposedTypes';
+import { ContentFilter, MediaFilter, TenorImage, Theme } from './types/exposedTypes';
 
 export interface GifPickerReactProps {
 	tenorApiKey: string;
 	onGifClick?: (gif: TenorImage) => void;
 	autoFocusSearch?: boolean;
 	contentFilter?: ContentFilter;
+	mediaFilter?: MediaFilter;
 	clientKey?: string;
 	country?: string;
 	locale?: string;
 	width?: number | string;
 	height?: number | string;
 	categoryHeight?: number | string;
+	theme?: Theme
 }
 
 function GifPickerReact(props: GifPickerReactProps): JSX.Element {
@@ -29,9 +31,10 @@ function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 	const pickerContext = usePickerContext();
 	const tenorManager: TenorManager = useMemo(() => (
 		new TenorManager(settings.tenorApiKey, settings.clientKey,
-			settings.country, settings.locale, settings.contentFilter)
+			settings.country, settings.locale, settings.contentFilter, settings.mediaFilter)
 	), [ ]);
-
+	const newTheme = props.theme === Theme.LIGHT ? "light" : "dark"
+	document.body.dataset.theme = newTheme
 	return (
 		<SettingsContext.Provider value={settings}>
 			<PickerContext.Provider value={pickerContext}>

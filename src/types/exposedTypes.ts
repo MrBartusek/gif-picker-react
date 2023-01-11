@@ -10,6 +10,11 @@ export enum Theme {
     AUTO = 'dark'
 }
 
+export enum MediaFilter {
+    BASIC = 'basic',
+    MINIMAL = 'minimal',
+}
+
 export interface TenorImage {
 	id: string;
     tenorUrl: string;

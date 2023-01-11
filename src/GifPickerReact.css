@@ -1,12 +1,27 @@
-.GifPickerReact {
+body[data-theme="light"] {
     --gpr-highlight-color: #007aeb;
     --gpr-hover-bg-color: #f1f8ff;
     --gpr-focus-bg-color: #e0f0ff;
     --gpr-text-color: #858585;
     --gpr-search-input-bg-color: #f6f6f6;
     --gpr-picker-border-color: #e7e7e7;
+    --gpr-cat-font-color: #e7e7e7;
     --gpr-bg-color: #fff;
+}
 
+body[data-theme="dark"] {
+    --gpr-highlight-color: #8961a7;
+    --gpr-hover-bg-color: #858688;
+    --gpr-focus-bg-color: #9a9a9b;
+    --gpr-text-color: #f6f6f6;
+    --gpr-search-input-bg-color: #3b3b3b;
+    --gpr-picker-border-color: #2b2b2b;
+    --gpr-bg-color: rgb(42, 41, 41);
+    --gpr-cat-font-color: #f6f6f6;
+}
+
+
+.GifPickerReact {
     --gpr-horizontal-padding: 10px;
     --gpr-picker-border-radius: 8px;
 
@@ -28,7 +43,7 @@
     --gpr-category-list-padding: var(--gpr-horizontal-padding);
     --gpr-category-border-radius: 4px;
     --gpr-category-background-opacity: 40%;
-    --gpr-category-font-color: var(--gpr-picker-border-color);
+    --gpr-category-font-color: var(--gpr-cat-font-color);
     --gpr-category-font-size: 16px;
     --gpr-category-font-weight: 600;
     --gpr-category-shadow-opacity: 60%;

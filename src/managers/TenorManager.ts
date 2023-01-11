@@ -1,6 +1,5 @@
-import { ContentFilter, TenorImage } from '../types/exposedTypes';
+import { ContentFilter, MediaFilter, TenorImage } from '../types/exposedTypes';
 
-const MEDIA_FILTER = 'gif';
 const BASE_URL = 'https://tenor.googleapis.com/v2/';
 
 export interface TenorCategory {
@@ -19,19 +18,22 @@ class TenorManager {
 	private country: string;
 	private locale: string;
 	private contentFilter: ContentFilter;
+	private mediaFilter: MediaFilter;
 
 	constructor(
 		apiKey: string,
 		clientKey: string,
 		country: string,
 		locale: string,
-		contentFilter: ContentFilter
+		contentFilter: ContentFilter,
+		mediaFilter: MediaFilter
 	) {
 		this.apiKey = apiKey;
 		this.clientKey = clientKey;
 		this.country = country;
 		this.locale = locale;
 		this.contentFilter = contentFilter;
+		this.mediaFilter = mediaFilter;
 	}
 
 	private async callApi(endpoint: string, params?: {[key: string]: any}): Promise<Response> {
@@ -39,7 +41,7 @@ class TenorManager {
 			'key': this.apiKey,
 			'client_key': this.clientKey,
 			'contentfilter': this.contentFilter,
-			'media_filter': MEDIA_FILTER,
+			'media_filter': this.mediaFilter,
 			'locale': this.locale,
 			'country': this.country,
 			...params
@@ -61,7 +63,7 @@ class TenorManager {
 	}
 
 	private praseResult(img: any): TenorImage {
-		const gif = img['media_formats']['gif'];
+		const gif = img['media_formats']['tinygif'];
 		return {
 			id: img.id,
 			tenorUrl: img['itemurl'] ,

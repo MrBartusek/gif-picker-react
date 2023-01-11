@@ -59,13 +59,15 @@ The following props are accepted by the picker:
 | tenorApiKey | `string` | **Reqired** | Tenor v2 API key, obtained from [Google Cloud Console](https://console.cloud.google.com) |
 | onGifClick | `function` | | Callback function that is called when an gif is clicked. The function receives the [`TenorImage`](#tenorimage) object as a parameter. |
 | autoFocusSearch | `boolean` | `true` | Controls the auto focus of the search input. |
-| contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [Content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use `ContentFilter` enum. Possible values are `high`, `medium`, `low`, `off`  |
+| contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [Content filtering](https://developers.google.com/tenor/guides/
+| mediaFilter | `MediaFilter` | `MediaFilter.BASIC` | Reduce the Number of GIF formats returned in the GIF_OBJECT list. If you are using Typescript you can use `MediaFilter` enum. Possible values are `basic`, `minimal`. For image optimizations it's recommended the picker uses the tinygif or nanogif formats to avoid downloading full gif content to the client while searching. On gif select will return the hires `gif`. Read more [Best practices](https://tenor.com/gifapi/documentation#endpoints-search)  |
 | clientKey | `string` | `gif-picker-react` | Name of your application. Used to differentiate multiple applications using same API key. |
 | country | `string` | `US` | Specify the country of origin for the request. To do so, provide its two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
 | locale | `string (xx_YY)` | `en_US` | Specify the default language to interpret the search string. xx is the language's [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code, while the optional _YY value is the two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code.
 | width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | categoryHeight | `number / string` | `100` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
+| theme | `Theme` | `Theme.DARK` | controls the theme set for the tenor picker on render. Dark theme is on by default. If you are using Typescript you can use `Theme` enum.
 
 ### TenorImage
 
