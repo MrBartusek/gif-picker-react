@@ -1,7 +1,7 @@
 import { ContentFilter, MediaFilter, TenorImage } from '../types/exposedTypes';
 
 const BASE_URL = 'https://tenor.googleapis.com/v2/';
-const MINIMAL_MEDIA_FILTER = 'gif,tinygif';
+const MEDIA_FILTER = 'gif,tinygif';
 export interface TenorCategory {
 	image: string;
 	name: string;
@@ -38,7 +38,7 @@ class TenorManager {
 			'key': this.apiKey,
 			'client_key': this.clientKey,
 			'contentfilter': this.contentFilter,
-			'media_filter': MINIMAL_MEDIA_FILTER,
+			'media_filter': MEDIA_FILTER,
 			'locale': this.locale,
 			'country': this.country,
 			...params
