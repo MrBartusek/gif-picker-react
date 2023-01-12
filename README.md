@@ -83,6 +83,17 @@ This object is provided as an argument to callback specified in `onGifClick`:
 | url           | `string`   | Direct URL to the image source |
 | height        | `number`   | Height of the image in pixels |
 | width         | `number`   | Width of the image in pixels |
+| preview       | `TenorImagePreview` | Width of the image in pixels |
+
+### TenorImagePreview
+
+This object is used for displaying the preview image gifs in the picker. Only used to help the client render lower res images and reduce network request size
+
+| Property      | Type       | Description |
+| ------------- | ---------- | ----------- |
+| url           | `string`   | Direct URL to the preview image source |
+| height        | `number`   | Height of the preview image in pixels |
+| width         | `number`   | Width of the preview image in pixels |
 
 This is an example `TenorImage` object:
 
@@ -96,7 +107,12 @@ This is an example `TenorImage` object:
   tags: [ "American Psycho", "Patrick Bateman", "American", "psycho"],
   url: "https://media.tenor.com/5lLcKZgmIhgAAAAC/american-psycho-patrick-bateman.gif",
   height: 240,
-  width: 244
+  width: 244,
+  preview: {
+    url: "https://media.tenor.com/5lLcKZgmIhgAAAAC/american-psycho-patrick-bateman.gif",
+    height: 120,
+    width: 122
+  }
 }
 ```
 

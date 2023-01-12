@@ -1,4 +1,4 @@
-import { ContentFilter, MediaFilter, TenorImage } from '../types/exposedTypes';
+import { ContentFilter, TenorImage } from '../types/exposedTypes';
 
 const BASE_URL = 'https://tenor.googleapis.com/v2/';
 const MEDIA_FILTER = 'gif,tinygif';
@@ -61,9 +61,9 @@ class TenorManager {
 
 	private praseResult(img: any): TenorImage {
 		//Use tinygif object for compnent render. Tenor urls are the same betweent tinygif and gif
-		const tinyGif = img['media_formats'][MediaFilter.TINYGIF];
+		const tinyGif = img['media_formats']['tinygif'];
 		//Use gif object returned to get full dimensions
-		const gif = img['media_formats'][MediaFilter.GIF];
+		const gif = img['media_formats']['gif'];
 		return {
 			id: img.id,
 			tenorUrl: img['itemurl'] ,
@@ -71,9 +71,14 @@ class TenorManager {
 			description: img['content_description'],
 			createdAt: new Date(img.created * 1000),
 			tags: img.tags,
-			url: tinyGif.url,
+			url: gif.url,
 			width: gif.dims[0],
-			height: gif.dims[1]
+			height: gif.dims[1],
+			preview: {
+				url: tinyGif.url,
+				width: tinyGif.dims[0],
+				height: tinyGif.dims[1]
+			}
 		};
 	}
 

@@ -10,13 +10,6 @@ export enum Theme {
     AUTO = 'dark'
 }
 
-export enum MediaFilter {
-    TINYGIF = 'tinygif',
-    GIF = 'gif',
-    TINYMP4 = 'tinymp4',
-    MP4 = 'mp4'
-}
-
 export interface TenorImage {
 	id: string;
     tenorUrl: string;
@@ -24,6 +17,13 @@ export interface TenorImage {
     description: string;
     createdAt: Date;
     tags: string[];
+    url: string;
+    height: number;
+    width: number;
+    preview: TenorImagePreview;
+}
+
+export interface TenorImagePreview {
     url: string;
     height: number;
     width: number;
