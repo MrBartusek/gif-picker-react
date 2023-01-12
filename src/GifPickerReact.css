@@ -27,7 +27,7 @@
     --gpr-category-list-padding: var(--gpr-horizontal-padding);
     --gpr-category-border-radius: 4px;
     --gpr-category-background-opacity: 40%;
-    --gpr-category-font-color: var(--gpr-picker-border-color);;
+    --gpr-category-font-color: #e7e7e7;
     --gpr-category-font-size: 16px;
     --gpr-category-font-weight: 600;
     --gpr-category-shadow-opacity: 60%;
