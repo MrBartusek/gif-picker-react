@@ -83,7 +83,7 @@ This object is provided as an argument to callback specified in `onGifClick`:
 | url           | `string`   | Direct URL to the image source |
 | height        | `number`   | Height of the image in pixels |
 | width         | `number`   | Width of the image in pixels |
-| preview       | `TenorImagePreview` | Width of the image in pixels |
+| preview       | `TenorImagePreview` | Gif preview object with dimensions scaled down |
 
 ### TenorImagePreview
 
