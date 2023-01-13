@@ -32,7 +32,7 @@ function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 		new TenorManager(settings.tenorApiKey, settings.clientKey,
 			settings.country, settings.locale, settings.contentFilter)
 	), [ ]);
-	
+
 	return (
 		<SettingsContext.Provider value={settings}>
 			<PickerContext.Provider value={pickerContext}>

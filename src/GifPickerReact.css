@@ -27,7 +27,7 @@
     --gpr-category-list-padding: var(--gpr-horizontal-padding);
     --gpr-category-border-radius: 4px;
     --gpr-category-background-opacity: 40%;
-    --gpr-category-font-color: #e7e7e7;
+    --gpr-category-font-color: var(--gpr-picker-border-color);
     --gpr-category-font-size: 16px;
     --gpr-category-font-weight: 600;
     --gpr-category-shadow-opacity: 60%;
@@ -39,13 +39,17 @@
 }
 
 .GifPickerReact.gpr-dark-theme {
-    --gpr-highlight-color: #8961a7;
-    --gpr-hover-bg-color: #858688;
-    --gpr-focus-bg-color: #9a9a9b;
-    --gpr-text-color: #f6f6f6;
+    --gpr-dark: #000;
+    --gpr-hover-bg-color: #363636f6;
+    --gpr-focus-bg-color: #474747;
+    --gpr-highlight-color: #c0c0c0;
+    --gpr-text-color: var(--gpr-highlight-color);
     --gpr-search-input-bg-color: #3b3b3b;
     --gpr-picker-border-color: #2b2b2b;
-    --gpr-bg-color: rgb(42, 41, 41);
+    --gpr-bg-color: #222222;
+    --gpr-category-font-color: #e7e7e7;
+    --gpr-search-input-bg-color-active: var(--gpr-dark);
+    --gpr-placeholder-color: var(--gpr-search-input-bg-color);
 }
 
 .GifPickerReact * {

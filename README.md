@@ -87,7 +87,7 @@ This object is provided as an argument to callback specified in `onGifClick`:
 
 ### TenorImagePreview
 
-This object is used for displaying the preview image gifs in the picker. Only used to help the client render lower res images and reduce network request size
+This object is used for displaying the preview image gifs in the picker. You can use it to render smaller and lower-resolution versions of the gifs.
 
 | Property      | Type       | Description |
 | ------------- | ---------- | ----------- |
@@ -109,7 +109,7 @@ This is an example `TenorImage` object:
   height: 240,
   width: 244,
   preview: {
-    url: "https://media.tenor.com/5lLcKZgmIhgAAAAC/american-psycho-patrick-bateman.gif",
+    url: "https://media.tenor.com/5lLcKZgmIhgAAAAM/american-psycho-patrick-bateman.gif",
     height: 120,
     width: 122
   }

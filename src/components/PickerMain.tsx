@@ -8,7 +8,7 @@ export interface PickerMainProps {
 
 function PickerMain({ children }: PickerMainProps): JSX.Element {
 	const settings = useContext(SettingsContext);
-	
+
 	const style: React.CSSProperties = {
 		height: settings.height,
 		width: settings.width

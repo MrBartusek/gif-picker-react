@@ -56,10 +56,10 @@ function praseDimension(dimension: string | number): string {
 }
 
 /**
- * Check for a theme passed in. If not passed default to Light. 
+ * Check for a theme passed in. If not passed default to Light.
  * Otherwise check for auto or return what was passed in.
  * @param theme theme to check
- * @returns theme to use 
+ * @returns theme to use
  */
 function getTheme(theme?: Theme): Theme {
 	if (theme === Theme.AUTO) {
@@ -72,13 +72,13 @@ function getTheme(theme?: Theme): Theme {
 
 /**
  * Check for system settings for darkmode
- * @returns true if system is using dark theme 
+ * @returns true if system is using dark theme
  */
 function isSystemDarkTheme(): boolean {
 	if (typeof window === 'undefined') {
-	  return false;
+		return false;
 	}
-  
+
 	return !!window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
 

@@ -61,10 +61,11 @@ class TenorManager {
 	}
 
 	private praseResult(img: any): TenorImage {
-		//Use tinygif object for compnent render. Tenor urls are the same betweent tinygif and gif
-		const tinyGif = img['media_formats']['tinygif'];
+		//Use tinygif object for compnent render. This is a smaller version of the gif
+		const preview = img['media_formats']['tinygif'];
 		//Use gif object returned to get full dimensions
 		const gif = img['media_formats']['gif'];
+
 		return {
 			id: img.id,
 			tenorUrl: img['itemurl'] ,
@@ -76,9 +77,9 @@ class TenorManager {
 			width: gif.dims[0],
 			height: gif.dims[1],
 			preview: {
-				url: tinyGif.url,
-				width: tinyGif.dims[0],
-				height: tinyGif.dims[1]
+				url: preview.url,
+				width: preview.dims[0],
+				height: preview.dims[1]
 			}
 		};
 	}
