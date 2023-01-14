@@ -20,4 +20,11 @@ export interface TenorImage {
     url: string;
     height: number;
     width: number;
+    preview: TenorImagePreview;
+}
+
+export interface TenorImagePreview {
+    url: string;
+    height: number;
+    width: number;
 }

@@ -1,6 +1,6 @@
 import { ContentFilter, TenorImage } from '../types/exposedTypes';
 
-const MEDIA_FILTER = 'gif';
+const MEDIA_FILTER = 'gif,tinygif';
 const BASE_URL = 'https://tenor.googleapis.com/v2/';
 
 export interface TenorCategory {
@@ -61,7 +61,9 @@ class TenorManager {
 	}
 
 	private praseResult(img: any): TenorImage {
+		const preview = img['media_formats']['tinygif'];
 		const gif = img['media_formats']['gif'];
+
 		return {
 			id: img.id,
 			tenorUrl: img['itemurl'] ,
@@ -71,7 +73,12 @@ class TenorManager {
 			tags: img.tags,
 			url: gif.url,
 			width: gif.dims[0],
-			height: gif.dims[1]
+			height: gif.dims[1],
+			preview: {
+				url: preview.url,
+				width: preview.dims[0],
+				height: preview.dims[1]
+			}
 		};
 	}
 

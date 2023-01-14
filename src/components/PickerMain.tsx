@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import SettingsContext from '../context/SettingsContext';
+import { Theme } from '../types/exposedTypes';
 
 export interface PickerMainProps {
     children: React.ReactNode;
@@ -14,7 +15,7 @@ function PickerMain({ children }: PickerMainProps): JSX.Element {
 	};
 
 	return (
-		<aside className='GifPickerReact gpr-main' style={style}>
+		<aside className={`GifPickerReact gpr-main ${settings.theme === Theme.DARK ? ' gpr-dark-theme' : ''}`} style={style}>
 			{children}
 		</aside>
 	);

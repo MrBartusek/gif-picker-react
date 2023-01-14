@@ -24,7 +24,7 @@ function ResultImage({ image, searchTerm }: ResultImageProps): JSX.Element {
 			className='gpr-btn gpr-result-image'
 			onClick={onClick}
 		>
-			<img src={image.url} height={image.height} width={image.width} loading="lazy" />
+			<img src={image.preview.url} height={image.preview.height} width={image.preview.width} loading="lazy" />
 		</button>
 	);
 }

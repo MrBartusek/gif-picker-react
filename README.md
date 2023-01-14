@@ -58,6 +58,7 @@ The following props are accepted by the picker:
 | ---- | ---- | ------- | ----------- |
 | tenorApiKey | `string` | **Reqired** | Tenor v2 API key, obtained from [Google Cloud Console](https://console.cloud.google.com) |
 | onGifClick | `function` | | Callback function that is called when an gif is clicked. The function receives the [`TenorImage`](#tenorimage) object as a parameter. |
+| theme | `Theme` | `Theme.LIGHT` | Controls the theme of the picker. If you are using Typescript you can use `Theme` enum. Possible values are `light`, `dark` and `auto`.
 | autoFocusSearch | `boolean` | `true` | Controls the auto focus of the search input. |
 | contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [Content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use `ContentFilter` enum. Possible values are `high`, `medium`, `low`, `off`  |
 | clientKey | `string` | `gif-picker-react` | Name of your application. Used to differentiate multiple applications using same API key. |
@@ -82,6 +83,17 @@ This object is provided as an argument to callback specified in `onGifClick`:
 | url           | `string`   | Direct URL to the image source |
 | height        | `number`   | Height of the image in pixels |
 | width         | `number`   | Width of the image in pixels |
+| preview       | `TenorImagePreview` | Gif preview object with dimensions scaled down |
+
+### TenorImagePreview
+
+This object is used for displaying the preview image gifs in the picker. You can use it to render smaller and lower-resolution versions of the gifs.
+
+| Property      | Type       | Description |
+| ------------- | ---------- | ----------- |
+| url           | `string`   | Direct URL to the preview image source |
+| height        | `number`   | Height of the preview image in pixels |
+| width         | `number`   | Width of the preview image in pixels |
 
 This is an example `TenorImage` object:
 
@@ -95,7 +107,12 @@ This is an example `TenorImage` object:
   tags: [ "American Psycho", "Patrick Bateman", "American", "psycho"],
   url: "https://media.tenor.com/5lLcKZgmIhgAAAAC/american-psycho-patrick-bateman.gif",
   height: 240,
-  width: 244
+  width: 244,
+  preview: {
+    url: "https://media.tenor.com/5lLcKZgmIhgAAAAM/american-psycho-patrick-bateman.gif",
+    height: 120,
+    width: 122
+  }
 }
 ```
 

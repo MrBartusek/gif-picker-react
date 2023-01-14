@@ -9,7 +9,7 @@ import './GifPickerReact.css';
 import usePickerContext from './hooks/usePickerContext';
 import useSettings from './hooks/useSettings';
 import TenorManager from './managers/TenorManager';
-import { ContentFilter, TenorImage } from './types/exposedTypes';
+import { ContentFilter, TenorImage, Theme } from './types/exposedTypes';
 
 export interface GifPickerReactProps {
 	tenorApiKey: string;
@@ -22,6 +22,7 @@ export interface GifPickerReactProps {
 	width?: number | string;
 	height?: number | string;
 	categoryHeight?: number | string;
+	theme?: Theme;
 }
 
 function GifPickerReact(props: GifPickerReactProps): JSX.Element {
