@@ -15,6 +15,12 @@ export default {
 		onGifClick: {
 			action: 'GIF selected'
 		},
+		theme: {
+			options: [ 'dark', 'light', 'auto' ],
+			control: {
+				type: 'radio'
+			}
+		},
 		clientKey: {
 			type: { name: 'string' }
 		},
