@@ -42,8 +42,7 @@
     --gpr-dark: #000;
     --gpr-hover-bg-color: #363636f6;
     --gpr-focus-bg-color: #474747;
-    --gpr-highlight-color: #c0c0c0;
-    --gpr-text-color: var(--gpr-highlight-color);
+    --gpr-text-color: #c0c0c0;
     --gpr-search-input-bg-color: #3b3b3b;
     --gpr-picker-border-color: #2b2b2b;
     --gpr-bg-color: #222222;
