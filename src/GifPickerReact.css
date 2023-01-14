@@ -1,4 +1,6 @@
 .GifPickerReact {
+    color-scheme: light;
+
     --gpr-highlight-color: #007aeb;
     --gpr-hover-bg-color: #f1f8ff;
     --gpr-focus-bg-color: #e0f0ff;
@@ -39,6 +41,7 @@
 }
 
 .GifPickerReact.gpr-dark-theme {
+    color-scheme: dark;
     --gpr-dark: #000;
     --gpr-hover-bg-color: #363636f6;
     --gpr-focus-bg-color: #474747;
