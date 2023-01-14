@@ -58,6 +58,7 @@ The following props are accepted by the picker:
 | ---- | ---- | ------- | ----------- |
 | tenorApiKey | `string` | **Reqired** | Tenor v2 API key, obtained from [Google Cloud Console](https://console.cloud.google.com) |
 | onGifClick | `function` | | Callback function that is called when an gif is clicked. The function receives the [`TenorImage`](#tenorimage) object as a parameter. |
+| theme | `Theme` | `Theme.LIGHT` | Controls the theme of the picker. If you are using Typescript you can use `Theme` enum. Possible values are `light`, `dark` and `auto`.
 | autoFocusSearch | `boolean` | `true` | Controls the auto focus of the search input. |
 | contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [Content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use `ContentFilter` enum. Possible values are `high`, `medium`, `low`, `off`  |
 | clientKey | `string` | `gif-picker-react` | Name of your application. Used to differentiate multiple applications using same API key. |
@@ -66,7 +67,6 @@ The following props are accepted by the picker:
 | width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | categoryHeight | `number / string` | `100` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
-| theme | `Theme` | `Theme.LIGHT` | controls the theme set for the tenor picker on render. Light theme is on by default. If you are using Typescript you can use `Theme` enum.
 
 ### TenorImage
 
