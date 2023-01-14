@@ -61,9 +61,7 @@ class TenorManager {
 	}
 
 	private praseResult(img: any): TenorImage {
-		//Use tinygif object for compnent render. This is a smaller version of the gif
 		const preview = img['media_formats']['tinygif'];
-		//Use gif object returned to get full dimensions
 		const gif = img['media_formats']['gif'];
 
 		return {
