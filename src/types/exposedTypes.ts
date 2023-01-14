@@ -7,7 +7,7 @@ export enum ContentFilter {
 export enum Theme {
     LIGHT = 'light',
     DARK = 'dark',
-    AUTO = 'dark'
+    AUTO = 'auto'
 }
 
 export interface TenorImage {
