@@ -1546,7 +1546,7 @@
     "lodash" "^4.17.21"
     "ts-dedent" "^2.0.0"
 
-"@storybook/addon-docs@6.5.15":
+"@storybook/addon-docs@^6.5.15", "@storybook/addon-docs@6.5.15":
   "integrity" "sha512-k3LAu+wVp6pNhfh6B1soCRl6+7sNTNxtqy6WTrIeVJVCGbXbyc5s7gQ48gJ4WAk6meoDEZbypiP4NK1El03YLg=="
   "resolved" "https://registry.npmjs.org/@storybook/addon-docs/-/addon-docs-6.5.15.tgz"
   "version" "6.5.15"
