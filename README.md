@@ -56,7 +56,7 @@ The following props are accepted by the picker:
 
 | Prop | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| tenorApiKey | `string` | **Reqired** | Tenor v2 API key, obtained from [Google Cloud Console](https://console.cloud.google.com) |
+| tenorApiKey | `string` | **Required** | Tenor v2 API key, obtained from [Google Cloud Console](https://console.cloud.google.com) |
 | onGifClick | `function` | | Callback function that is called when an gif is clicked. The function receives the [`TenorImage`](#tenorimage) object as a parameter. |
 | theme | `Theme` | `Theme.LIGHT` | Controls the theme of the picker. If you are using Typescript you can use `Theme` enum. Possible values are `light`, `dark` and `auto`.
 | autoFocusSearch | `boolean` | `true` | Controls the auto focus of the search input. |
