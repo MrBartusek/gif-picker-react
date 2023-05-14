@@ -8,8 +8,7 @@ export default {
 	component: GifPicker,
 	argTypes: {
 		tenorApiKey: {
-			type: { name: 'string' },
-			defaultValue: process.env.STORYBOOK_TENOR_TOKEN
+			type: { name: 'string' }
 		},
 		onGifClick: {
 			action: 'GIF selected'
@@ -41,15 +40,22 @@ export default {
 	}
 } as Meta<typeof GifPicker>;
 
-export const Home = {};
+export const Home = {
+	args: {
+		tenorApiKey: process.env.STORYBOOK_TENOR_TOKEN
+	}
+};
 
 export const DarkTheme = {
+	...Home,
 	args: {
+		...Home.args,
 		theme: Theme.DARK
 	}
 };
 
 export const Search = {
+	...Home,
 	play: async ({ canvasElement }: any) => {
 		console.log(canvasElement);
 		const canvas = within(canvasElement);
@@ -59,6 +65,7 @@ export const Search = {
 };
 
 export const HomeCategory = {
+	...Home,
 	play: async ({ canvasElement }: any) => {
 		const canvas = within(canvasElement);
 
@@ -68,6 +75,7 @@ export const HomeCategory = {
 };
 
 export const Trending = {
+	...Home,
 	play: async ({ canvasElement }: any) => {
 		const canvas = within(canvasElement);
 
