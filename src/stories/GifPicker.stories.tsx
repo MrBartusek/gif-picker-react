@@ -1,7 +1,6 @@
 import { expect } from '@storybook/jest';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { userEvent, waitFor, within } from '@storybook/testing-library';
-import React from 'react';
 import GifPicker, { Theme } from '..';
 
 export default {
@@ -9,8 +8,7 @@ export default {
 	component: GifPicker,
 	argTypes: {
 		tenorApiKey: {
-			type: { name: 'string' },
-			defaultValue: process.env.STORYBOOK_TENOR_TOKEN
+			type: { name: 'string' }
 		},
 		onGifClick: {
 			action: 'GIF selected'
@@ -40,36 +38,48 @@ export default {
 			type: { name: 'string' }
 		}
 	}
-} as ComponentMeta<typeof GifPicker>;
+} as Meta<typeof GifPicker>;
 
-const Template: ComponentStory<typeof GifPicker> = (args) => <GifPicker {...args} />;
-
-export const Home = Template.bind({});
-
-export const DarkTheme = Template.bind({ theme: Theme.DARK });
-DarkTheme.storyName = 'Dark Theme';
-
-export const Search = Template.bind({});
-Search.play = async ({ canvasElement }) => {
-	const canvas = within(canvasElement);
-
-	await userEvent.type(canvas.getByTestId('gpr-search-input'), 'patrick bateman');
+export const Home = {
+	args: {
+		tenorApiKey: process.env.STORYBOOK_TENOR_TOKEN
+	}
 };
 
-export const HomeCategory = Template.bind({});
-HomeCategory.storyName = 'Home Category';
-HomeCategory.play = async ({ canvasElement }) => {
-	const canvas = within(canvasElement);
-
-	await waitFor(() => expect(canvas.getAllByTestId('gpr-category')[0]).toBeInTheDocument());
-	await userEvent.click(canvas.getAllByTestId('gpr-category')[1]);
+export const DarkTheme = {
+	...Home,
+	args: {
+		...Home.args,
+		theme: Theme.DARK
+	}
 };
 
-export const Trending = Template.bind({});
-Trending.play = async ({ canvasElement }) => {
-	const canvas = within(canvasElement);
+export const Search = {
+	...Home,
+	play: async ({ canvasElement }: any) => {
+		console.log(canvasElement);
+		const canvas = within(canvasElement);
 
-	await waitFor(() => expect(canvas.getAllByTestId('gpr-category')[0]).toBeInTheDocument());
-	await userEvent.click(canvas.getAllByTestId('gpr-category')[0]);
+		await userEvent.type(canvas.getByTestId('gpr-search-input'), 'patrick bateman');
+	}
 };
 
+export const HomeCategory = {
+	...Home,
+	play: async ({ canvasElement }: any) => {
+		const canvas = within(canvasElement);
+
+		await waitFor(() => expect(canvas.getAllByTestId('gpr-category')[0]).toBeInTheDocument());
+		await userEvent.click(canvas.getAllByTestId('gpr-category')[1]);
+	}
+};
+
+export const Trending = {
+	...Home,
+	play: async ({ canvasElement }: any) => {
+		const canvas = within(canvasElement);
+
+		await waitFor(() => expect(canvas.getAllByTestId('gpr-category')[0]).toBeInTheDocument());
+		await userEvent.click(canvas.getAllByTestId('gpr-category')[0]);
+	}
+};
