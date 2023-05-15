@@ -57,7 +57,6 @@ export const DarkTheme = {
 export const Search = {
 	...Home,
 	play: async ({ canvasElement }: any) => {
-		console.log(canvasElement);
 		const canvas = within(canvasElement);
 
 		await userEvent.type(canvas.getByTestId('gpr-search-input'), 'patrick bateman');

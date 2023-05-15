@@ -5,9 +5,10 @@ import GifList from './GifList';
 
 export interface SearchResultProps {
 	searchTerm: string;
+	columnsCount: number;
 }
 
-function SearchResult({ searchTerm }: SearchResultProps) {
+function SearchResult({ searchTerm, columnsCount }: SearchResultProps) {
 	const [ searchResult, setSearchResult ] = useState<TenorResult>(null!);
 	const [ isLoading, setLoading ] = useState(true);
 	const tenor = useContext(TenorContext);
@@ -24,7 +25,7 @@ function SearchResult({ searchTerm }: SearchResultProps) {
 	}, [ searchTerm ]);
 
 	return (
-		<GifList isLoading={isLoading} result={searchResult} searchTerm={searchTerm} />
+		<GifList isLoading={isLoading} columnsCount={columnsCount} result={searchResult} searchTerm={searchTerm} />
 	);
 }
 

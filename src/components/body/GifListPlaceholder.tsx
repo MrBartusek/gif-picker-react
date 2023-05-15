@@ -1,21 +1,31 @@
 import React from 'react';
 import ResultPlaceholder from '../placeholders/ResultPlaceholder';
 
-const SHOW_DELAY = 70;
+const PLACEHOLDER_HEIGHTS = [
+	[ 120, 100, 130, 175, 154, 110 ],
+	[ 150, 115, 135, 154, 145, 170 ],
+	[ 140, 125, 120, 150, 100, 125 ],
+	[ 130, 145, 175, 120, 135, 100 ]
+];
 
-function GifListPlaceholder() {
+export interface GifListPlaceholderProps {
+	columnsCount: number;
+	showDelay?: number;
+}
+
+function GifListPlaceholder({ columnsCount, showDelay = 70 }: GifListPlaceholderProps) {
 	return (
 		<div className='gpr-gif-list'>
-			<div className='gpr-gif-list-column'>
-				{[ 120, 100, 130, 175, 154 ].map((height, i) => (
-					<ResultPlaceholder key={i} height={height} showDelay={((i + 1) * SHOW_DELAY * 2) - SHOW_DELAY} />
-				))}
-			</div>
-			<div className='gpr-gif-list-column'>
-				{[ 150, 115, 135, 154, 145 ].map((height, i) => (
-					<ResultPlaceholder key={i} height={height} showDelay={((i + 1) * SHOW_DELAY * 2)} />
-				))}
-			</div>
+			{[ ...Array(columnsCount) ].map((_, i) => (
+				<div className='gpr-gif-list-column' key={i}>
+					{PLACEHOLDER_HEIGHTS[i % PLACEHOLDER_HEIGHTS.length].map((height, j) => (
+						<ResultPlaceholder
+							key={j} height={height}
+							showDelay={((j + 1) * showDelay * columnsCount) + showDelay * i}
+						/>
+					))}
+				</div>
+			))}
 		</div>
 	);
 }

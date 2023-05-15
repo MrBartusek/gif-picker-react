@@ -27,6 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .GifPickerReact .gpr-category-overlay .gpr-category-name {

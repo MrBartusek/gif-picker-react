@@ -3,7 +3,11 @@ import TenorContext from '../../context/TenorContext';
 import { TenorResult } from '../../managers/TenorManager';
 import GifList from './GifList';
 
-function TrendingResult() {
+export interface TrendingResultProps {
+	columnsCount: number;
+}
+
+function TrendingResult({ columnsCount }: TrendingResultProps) {
 	const [ trendingResult, setSearchResult ] = useState<TenorResult>(null!);
 	const [ isLoading, setLoading ] = useState(true);
 
@@ -20,7 +24,7 @@ function TrendingResult() {
 	}, [ ]);
 
 	return (
-		<GifList isLoading={isLoading} result={trendingResult} />
+		<GifList columnsCount={columnsCount} isLoading={isLoading} result={trendingResult} />
 	);
 }
 

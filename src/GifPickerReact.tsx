@@ -39,7 +39,7 @@ function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 				<TenorContext.Provider value={tenorManager}>
 					<PickerMain>
 						<Header />
-						<Body />
+						<Body width={props.width} />
 					</PickerMain>
 				</TenorContext.Provider>
 			</PickerContext.Provider>
