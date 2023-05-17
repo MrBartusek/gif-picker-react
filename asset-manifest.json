@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/gif-picker-react/static/css/main.a941cf55.css",
-    "main.js": "/gif-picker-react/static/js/main.4830c40a.js",
+    "main.js": "/gif-picker-react/static/js/main.ab50bf08.js",
     "index.html": "/gif-picker-react/index.html",
     "main.a941cf55.css.map": "/gif-picker-react/static/css/main.a941cf55.css.map",
-    "main.4830c40a.js.map": "/gif-picker-react/static/js/main.4830c40a.js.map"
+    "main.ab50bf08.js.map": "/gif-picker-react/static/js/main.ab50bf08.js.map"
   },
   "entrypoints": [
     "static/css/main.a941cf55.css",
-    "static/js/main.4830c40a.js"
+    "static/js/main.ab50bf08.js"
   ]
 }
