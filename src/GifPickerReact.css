@@ -16,7 +16,7 @@
 
     /* Search */
     --gpr-search-input-bg-color-active: var(--gpr-search-input-bg-color);
-    --gpr-search-input-padding: 0 30px;
+    --gpr-search-input-padding: 0 32px;
     --gpr-search-input-border-radius: 8px;
     --gpr-search-input-height: 40px;
     --gpr-search-input-text-color: var(--gpr-text-color);
