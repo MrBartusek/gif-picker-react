@@ -1,7 +1,6 @@
-import React from 'react';
 import GifPicker, { TenorImage } from 'gif-picker-react';
 import { useState } from 'react';
-import './styles.css';
+import './App.css';
 
 const TENOR_API_KEY = 'AIzaSyBh5BTijm12gMpzUYpyfbKN8pjszpUR1FE';
 
@@ -27,10 +26,13 @@ function App(): JSX.Element {
 				)}
 			</div>
 
-			<GifPicker tenorApiKey={TENOR_API_KEY} onGifClick={setSelected} />
+			<GifPicker
+        tenorApiKey={TENOR_API_KEY}
+        onGifClick={setSelected}
+      />
 
 			<div className='footer'>
-				<code>gif-picker-react</code> - {' '}
+				<code>gif-picker-react</code> | {' '}
 				<a href="https://github.com/MrBartusek/gif-picker-react" target="_blank" rel="noreferrer">github</a> - {' '}
 				<a href="https://www.npmjs.com/package/gif-picker-react" target="_blank" rel="noreferrer">npm</a>
 			</div>
