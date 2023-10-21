@@ -13,10 +13,19 @@ export interface CategoryListProps {
 }
 
 function CategoryList({ categories, trending, columnsCount }: CategoryListProps): JSX.Element {
-	// Reduce categories to multiple of columns so there won't by any not full rows at the bottom
-	let categoriesSliced = categories;
-	if(columnsCount > 1) {
-		categoriesSliced = categories?.slice(0, -((categories.length + 1) % columnsCount));
+	/**
+     * Make sure that last categories row is always full by removing
+     * excess categories so the total count is devisable by collumn count
+     */
+	function getCleanedCategories() {
+		if(!categories) return undefined;
+
+		const SPECIAL_CATEGORIES_COUNT = 1; // Trending
+		const totalCategoriesCount = categories.length + SPECIAL_CATEGORIES_COUNT;
+		const excessCategoriesCount = totalCategoriesCount % columnsCount;
+
+		if(excessCategoriesCount == 0) return categories;
+		return categories?.slice(0, -excessCategoriesCount);
 	}
 
 	return (
@@ -24,7 +33,7 @@ function CategoryList({ categories, trending, columnsCount }: CategoryListProps)
 			{categories && trending ? (
 				<>
 					<TrendingCategory image={trending.url} />
-					{categoriesSliced?.map((cat, i) => (
+					{getCleanedCategories()?.map((cat, i) => (
 						<FeaturedCategory key={i} image={cat.image} name={cat.name} />
 					))}
 				</>
