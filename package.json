@@ -10,8 +10,8 @@
     "gif"
   ],
   "repository": {
-    "type": "gif",
-    "url": "https://github.com/MrBartusek/gif-picker-react"
+    "type": "git",
+    "url": "git+https://github.com/MrBartusek/gif-picker-react.git"
   },
   "homepage": "https://dokurno.dev/gif-picker-react",
   "scripts": {
