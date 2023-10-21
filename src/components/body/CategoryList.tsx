@@ -15,7 +15,7 @@ export interface CategoryListProps {
 function CategoryList({ categories, trending, columnsCount }: CategoryListProps): JSX.Element {
 	/**
      * Make sure that last categories row is always full by removing
-     * excess categories so the total count is devisable by collumn count
+     * excess categories so the total count is devisable by column count
      */
 	function getCleanedCategories() {
 		if(!categories) return undefined;
