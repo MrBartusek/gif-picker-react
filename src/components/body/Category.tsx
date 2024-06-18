@@ -13,6 +13,7 @@ function Category({ image, text, onClick}: CategoryProps): JSX.Element {
 
 	return (
 		<button
+			type="button"
 			className='gpr-btn gpr-category'
 			style={{height: settings.categoryHeight}}
 			data-testid='gpr-category'
