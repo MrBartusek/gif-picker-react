@@ -21,6 +21,7 @@ function ResultImage({ image, searchTerm }: ResultImageProps): JSX.Element {
 
 	return (
 		<button
+			type="button"
 			className='gpr-btn gpr-result-image'
 			onClick={onClick}
 		>
