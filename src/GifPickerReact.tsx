@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { Dispatch, SetStateAction, useMemo } from 'react';
 import Body from './components/body/Body';
 import Header from './components/header/Header';
 import PickerMain from './components/PickerMain';
@@ -6,7 +6,7 @@ import PickerContext from './context/PickerContext';
 import SettingsContext from './context/SettingsContext';
 import TenorContext from './context/TenorContext';
 import './GifPickerReact.css';
-import usePickerContext from './hooks/usePickerContext';
+import usePickerContext, { PickerContextType } from './hooks/usePickerContext';
 import useSettings from './hooks/useSettings';
 import TenorManager from './managers/TenorManager';
 import { ContentFilter, TenorImage, Theme } from './types/exposedTypes';
@@ -23,11 +23,12 @@ export interface GifPickerReactProps {
 	height?: number | string;
 	categoryHeight?: number | string;
 	theme?: Theme;
+	pickerContext?: [PickerContextType, Dispatch<SetStateAction<PickerContextType>>];
 }
 
 function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 	const settings = useSettings(props);
-	const pickerContext = usePickerContext();
+	const internalPickerContext = usePickerContext();
 	const tenorManager: TenorManager = useMemo(() => (
 		new TenorManager(settings.tenorApiKey, settings.clientKey,
 			settings.country, settings.locale, settings.contentFilter)
@@ -35,7 +36,7 @@ function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 
 	return (
 		<SettingsContext.Provider value={settings}>
-			<PickerContext.Provider value={pickerContext}>
+			<PickerContext.Provider value={props.pickerContext || internalPickerContext}>
 				<TenorContext.Provider value={tenorManager}>
 					<PickerMain>
 						<Header />

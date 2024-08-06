@@ -67,6 +67,7 @@ The following props are accepted by the picker:
 | width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | categoryHeight | `number / string` | `100` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
+| pickerContext | `PickerContextValue` | | Value to be used as the picker context value.
 
 ### TenorImage
 
@@ -115,6 +116,16 @@ This is an example `TenorImage` object:
   }
 }
 ```
+
+### PickerContextValue
+
+Should be an array in the format `[pickerContextValueType, setPickerContextValue]`.
+
+The pickerContextValueType format:
+| Property      | Type       | Default | Description |
+| ------------- | ---------- | ----------- | ----------- |
+| searchTerm    | `string`   | "" | The search term |
+| showTrending  | `boolean`  | false |Controls if should show trending category or not |
 
 ## Customization
 

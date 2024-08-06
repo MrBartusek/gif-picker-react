@@ -1,5 +1,6 @@
+import React from 'react';
 import { expect } from '@storybook/jest';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { userEvent, waitFor, within } from '@storybook/testing-library';
 import GifPicker, { Theme } from '..';
 
@@ -80,5 +81,17 @@ export const Trending = {
 
 		await waitFor(() => expect(canvas.getAllByTestId('gpr-category')[0]).toBeInTheDocument());
 		await userEvent.click(canvas.getAllByTestId('gpr-category')[0]);
+	}
+};
+
+export const ControlledSearchTerm = {
+	...Home,
+	render: (props: any) => {
+		const [ pickerContext, setPickerContext ] = React.useState({
+			searchTerm: 'love',
+			showTrending: false
+		});
+
+		return <GifPicker {...props} pickerContext={[ pickerContext, setPickerContext ]} />;
 	}
 };
