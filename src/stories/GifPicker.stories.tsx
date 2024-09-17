@@ -1,5 +1,5 @@
 import { expect } from '@storybook/jest';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { userEvent, waitFor, within } from '@storybook/testing-library';
 import GifPicker, { Theme } from '..';
 
@@ -14,7 +14,7 @@ export default {
 			action: 'GIF selected'
 		},
 		theme: {
-			options: [ 'dark', 'light', 'auto' ],
+			options: ['dark', 'light', 'auto'],
 			control: {
 				type: 'radio'
 			}
@@ -35,6 +35,9 @@ export default {
 			type: { name: 'string' }
 		},
 		categoryHeight: {
+			type: { name: 'string' }
+		},
+		initialSearchTerm: {
 			type: { name: 'string' }
 		}
 	}
@@ -60,6 +63,14 @@ export const Search = {
 		const canvas = within(canvasElement);
 
 		await userEvent.type(canvas.getByTestId('gpr-search-input'), 'patrick bateman');
+	}
+};
+
+export const InitialSearch = {
+	...Home,
+	args: {
+		...Home.args,
+		initialSearchTerm: 'github',
 	}
 };
 

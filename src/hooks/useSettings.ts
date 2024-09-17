@@ -16,6 +16,7 @@ export type GifPickerSettings = {
 	width: string;
 	categoryHeight: string;
 	theme: Theme;
+	initialSearchTerm: string;
 }
 
 function useSettings(props: GifPickerReactProps): GifPickerSettings {
@@ -30,10 +31,11 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
 		country: props.country ?? 'US',
 		locale: props.locale ?? 'en_US',
 		contentFilter: props.contentFilter ?? ContentFilter.OFF,
-		height: praseDimension(props.height ?? 450),
-		width: praseDimension(props.width ?? 350),
-		categoryHeight: praseDimension(props.categoryHeight ?? 100),
-		theme: getTheme(props.theme)
+		height: parseDimension(props.height ?? 450),
+		width: parseDimension(props.width ?? 350),
+		categoryHeight: parseDimension(props.categoryHeight ?? 100),
+		theme: getTheme(props.theme),
+		initialSearchTerm: props.initialSearchTerm ?? '',
 	};
 }
 
@@ -43,7 +45,7 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
  * @param dimension raw dimension
  * @returns css size string
  */
-function praseDimension(dimension: string | number): string {
+function parseDimension(dimension: string | number): string {
 	if(typeof dimension == 'number') {
 		return `${dimension}px`;
 	}

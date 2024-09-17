@@ -23,15 +23,16 @@ export interface GifPickerReactProps {
 	height?: number | string;
 	categoryHeight?: number | string;
 	theme?: Theme;
+	initialSearchTerm?: string;
 }
 
 function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 	const settings = useSettings(props);
-	const pickerContext = usePickerContext();
+	const pickerContext = usePickerContext({ initialSearchTerm: settings.initialSearchTerm });
 	const tenorManager: TenorManager = useMemo(() => (
 		new TenorManager(settings.tenorApiKey, settings.clientKey,
 			settings.country, settings.locale, settings.contentFilter)
-	), [ ]);
+	), []);
 
 	return (
 		<SettingsContext.Provider value={settings}>

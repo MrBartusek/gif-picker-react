@@ -25,7 +25,7 @@ class TenorManager {
 		clientKey: string,
 		country: string,
 		locale: string,
-		contentFilter: ContentFilter
+		contentFilter: ContentFilter,
 	) {
 		this.apiKey = apiKey;
 		this.clientKey = clientKey;
@@ -60,7 +60,7 @@ class TenorManager {
 			});
 	}
 
-	private praseResult(img: any): TenorImage {
+	private parseResult(img: any): TenorImage {
 		const preview = img['media_formats']['tinygif'];
 		const gif = img['media_formats']['gif'];
 
@@ -103,7 +103,7 @@ class TenorManager {
 		})
 			.then((data: any) => {
 				const results = data.results;
-				const images = results.map(this.praseResult);
+				const images = results.map(this.parseResult);
 				return {
 					next: data.next,
 					images: images
@@ -118,7 +118,7 @@ class TenorManager {
 		})
 			.then((data: any) => {
 				const results = data.results;
-				const images = results.map(this.praseResult);
+				const images = results.map(this.parseResult);
 				return {
 					next: data.next,
 					images: images

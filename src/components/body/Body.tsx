@@ -51,10 +51,10 @@ function Body({ width }: BodyProps): JSX.Element {
 	return (
 		<div className='gpr-body' ref={ref}>
 			{((): JSX.Element => {
-				if(pickerContext.showTrending) {
+				if (pickerContext.showTrending) {
 					return <TrendingResult columnsCount={columnsCount} />;
 				}
-				else if(pickerContext.searchTerm) {
+				else if (pickerContext.searchTerm || pickerContext.initialSearchTerm) {
 					return <SearchResult columnsCount={columnsCount} searchTerm={pickerContext.searchTerm} />;
 				}
 				else {
