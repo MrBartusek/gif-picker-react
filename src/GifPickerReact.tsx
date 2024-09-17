@@ -6,7 +6,7 @@ import PickerContext from './context/PickerContext';
 import SettingsContext from './context/SettingsContext';
 import TenorContext from './context/TenorContext';
 import './GifPickerReact.css';
-import usePickerContext, { PickerContextType } from './hooks/usePickerContext';
+import usePickerContext from './hooks/usePickerContext';
 import useSettings from './hooks/useSettings';
 import TenorManager from './managers/TenorManager';
 import { ContentFilter, TenorImage, Theme } from './types/exposedTypes';
@@ -16,6 +16,8 @@ export interface GifPickerReactProps {
 	onGifClick?: (gif: TenorImage) => void;
 	autoFocusSearch?: boolean;
 	contentFilter?: ContentFilter;
+	searchTerm?: string;
+	setSearchTerm?: Dispatch<SetStateAction<string>>;
 	clientKey?: string;
 	country?: string;
 	locale?: string;
@@ -23,12 +25,14 @@ export interface GifPickerReactProps {
 	height?: number | string;
 	categoryHeight?: number | string;
 	theme?: Theme;
-	pickerContext?: [PickerContextType, Dispatch<SetStateAction<PickerContextType>>];
 }
 
 function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 	const settings = useSettings(props);
-	const internalPickerContext = usePickerContext();
+	const pickerContext = usePickerContext({
+		searchTerm: props.searchTerm,
+		setSearchTerm: props.setSearchTerm
+	});
 	const tenorManager: TenorManager = useMemo(() => (
 		new TenorManager(settings.tenorApiKey, settings.clientKey,
 			settings.country, settings.locale, settings.contentFilter)
@@ -36,7 +40,7 @@ function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 
 	return (
 		<SettingsContext.Provider value={settings}>
-			<PickerContext.Provider value={props.pickerContext || internalPickerContext}>
+			<PickerContext.Provider value={pickerContext}>
 				<TenorContext.Provider value={tenorManager}>
 					<PickerMain>
 						<Header />

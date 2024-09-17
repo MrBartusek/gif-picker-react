@@ -87,11 +87,16 @@ export const Trending = {
 export const ControlledSearchTerm = {
 	...Home,
 	render: (props: any) => {
-		const [ pickerContext, setPickerContext ] = React.useState({
-			searchTerm: 'love',
-			showTrending: false
-		});
+		const [ searchTerm, setSearchTerm ] = React.useState('love');
 
-		return <GifPicker {...props} pickerContext={[ pickerContext, setPickerContext ]} />;
+		return (
+			<>
+				<div>Search term: {searchTerm}</div>
+				<button onClick={() => setSearchTerm('celebration')}>
+					change to &quot;celebration&quot;
+				</button>
+				<GifPicker {...props} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+			</>
+		);
 	}
 };
