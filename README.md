@@ -67,8 +67,7 @@ The following props are accepted by the picker:
 | width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | categoryHeight | `number / string` | `100` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
-| searchTerm | `string` | | Value to be used as the search term.
-| setSearchTerm | `function` | | Function to be used to set the search term.
+| initialSearchTerm | `string` | | Value to be used as the search term.
 
 ### TenorImage
 

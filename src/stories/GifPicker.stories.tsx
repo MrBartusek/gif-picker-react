@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { expect } from '@storybook/jest';
 import { Meta } from '@storybook/react';
 import { userEvent, waitFor, within } from '@storybook/testing-library';
 import GifPicker, { Theme } from '..';
 
+const useDebounce = (value: string, delay: number) => {
+	const [ debouncedValue, setDebouncedValue ] = useState(value);
+
+	useEffect(() => {
+		const handler = setTimeout(() => {
+			setDebouncedValue(value);
+		}, delay);
+
+		return () => {
+			clearTimeout(handler);
+		};
+	}, [ value, delay ]);
+
+	return debouncedValue;
+};
+
 export default {
 	title: 'Library/GifPicker',
-	component: GifPicker,
+	component: (props: any) => {
+		const debouncedSearchTerm = useDebounce(props.initialSearchTerm, 500);
+
+		return <GifPicker key={debouncedSearchTerm} {...props} />;
+	},
 	argTypes: {
 		tenorApiKey: {
 			type: { name: 'string' }
@@ -36,6 +56,9 @@ export default {
 			type: { name: 'string' }
 		},
 		categoryHeight: {
+			type: { name: 'string' }
+		},
+		initialSearchTerm: {
 			type: { name: 'string' }
 		}
 	}
@@ -84,19 +107,10 @@ export const Trending = {
 	}
 };
 
-export const ControlledSearchTerm = {
+export const InitialSearchTerm = {
 	...Home,
-	render: (props: any) => {
-		const [ searchTerm, setSearchTerm ] = React.useState('love');
-
-		return (
-			<>
-				<div>Search term: {searchTerm}</div>
-				<button onClick={() => setSearchTerm('celebration')}>
-					change to &quot;celebration&quot;
-				</button>
-				<GifPicker {...props} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-			</>
-		);
+	args: {
+		...Home.args,
+		initialSearchTerm: 'love'
 	}
 };

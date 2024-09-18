@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import Body from './components/body/Body';
 import Header from './components/header/Header';
 import PickerMain from './components/PickerMain';
@@ -16,8 +16,7 @@ export interface GifPickerReactProps {
 	onGifClick?: (gif: TenorImage) => void;
 	autoFocusSearch?: boolean;
 	contentFilter?: ContentFilter;
-	searchTerm?: string;
-	setSearchTerm?: Dispatch<SetStateAction<string>>;
+	initialSearchTerm?: string;
 	clientKey?: string;
 	country?: string;
 	locale?: string;
@@ -29,10 +28,7 @@ export interface GifPickerReactProps {
 
 function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 	const settings = useSettings(props);
-	const pickerContext = usePickerContext({
-		searchTerm: props.searchTerm,
-		setSearchTerm: props.setSearchTerm
-	});
+	const pickerContext = usePickerContext(props.initialSearchTerm);
 	const tenorManager: TenorManager = useMemo(() => (
 		new TenorManager(settings.tenorApiKey, settings.clientKey,
 			settings.country, settings.locale, settings.contentFilter)
