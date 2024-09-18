@@ -16,6 +16,7 @@ export type GifPickerSettings = {
 	width: string;
 	categoryHeight: string;
 	theme: Theme;
+	initialSearchTerm: string;
 }
 
 function useSettings(props: GifPickerReactProps): GifPickerSettings {
@@ -33,7 +34,8 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
 		height: praseDimension(props.height ?? 450),
 		width: praseDimension(props.width ?? 350),
 		categoryHeight: praseDimension(props.categoryHeight ?? 100),
-		theme: getTheme(props.theme)
+		theme: getTheme(props.theme),
+		initialSearchTerm: props.initialSearchTerm ?? ''
 	};
 }
 
