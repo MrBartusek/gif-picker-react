@@ -106,11 +106,3 @@ export const Trending = {
 		await userEvent.click(canvas.getAllByTestId('gpr-category')[0]);
 	}
 };
-
-export const InitialSearchTerm = {
-	...Home,
-	args: {
-		...Home.args,
-		initialSearchTerm: 'love'
-	}
-};
