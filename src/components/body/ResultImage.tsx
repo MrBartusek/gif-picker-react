@@ -6,7 +6,7 @@ import './ResultImage.css';
 
 export interface ResultImageProps {
 	image: TenorImage;
-	searchTerm?: string
+	searchTerm?: string;
 }
 
 function ResultImage({ image, searchTerm }: ResultImageProps): JSX.Element {
@@ -15,17 +15,22 @@ function ResultImage({ image, searchTerm }: ResultImageProps): JSX.Element {
 
 	function onClick(): void {
 		const func = settings.onGifClick;
-		if(func) func(image);
+		if (func) func(image);
 		tenor.registerShare(image, searchTerm);
 	}
 
 	return (
 		<button
 			type="button"
-			className='gpr-btn gpr-result-image'
+			className="gpr-btn gpr-result-image"
 			onClick={onClick}
 		>
-			<img src={image.preview.url} height={image.preview.height} width={image.preview.width} loading="lazy" />
+			<img
+				src={image.preview.url}
+				height={image.preview.height}
+				width={image.preview.width}
+				loading="lazy"
+			/>
 		</button>
 	);
 }

@@ -5,15 +5,11 @@ import Search from './Search';
 import Title from './Title';
 
 function Header(): JSX.Element {
-	const [ pickerContext ] = useContext(PickerContext);
+	const [pickerContext] = useContext(PickerContext);
 
 	return (
-		<div className='gpr-header'>
-			{pickerContext.showTrending ? (
-				<Title>Trending GIFs</Title>
-			) : (
-				<Search />
-			)}
+		<div className="gpr-header">
+			{pickerContext.showTrending ? <Title>Trending GIFs</Title> : <Search />}
 		</div>
 	);
 }

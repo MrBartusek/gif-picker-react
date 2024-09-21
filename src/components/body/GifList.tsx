@@ -13,27 +13,34 @@ export interface GifListProps {
 }
 
 function GifList({ isLoading, result, searchTerm, columnsCount }: GifListProps): JSX.Element {
-	const columns = useMemo(() => generateColumns(result, columnsCount), [ result, columnsCount ]);
+	const columns = useMemo(() => generateColumns(result, columnsCount), [result, columnsCount]);
 	const isEmpty = !result || result.images.length <= 0;
 
-	if(isLoading) {
+	if (isLoading) {
 		return <GifListPlaceholder columnsCount={columnsCount} />;
 	}
 
-	if(isEmpty) {
+	if (isEmpty) {
 		return (
-			<div className='gpr-gif-list-no-result'>
+			<div className="gpr-gif-list-no-result">
 				<span>No GIFs found!</span>
 			</div>
 		);
 	}
 
 	return (
-		<div className='gpr-gif-list'>
+		<div className="gpr-gif-list">
 			{columns.map((col, i) => (
-				<div className='gpr-gif-list-column' key={i}>
+				<div
+					className="gpr-gif-list-column"
+					key={i}
+				>
 					{col.map((img) => (
-						<ResultImage key={img.id} image={img} searchTerm={searchTerm} />
+						<ResultImage
+							key={img.id}
+							image={img}
+							searchTerm={searchTerm}
+						/>
 					))}
 				</div>
 			))}
@@ -48,12 +55,12 @@ function GifList({ isLoading, result, searchTerm, columnsCount }: GifListProps):
  *
  * @returns array of columns (which are the arrays of TenorImage)
  */
-function generateColumns(result?: TenorResult, columnsCount = 2 ): TenorImage[][] {
-	if(!result) return [];
+function generateColumns(result?: TenorResult, columnsCount = 2): TenorImage[][] {
+	if (!result) return [];
 	const columns: TenorImage[][] = new Array(columnsCount).fill(null).map(() => []);
 	const columnsHeight = new Array(columnsCount).fill(0);
 
-	for(const img of result.images) {
+	for (const img of result.images) {
 		const aspectRatio = img.preview.height / img.preview.width;
 		// We want to put image of this loop in shortest column (smallest width)
 		const shortestColumnIndex = columnsHeight.indexOf(Math.min(...columnsHeight));

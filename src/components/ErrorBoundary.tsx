@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 export interface ErrorBoundaryProps {
-    children: React.ReactNode;
+	children: React.ReactNode;
 }
 
 export interface ErrorBoundaryState {
-    hasError: boolean;
+	hasError: boolean;
 }
 
 export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {

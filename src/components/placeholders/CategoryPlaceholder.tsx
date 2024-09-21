@@ -7,7 +7,11 @@ function CategoryPlaceholder() {
 	const settings = useContext(SettingsContext);
 
 	return (
-		<Placeholder className="gpr-category-placeholder" height={settings.categoryHeight} width='100%' />
+		<Placeholder
+			className="gpr-category-placeholder"
+			height={settings.categoryHeight}
+			width="100%"
+		/>
 	);
 }
 

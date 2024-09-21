@@ -8,8 +8,8 @@ export interface TrendingResultProps {
 }
 
 function TrendingResult({ columnsCount }: TrendingResultProps) {
-	const [ trendingResult, setSearchResult ] = useState<TenorResult>(null!);
-	const [ isLoading, setLoading ] = useState(true);
+	const [trendingResult, setSearchResult] = useState<TenorResult>(null!);
+	const [isLoading, setLoading] = useState(true);
 
 	const tenor = useContext(TenorContext);
 
@@ -20,11 +20,14 @@ function TrendingResult({ columnsCount }: TrendingResultProps) {
 			setSearchResult(result);
 			setLoading(false);
 		})();
-
-	}, [ ]);
+	}, []);
 
 	return (
-		<GifList columnsCount={columnsCount} isLoading={isLoading} result={trendingResult} />
+		<GifList
+			columnsCount={columnsCount}
+			isLoading={isLoading}
+			result={trendingResult}
+		/>
 	);
 }
 
