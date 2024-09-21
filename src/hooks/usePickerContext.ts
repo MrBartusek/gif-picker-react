@@ -5,9 +5,9 @@ export interface PickerContextType {
 	showTrending: boolean
 }
 
-function usePickerContext(): [PickerContextType, Dispatch<SetStateAction<PickerContextType>>] {
+function usePickerContext(initialSearchTerm: string): [PickerContextType, Dispatch<SetStateAction<PickerContextType>>] {
 	const DEFAULT_SETTINGS: PickerContextType = {
-		searchTerm: '',
+		searchTerm: initialSearchTerm,
 		showTrending: false
 	};
 

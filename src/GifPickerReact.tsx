@@ -16,6 +16,7 @@ export interface GifPickerReactProps {
 	onGifClick?: (gif: TenorImage) => void;
 	autoFocusSearch?: boolean;
 	contentFilter?: ContentFilter;
+	initialSearchTerm?: string;
 	clientKey?: string;
 	country?: string;
 	locale?: string;
@@ -27,7 +28,7 @@ export interface GifPickerReactProps {
 
 function GifPickerReact(props: GifPickerReactProps): JSX.Element {
 	const settings = useSettings(props);
-	const pickerContext = usePickerContext();
+	const pickerContext = usePickerContext(settings.initialSearchTerm);
 	const tenorManager: TenorManager = useMemo(() => (
 		new TenorManager(settings.tenorApiKey, settings.clientKey,
 			settings.country, settings.locale, settings.contentFilter)

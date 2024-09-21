@@ -1,11 +1,32 @@
+import React, { useEffect, useState } from 'react';
 import { expect } from '@storybook/jest';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { userEvent, waitFor, within } from '@storybook/testing-library';
 import GifPicker, { Theme } from '..';
 
+const useDebounce = (value: string, delay: number) => {
+	const [ debouncedValue, setDebouncedValue ] = useState(value);
+
+	useEffect(() => {
+		const handler = setTimeout(() => {
+			setDebouncedValue(value);
+		}, delay);
+
+		return () => {
+			clearTimeout(handler);
+		};
+	}, [ value, delay ]);
+
+	return debouncedValue;
+};
+
 export default {
 	title: 'Library/GifPicker',
-	component: GifPicker,
+	component: (props: any) => {
+		const debouncedSearchTerm = useDebounce(props.initialSearchTerm, 500);
+
+		return <GifPicker key={debouncedSearchTerm} {...props} />;
+	},
 	argTypes: {
 		tenorApiKey: {
 			type: { name: 'string' }
@@ -36,6 +57,9 @@ export default {
 		},
 		categoryHeight: {
 			type: { name: 'string' }
+		},
+		initialSearchTerm: {
+			type: { name: 'string' }
 		}
 	}
 } as Meta<typeof GifPicker>;
@@ -56,10 +80,9 @@ export const DarkTheme = {
 
 export const Search = {
 	...Home,
-	play: async ({ canvasElement }: any) => {
-		const canvas = within(canvasElement);
-
-		await userEvent.type(canvas.getByTestId('gpr-search-input'), 'patrick bateman');
+	args: {
+		...Home.args,
+		initialSearchTerm: 'patrick bateman'
 	}
 };
 
