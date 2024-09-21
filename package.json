@@ -60,7 +60,7 @@
     "eslint-plugin-storybook": "^0.6.12",
     "postcss": "^8.4.47",
     "postcss-inline-svg": "^6.0.0",
-    "postcss-svgo": "^6.0.0",
+    "postcss-svgo": "^7.0.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "storybook": "7.0.23",
