@@ -5,16 +5,6 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     'storybook-dark-mode',
-    // @storybook/addon-styling is added this way ss per docs
-    // https://github.com/storybookjs/addon-styling/blob/main/docs/api.md#optionspostcss
-    {
-      name: "@storybook/addon-styling",
-      options: {
-        postCss: {
-          implementation: require("postcss"),
-        },
-      },
-    },
   ],
   framework: {
     name: "@storybook/react-webpack5",
