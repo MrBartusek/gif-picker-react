@@ -25,7 +25,7 @@ class TenorManager {
 		clientKey: string,
 		country: string,
 		locale: string,
-		contentFilter: ContentFilter
+		contentFilter: ContentFilter,
 	) {
 		this.apiKey = apiKey;
 		this.clientKey = clientKey;
@@ -34,26 +34,26 @@ class TenorManager {
 		this.contentFilter = contentFilter;
 	}
 
-	private async callApi(endpoint: string, params?: {[key: string]: any}): Promise<Response> {
+	private async callApi(endpoint: string, params?: { [key: string]: any }): Promise<Response> {
 		const urlParams = new URLSearchParams({
-			'key': this.apiKey,
-			'client_key': this.clientKey,
-			'contentfilter': this.contentFilter,
-			'media_filter': MEDIA_FILTER,
-			'locale': this.locale,
-			'country': this.country,
-			...params
+			key: this.apiKey,
+			client_key: this.clientKey,
+			contentfilter: this.contentFilter,
+			media_filter: MEDIA_FILTER,
+			locale: this.locale,
+			country: this.country,
+			...params,
 		});
 		const url = BASE_URL + endpoint + '?' + urlParams;
 		return fetch(url)
 			.then((res) => {
-				if(!res.ok) {
+				if (!res.ok) {
 					console.error(res);
 					console.error('[gif-picker-react] Failed to fetch data from Tenor API');
 				}
 				return res;
 			})
-			.then(res => res.json())
+			.then((res) => res.json())
 			.catch((error) => {
 				console.error(error);
 				console.error('[gif-picker-react] Failed to fetch data from Tenor API');
@@ -66,7 +66,7 @@ class TenorManager {
 
 		return {
 			id: img.id,
-			tenorUrl: img['itemurl'] ,
+			tenorUrl: img['itemurl'],
 			shortTenorUrl: img.url,
 			description: img['content_description'],
 			createdAt: new Date(img.created * 1000),
@@ -77,58 +77,55 @@ class TenorManager {
 			preview: {
 				url: preview.url,
 				width: preview.dims[0],
-				height: preview.dims[1]
-			}
+				height: preview.dims[1],
+			},
 		};
 	}
 
 	public async categories(): Promise<TenorCategory[]> {
 		return this.callApi('categories', {
-			type: 'featured'
-		})
-			.then((data: any) => {
-				const tags = data.tags;
-				return tags.map((tag: any) => ({
-					name: tag['searchterm'],
-					image: tag.image
-				}));
-			});
+			type: 'featured',
+		}).then((data: any) => {
+			const tags = data.tags;
+			return tags.map((tag: any) => ({
+				name: tag['searchterm'],
+				image: tag.image,
+			}));
+		});
 	}
 
 	public async search(term: string, limit = 50): Promise<TenorResult> {
 		return this.callApi('search', {
 			q: term,
-			'ar_range': 'all',
-			limit
-		})
-			.then((data: any) => {
-				const results = data.results;
-				const images = results.map(this.praseResult);
-				return {
-					next: data.next,
-					images: images
-				};
-			});
+			ar_range: 'all',
+			limit,
+		}).then((data: any) => {
+			const results = data.results;
+			const images = results.map(this.praseResult);
+			return {
+				next: data.next,
+				images: images,
+			};
+		});
 	}
 
 	public async trending(limit = 50): Promise<TenorResult> {
 		return this.callApi('featured', {
-			'ar_range': 'all',
-			limit
-		})
-			.then((data: any) => {
-				const results = data.results;
-				const images = results.map(this.praseResult);
-				return {
-					next: data.next,
-					images: images
-				};
-			});
+			ar_range: 'all',
+			limit,
+		}).then((data: any) => {
+			const results = data.results;
+			const images = results.map(this.praseResult);
+			return {
+				next: data.next,
+				images: images,
+			};
+		});
 	}
 
 	public async registerShare(image: TenorImage, searchTerm?: string): Promise<void> {
 		const params: any = { id: image.id };
-		if(searchTerm) params['q'] = searchTerm;
+		if (searchTerm) params['q'] = searchTerm;
 		await this.callApi('registershare', params);
 		return;
 	}

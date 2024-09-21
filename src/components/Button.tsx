@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-interface PropsProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {}
+interface PropsProps
+	extends React.DetailedHTMLProps<
+		React.ButtonHTMLAttributes<HTMLButtonElement>,
+		HTMLButtonElement
+	> {}
 
 function Button(props: PropsProps): JSX.Element {
 	return (

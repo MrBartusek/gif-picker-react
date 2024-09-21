@@ -5,7 +5,7 @@ import ClearButton from './ClearButton';
 import './Search.css';
 
 function Search(): JSX.Element {
-	const [ pickerContext, setPickerContext ] = useContext(PickerContext);
+	const [pickerContext, setPickerContext] = useContext(PickerContext);
 	const settings = useContext(SettingsContext);
 
 	function onChange(event: React.ChangeEvent<HTMLInputElement>): void {
@@ -21,7 +21,7 @@ function Search(): JSX.Element {
 	}
 
 	return (
-		<div className='gpr-search-container'>
+		<div className="gpr-search-container">
 			<input
 				autoFocus={settings.autoFocusSearch}
 				aria-label={'Search Tenor'}
@@ -35,9 +35,7 @@ function Search(): JSX.Element {
 				onChange={onChange}
 			/>
 			<div className="gpr-icn-search" />
-			{pickerContext.searchTerm.length > 0 && (
-				<ClearButton onClick={onClear} />
-			)}
+			{pickerContext.searchTerm.length > 0 && <ClearButton onClick={onClear} />}
 		</div>
 	);
 }

@@ -5,7 +5,7 @@ import { ContentFilter, TenorImage, Theme } from '../types/exposedTypes';
  * This is a parsed version of props with filled defaults
  */
 export type GifPickerSettings = {
-    tenorApiKey: string;
+	tenorApiKey: string;
 	onGifClick?: (gif: TenorImage) => void;
 	autoFocusSearch: boolean;
 	clientKey: string;
@@ -17,10 +17,10 @@ export type GifPickerSettings = {
 	categoryHeight: string;
 	theme: Theme;
 	initialSearchTerm: string;
-}
+};
 
 function useSettings(props: GifPickerReactProps): GifPickerSettings {
-	if(!props.tenorApiKey) {
+	if (!props.tenorApiKey) {
 		throw new Error('tenorApiKey is a required prop that is missing');
 	}
 	return {
@@ -35,7 +35,7 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
 		width: praseDimension(props.width ?? 350),
 		categoryHeight: praseDimension(props.categoryHeight ?? 100),
 		theme: getTheme(props.theme),
-		initialSearchTerm: props.initialSearchTerm ?? ''
+		initialSearchTerm: props.initialSearchTerm ?? '',
 	};
 }
 
@@ -46,13 +46,11 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
  * @returns css size string
  */
 function praseDimension(dimension: string | number): string {
-	if(typeof dimension == 'number') {
+	if (typeof dimension == 'number') {
 		return `${dimension}px`;
-	}
-	else if(typeof dimension == 'string') {
+	} else if (typeof dimension == 'string') {
 		return dimension;
-	}
-	else {
+	} else {
 		throw new TypeError('Invalid dimension provided');
 	}
 }
@@ -66,8 +64,7 @@ function praseDimension(dimension: string | number): string {
 function getTheme(theme?: Theme): Theme {
 	if (theme === Theme.AUTO) {
 		return isSystemDarkTheme() ? Theme.DARK : Theme.LIGHT;
-	}
-	else {
+	} else {
 		return theme ?? Theme.LIGHT;
 	}
 }

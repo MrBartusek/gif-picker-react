@@ -5,7 +5,7 @@ import { userEvent, waitFor, within } from '@storybook/testing-library';
 import GifPicker, { Theme } from '..';
 
 const useDebounce = (value: string, delay: number) => {
-	const [ debouncedValue, setDebouncedValue ] = useState(value);
+	const [debouncedValue, setDebouncedValue] = useState(value);
 
 	useEffect(() => {
 		const handler = setTimeout(() => {
@@ -15,7 +15,7 @@ const useDebounce = (value: string, delay: number) => {
 		return () => {
 			clearTimeout(handler);
 		};
-	}, [ value, delay ]);
+	}, [value, delay]);
 
 	return debouncedValue;
 };
@@ -25,65 +25,70 @@ export default {
 	component: (props: any) => {
 		const debouncedSearchTerm = useDebounce(props.initialSearchTerm, 500);
 
-		return <GifPicker key={debouncedSearchTerm} {...props} />;
+		return (
+			<GifPicker
+				key={debouncedSearchTerm}
+				{...props}
+			/>
+		);
 	},
 	argTypes: {
 		tenorApiKey: {
-			type: { name: 'string' }
+			type: { name: 'string' },
 		},
 		onGifClick: {
-			action: 'GIF selected'
+			action: 'GIF selected',
 		},
 		theme: {
-			options: [ 'dark', 'light', 'auto' ],
+			options: ['dark', 'light', 'auto'],
 			control: {
-				type: 'radio'
-			}
+				type: 'radio',
+			},
 		},
 		clientKey: {
-			type: { name: 'string' }
+			type: { name: 'string' },
 		},
 		locale: {
-			type: { name: 'string' }
+			type: { name: 'string' },
 		},
 		country: {
-			type: { name: 'string' }
+			type: { name: 'string' },
 		},
 		width: {
-			type: { name: 'string' }
+			type: { name: 'string' },
 		},
 		height: {
-			type: { name: 'string' }
+			type: { name: 'string' },
 		},
 		categoryHeight: {
-			type: { name: 'string' }
+			type: { name: 'string' },
 		},
 		initialSearchTerm: {
-			type: { name: 'string' }
-		}
-	}
+			type: { name: 'string' },
+		},
+	},
 } as Meta<typeof GifPicker>;
 
 export const Home = {
 	args: {
-		tenorApiKey: process.env.STORYBOOK_TENOR_TOKEN
-	}
+		tenorApiKey: process.env.STORYBOOK_TENOR_TOKEN,
+	},
 };
 
 export const DarkTheme = {
 	...Home,
 	args: {
 		...Home.args,
-		theme: Theme.DARK
-	}
+		theme: Theme.DARK,
+	},
 };
 
 export const Search = {
 	...Home,
 	args: {
 		...Home.args,
-		initialSearchTerm: 'patrick bateman'
-	}
+		initialSearchTerm: 'patrick bateman',
+	},
 };
 
 export const HomeCategory = {
@@ -93,7 +98,7 @@ export const HomeCategory = {
 
 		await waitFor(() => expect(canvas.getAllByTestId('gpr-category')[0]).toBeInTheDocument());
 		await userEvent.click(canvas.getAllByTestId('gpr-category')[1]);
-	}
+	},
 };
 
 export const Trending = {
@@ -103,5 +108,5 @@ export const Trending = {
 
 		await waitFor(() => expect(canvas.getAllByTestId('gpr-category')[0]).toBeInTheDocument());
 		await userEvent.click(canvas.getAllByTestId('gpr-category')[0]);
-	}
+	},
 };

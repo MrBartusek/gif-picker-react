@@ -8,7 +8,7 @@ export interface TitleProps {
 }
 
 function Title({ children }: TitleProps): JSX.Element {
-	const [ pickerContext, setPickerContext ] = useContext(PickerContext);
+	const [pickerContext, setPickerContext] = useContext(PickerContext);
 
 	function onClear(): void {
 		const contextCopy = Object.assign({}, pickerContext);
@@ -17,12 +17,13 @@ function Title({ children }: TitleProps): JSX.Element {
 	}
 
 	return (
-		<div className='gpr-title-container'>
-			<div className='gpr-title'>
-				{children}
-			</div>
+		<div className="gpr-title-container">
+			<div className="gpr-title">{children}</div>
 
-			<Button className={'gpr-btn-clear-search'} onClick={onClear}>
+			<Button
+				className={'gpr-btn-clear-search'}
+				onClick={onClear}
+			>
 				<div className="gpr-icn-clear-search" />
 			</Button>
 		</div>

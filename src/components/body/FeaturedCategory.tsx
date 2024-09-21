@@ -8,7 +8,7 @@ export interface FeaturedCategory {
 }
 
 function FeaturedCategory({ image, name }: FeaturedCategory): JSX.Element {
-	const [ pickerContext, setPickerContext ] = useContext(PickerContext);
+	const [pickerContext, setPickerContext] = useContext(PickerContext);
 
 	function onClick(): void {
 		const contextCopy = Object.assign({}, pickerContext);
@@ -17,7 +17,11 @@ function FeaturedCategory({ image, name }: FeaturedCategory): JSX.Element {
 	}
 
 	return (
-		<Category image={image} text={name} onClick={onClick} />
+		<Category
+			image={image}
+			text={name}
+			onClick={onClick}
+		/>
 	);
 }
 

@@ -9,8 +9,8 @@ export interface SearchResultProps {
 }
 
 function SearchResult({ searchTerm, columnsCount }: SearchResultProps) {
-	const [ searchResult, setSearchResult ] = useState<TenorResult>(null!);
-	const [ isLoading, setLoading ] = useState(true);
+	const [searchResult, setSearchResult] = useState<TenorResult>(null!);
+	const [isLoading, setLoading] = useState(true);
 	const tenor = useContext(TenorContext);
 
 	useEffect(() => {
@@ -22,10 +22,15 @@ function SearchResult({ searchTerm, columnsCount }: SearchResultProps) {
 		}
 		const debounce = setTimeout(() => search(), 800);
 		return (): void => clearTimeout(debounce);
-	}, [ searchTerm ]);
+	}, [searchTerm]);
 
 	return (
-		<GifList isLoading={isLoading} columnsCount={columnsCount} result={searchResult} searchTerm={searchTerm} />
+		<GifList
+			isLoading={isLoading}
+			columnsCount={columnsCount}
+			result={searchResult}
+			searchTerm={searchTerm}
+		/>
 	);
 }
 
