@@ -13,7 +13,7 @@
 	padding: var(--gpr-search-input-padding);
 	height: var(--gpr-search-input-height);
 	background-color: var(--gpr-search-input-bg-color);
-	border: 1px solid var(--gpr-search-input-bg-color);
+	border: 1px solid var(--gpr-search-border-color-inactive);
 	width: 100%;
 }
 
