@@ -23,6 +23,7 @@
     --gpr-search-input-placeholder-color: var(--gpr-text-color);
     --gpr-search-bar-inner-padding: var(--gpr-horizontal-padding);
     --gpr-search-border-color-active: var(--gpr-highlight-color);
+    --gpr-search-border-color-inactive: var(--gpr-search-input-bg-color);
 
     /* Body */
     --gpr-body-padding: var(--gpr-header-padding) 0px;
