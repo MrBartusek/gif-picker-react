@@ -23,10 +23,6 @@
     "version": "npm run build",
     "update-example": "npm install && cd example && npm update gif-picker-react && npm install && cd .."
   },
-  "engines": {
-    "npm": ">=8.0.0",
-    "node": ">=16.0.0"
-  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
@@ -39,9 +35,9 @@
     "dist"
   ],
   "devDependencies": {
-    "@babel/preset-env": "^7.25.4",
-    "@babel/preset-react": "^7.24.7",
-    "@babel/preset-typescript": "^7.24.7",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
     "@storybook/addon-actions": "^7.0.23",
     "@storybook/addon-docs": "^7.0.23",
     "@storybook/addon-essentials": "^7.0.23",
@@ -53,23 +49,23 @@
     "@storybook/testing-library": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^5.60.0",
-    "autoprefixer": "^10.4.20",
-    "cssnano": "^7.0.6",
+    "autoprefixer": "^10.4.22",
+    "cssnano": "^7.1.2",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-storybook": "^0.6.12",
-    "postcss": "^8.4.47",
+    "postcss": "^8.5.6",
     "postcss-inline-svg": "^6.0.0",
-    "postcss-svgo": "^7.0.1",
-    "prettier": "3.3.3",
+    "postcss-svgo": "^7.1.0",
+    "prettier": "3.6.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "storybook": "7.0.23",
     "storybook-dark-mode": "^3.0.0",
-    "tsup": "^8.3.0",
-    "typescript": "^5.6.2"
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "react": ">=17",
