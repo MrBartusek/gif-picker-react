@@ -1,5 +1,5 @@
 import React from 'react';
-import { TenorImage } from '../../../dist';
+import { TenorImage } from '../../types/exposedTypes';
 import { TenorCategory } from '../../managers/TenorManager';
 import CategoryPlaceholder from '../placeholders/CategoryPlaceholder';
 import './CategoryList.css';
@@ -12,7 +12,11 @@ export interface CategoryListProps {
 	columnsCount: number;
 }
 
-function CategoryList({ categories, trending, columnsCount }: CategoryListProps): JSX.Element {
+function CategoryList({
+	categories,
+	trending,
+	columnsCount,
+}: CategoryListProps): React.JSX.Element {
 	/**
 	 * Make sure that last categories row is always full by removing
 	 * excess categories so the total count is devisable by column count

@@ -6,7 +6,7 @@ export interface PickerMainProps {
 	children: React.ReactNode;
 }
 
-function PickerMain({ children }: PickerMainProps): JSX.Element {
+function PickerMain({ children }: PickerMainProps): React.JSX.Element {
 	const settings = useContext(SettingsContext);
 
 	const style: React.CSSProperties = {

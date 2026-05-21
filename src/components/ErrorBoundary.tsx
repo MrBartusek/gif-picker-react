@@ -19,7 +19,6 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
 	}
 
 	componentDidCatch(error: Error, errorInfo: any): void {
-		// eslint-disable-next-line no-console
 		console.error('GIF Picker React failed to render:', error, errorInfo);
 	}
 

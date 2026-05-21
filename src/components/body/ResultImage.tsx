@@ -9,7 +9,7 @@ export interface ResultImageProps {
 	searchTerm?: string;
 }
 
-function ResultImage({ image, searchTerm }: ResultImageProps): JSX.Element {
+function ResultImage({ image, searchTerm }: ResultImageProps): React.JSX.Element {
 	const settings = useContext(SettingsContext);
 	const tenor = useContext(TenorContext);
 

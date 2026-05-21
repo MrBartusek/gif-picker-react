@@ -7,7 +7,7 @@ export interface FeaturedCategory {
 	image: string;
 }
 
-function TrendingCategory({ image }: FeaturedCategory): JSX.Element {
+function TrendingCategory({ image }: FeaturedCategory): React.JSX.Element {
 	const [pickerContext, setPickerContext] = useContext(PickerContext);
 
 	function onClick(): void {

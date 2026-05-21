@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { expect } from '@storybook/jest';
-import { Meta } from '@storybook/react';
-import { userEvent, waitFor, within } from '@storybook/testing-library';
+import { Meta } from '@storybook/react-webpack5';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import GifPicker, { Theme } from '..';
 
 const useDebounce = (value: string, delay: number) => {

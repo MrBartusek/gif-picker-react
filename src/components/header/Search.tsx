@@ -4,7 +4,7 @@ import SettingsContext from '../../context/SettingsContext';
 import ClearButton from './ClearButton';
 import './Search.css';
 
-function Search(): JSX.Element {
+function Search(): React.JSX.Element {
 	const [pickerContext, setPickerContext] = useContext(PickerContext);
 	const settings = useContext(SettingsContext);
 
