@@ -7,7 +7,7 @@ export interface FeaturedCategory {
 	name: string;
 }
 
-function FeaturedCategory({ image, name }: FeaturedCategory): JSX.Element {
+function FeaturedCategory({ image, name }: FeaturedCategory): React.JSX.Element {
 	const [pickerContext, setPickerContext] = useContext(PickerContext);
 
 	function onClick(): void {

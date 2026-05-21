@@ -8,7 +8,7 @@ export interface CategoryProps {
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function Category({ image, text, onClick }: CategoryProps): JSX.Element {
+function Category({ image, text, onClick }: CategoryProps): React.JSX.Element {
 	const settings = useContext(SettingsContext);
 
 	return (

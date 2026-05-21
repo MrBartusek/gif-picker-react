@@ -18,7 +18,7 @@ export interface BodyProps {
 	width?: number | string;
 }
 
-function Body({ width }: BodyProps): JSX.Element {
+function Body({ width }: BodyProps): React.JSX.Element {
 	const [categories, setCategories] = useState<TenorCategory[] | undefined>(undefined);
 	const [trending, setTrending] = useState<TenorImage | undefined>(undefined);
 	const [pickerContext] = useContext(PickerContext);
@@ -53,7 +53,7 @@ function Body({ width }: BodyProps): JSX.Element {
 			className="gpr-body"
 			ref={ref}
 		>
-			{((): JSX.Element => {
+			{((): React.JSX.Element => {
 				if (pickerContext.showTrending) {
 					return <TrendingResult columnsCount={columnsCount} />;
 				} else if (pickerContext.searchTerm) {

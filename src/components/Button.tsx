@@ -6,7 +6,7 @@ interface PropsProps
 		HTMLButtonElement
 	> {}
 
-function Button(props: PropsProps): JSX.Element {
+function Button(props: PropsProps): React.JSX.Element {
 	return (
 		<button
 			type="button"

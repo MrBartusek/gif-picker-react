@@ -7,7 +7,7 @@ export type { TenorImage } from './types/exposedTypes';
 
 export interface GifPickerProps extends GifPickerReactProps {}
 
-function GifPicker(props: GifPickerProps): JSX.Element {
+function GifPicker(props: GifPickerProps): React.JSX.Element {
 	return (
 		<ErrorBoundary>
 			<GifPickerReact {...props} />

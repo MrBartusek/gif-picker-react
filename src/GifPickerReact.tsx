@@ -26,7 +26,7 @@ export interface GifPickerReactProps {
 	theme?: Theme;
 }
 
-function GifPickerReact(props: GifPickerReactProps): JSX.Element {
+function GifPickerReact(props: GifPickerReactProps): React.JSX.Element {
 	const settings = useSettings(props);
 	const pickerContext = usePickerContext(settings.initialSearchTerm);
 	const tenorManager: TenorManager = useMemo(

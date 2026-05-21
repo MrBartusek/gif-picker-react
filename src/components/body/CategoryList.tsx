@@ -12,7 +12,7 @@ export interface CategoryListProps {
 	columnsCount: number;
 }
 
-function CategoryList({ categories, trending, columnsCount }: CategoryListProps): JSX.Element {
+function CategoryList({ categories, trending, columnsCount }: CategoryListProps): React.JSX.Element {
 	/**
 	 * Make sure that last categories row is always full by removing
 	 * excess categories so the total count is devisable by column count

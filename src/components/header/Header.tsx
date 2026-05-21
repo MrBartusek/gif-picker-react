@@ -4,7 +4,7 @@ import './Header.css';
 import Search from './Search';
 import Title from './Title';
 
-function Header(): JSX.Element {
+function Header(): React.JSX.Element {
 	const [pickerContext] = useContext(PickerContext);
 
 	return (

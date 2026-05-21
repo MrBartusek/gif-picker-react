@@ -12,7 +12,7 @@ export interface GifListProps {
 	columnsCount: number;
 }
 
-function GifList({ isLoading, result, searchTerm, columnsCount }: GifListProps): JSX.Element {
+function GifList({ isLoading, result, searchTerm, columnsCount }: GifListProps): React.JSX.Element {
 	const columns = useMemo(() => generateColumns(result, columnsCount), [result, columnsCount]);
 	const isEmpty = !result || result.images.length <= 0;
 

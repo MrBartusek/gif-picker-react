@@ -7,7 +7,7 @@ export interface TitleProps {
 	children: React.ReactNode;
 }
 
-function Title({ children }: TitleProps): JSX.Element {
+function Title({ children }: TitleProps): React.JSX.Element {
 	const [pickerContext, setPickerContext] = useContext(PickerContext);
 
 	function onClear(): void {
