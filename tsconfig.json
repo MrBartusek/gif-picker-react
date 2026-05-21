@@ -3,7 +3,7 @@
     "esModuleInterop": true,
     "jsx": "react",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
     "strict": true,
     "lib": ["DOM"]
