@@ -15,21 +15,29 @@
   },
   "homepage": "https://dokurno.dev/gif-picker-react",
   "scripts": {
-    "start": "tsup --watch",
-    "build": "tsup",
+    "start": "tsdown --watch",
+    "build": "tsdown",
     "storybook": "storybook dev -p 6006",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
     "version": "npm run build",
     "update-example": "npm install && cd example && npm update gif-picker-react && npm install && cd .."
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    }
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./style.css": "./dist/style.css"
   },
   "files": [
     "dist"
@@ -54,9 +62,10 @@
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "storybook": "10.4.0",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.4"
+    "typescript-eslint": "^8.59.4",
+    "@tsdown/css": "^0.22.0"
   },
   "peerDependencies": {
     "react": ">=17",
