@@ -1,11 +1,12 @@
-module.exports = {
+import { defineConfig } from 'tsdown';
+
+export default defineConfig({
 	entry: ['src/index.tsx'],
 	treeshake: true,
 	sourcemap: true,
 	minify: true,
 	clean: true,
 	dts: true,
-	splitting: false,
 	format: ['cjs', 'esm'],
 	css: { inject: true },
-};
+});
