@@ -1,5 +1,11 @@
 import { ContentFilter } from '../types/TenorTypes';
-import { Gif, GifProviderAttribution, GifCategory, GifProvider, RegisterShareContext } from '../types/GifProvider';
+import {
+	Gif,
+	GifProviderAttribution,
+	GifCategory,
+	GifProvider,
+	RegisterShareContext,
+} from '../types/GifProvider';
 import { TenorCategoriesResponse, TenorResult, TenorSearchResponse } from '../types/TenorTypes';
 
 const MEDIA_FILTER = 'gif,tinygif';

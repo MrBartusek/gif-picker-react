@@ -24,13 +24,13 @@ export interface GifPickerReactProps {
 	height?: number | string;
 	categoryHeight?: number | string;
 	theme?: Theme;
-  initialSearchTerm?: string
+	initialSearchTerm?: string;
 }
 
 function GifPickerReact(props: GifPickerReactProps): React.JSX.Element {
 	const settings = useSettings(props);
 	const pickerContext = usePickerContext(settings.initialSearchTerm);
-  
+
 	const provider = props.provider instanceof GifProvider ? props.provider : new props.provider();
 
 	return (

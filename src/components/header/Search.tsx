@@ -8,7 +8,7 @@ import ProviderContext from '../../context/TenorContext';
 function Search(): React.JSX.Element {
 	const [pickerContext, setPickerContext] = useContext(PickerContext);
 	const settings = useContext(SettingsContext);
-  const provider = useContext(ProviderContext)
+	const provider = useContext(ProviderContext);
 
 	function onChange(event: React.ChangeEvent<HTMLInputElement>): void {
 		const contextCopy = Object.assign({}, pickerContext);

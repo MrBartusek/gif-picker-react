@@ -16,9 +16,9 @@ function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 	async function onClick(): Promise<void> {
 		const func = settings.onGifClick;
 		if (func) {
-      await func(gif);
-    } 
-		await provider.registerShare(gif, {searchTerm});
+			await func(gif);
+		}
+		await provider.registerShare(gif, { searchTerm });
 	}
 
 	return (

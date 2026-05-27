@@ -52,22 +52,22 @@ function GifList({ isLoading, result, searchTerm, columnsCount }: GifListProps):
  */
 function generateColumns(gifsList?: Gif[], columnsCount = 2) {
 	if (!gifsList) {
-return [];
-  } 
+		return [];
+	}
 
 	const columns: Gif[][] = new Array(columnsCount).fill(null).map(() => []);
 	const columnsHeight = new Array(columnsCount).fill(0);
-  const usePreview = gifsList.every((gif) => gif.preview != undefined)
+	const usePreview = gifsList.every((gif) => gif.preview != undefined);
 
 	for (const gif of gifsList) {
-    const height = usePreview ? gif.preview!.height : gif.height
-     const width = usePreview ? gif.preview!.width : gif.width
+		const height = usePreview ? gif.preview!.height : gif.height;
+		const width = usePreview ? gif.preview!.width : gif.width;
 		const aspectRatio = height / width;
 
 		// We want to put image of this loop in shortest column (smallest width)
 		const shortestColumnIndex = columnsHeight.indexOf(Math.min(...columnsHeight));
 		columns[shortestColumnIndex].push(gif);
-    
+
 		// Here we actually add aspect ratio rather than height since design is responsive
 		columnsHeight[shortestColumnIndex] += aspectRatio;
 	}
