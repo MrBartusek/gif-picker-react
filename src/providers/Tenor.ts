@@ -1,5 +1,5 @@
 import { ContentFilter } from '../types/TenorTypes';
-import { Gif, GifCategory, GifProvider, RegisterShareContext } from '../types/GifProvider';
+import { Gif, GifProviderAttribution, GifCategory, GifProvider, RegisterShareContext } from '../types/GifProvider';
 import { TenorCategoriesResponse, TenorResult, TenorSearchResponse } from '../types/TenorTypes';
 
 const MEDIA_FILTER = 'gif,tinygif';
@@ -86,6 +86,10 @@ class TenorProvider extends GifProvider {
 
 		const res = await fetch(url.toString());
 		return res.json() as Promise<T>;
+	}
+
+	public getAttribution(): GifProviderAttribution {
+		return { searchPlaceholder: 'Search Tenor' };
 	}
 
 	private parseGif(img: TenorResult): Gif {
