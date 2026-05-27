@@ -1,22 +1,24 @@
 import React, { useContext } from 'react';
 import SettingsContext from '../../context/SettingsContext';
-import TenorContext from '../../context/TenorContext';
-import { TenorImage } from '../../types/exposedTypes';
+import ProviderContext from '../../context/TenorContext';
 import './ResultImage.css';
+import { Gif } from '../../types/GifProvider';
 
 export interface ResultImageProps {
-	image: TenorImage;
+	gif: Gif;
 	searchTerm?: string;
 }
 
-function ResultImage({ image, searchTerm }: ResultImageProps): React.JSX.Element {
+function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 	const settings = useContext(SettingsContext);
-	const tenor = useContext(TenorContext);
+	const provider = useContext(ProviderContext);
 
-	function onClick(): void {
+	async function onClick(): Promise<void> {
 		const func = settings.onGifClick;
-		if (func) func(image);
-		tenor.registerShare(image, searchTerm);
+		if (func) {
+      await func(gif);
+    } 
+		await provider.registerShare(gif, {searchTerm});
 	}
 
 	return (
@@ -26,9 +28,9 @@ function ResultImage({ image, searchTerm }: ResultImageProps): React.JSX.Element
 			onClick={onClick}
 		>
 			<img
-				src={image.preview.url}
-				height={image.preview.height}
-				width={image.preview.width}
+				src={gif.preview?.imageUrl || gif.imageUrl}
+				height={gif.preview?.height || gif.height}
+				width={gif.preview?.width || gif.width}
 				loading="lazy"
 			/>
 		</button>

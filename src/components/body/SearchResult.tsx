@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import TenorContext from '../../context/TenorContext';
-import { TenorResult } from '../../managers/TenorManager';
+import ProviderContext from '../../context/TenorContext';
 import GifList from './GifList';
+import { Gif } from '../../types/GifProvider';
 
 export interface SearchResultProps {
 	searchTerm: string;
@@ -9,9 +9,9 @@ export interface SearchResultProps {
 }
 
 function SearchResult({ searchTerm, columnsCount }: SearchResultProps) {
-	const [searchResult, setSearchResult] = useState<TenorResult>(null!);
+	const [searchResult, setSearchResult] = useState<Gif[]>(null!);
 	const [isLoading, setLoading] = useState(true);
-	const tenor = useContext(TenorContext);
+	const tenor = useContext(ProviderContext);
 
 	useEffect(() => {
 		setLoading(true);

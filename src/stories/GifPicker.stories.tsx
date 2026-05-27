@@ -1,38 +1,19 @@
-import React, { useEffect, useState } from 'react';
 import { Meta } from '@storybook/react-webpack5';
+import React from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import GifPicker, { Theme } from '..';
-
-const useDebounce = (value: string, delay: number) => {
-	const [debouncedValue, setDebouncedValue] = useState(value);
-
-	useEffect(() => {
-		const handler = setTimeout(() => {
-			setDebouncedValue(value);
-		}, delay);
-
-		return () => {
-			clearTimeout(handler);
-		};
-	}, [value, delay]);
-
-	return debouncedValue;
-};
+import { Tenor } from '../providers/Tenor';
 
 export default {
 	title: 'Library/GifPicker',
-	component: (props: any) => {
-		const debouncedSearchTerm = useDebounce(props.initialSearchTerm, 500);
-
-		return (
-			<GifPicker
-				key={debouncedSearchTerm}
-				{...props}
-			/>
-		);
-	},
+	component: (props: any) => (
+		<GifPicker
+			{...props}
+			provider={Tenor(props.apiKey)}
+		/>
+	),
 	argTypes: {
-		tenorApiKey: {
+		apiKey: {
 			type: { name: 'string' },
 		},
 		onGifClick: {
@@ -44,15 +25,6 @@ export default {
 				type: 'radio',
 			},
 		},
-		clientKey: {
-			type: { name: 'string' },
-		},
-		locale: {
-			type: { name: 'string' },
-		},
-		country: {
-			type: { name: 'string' },
-		},
 		width: {
 			type: { name: 'string' },
 		},
@@ -62,15 +34,12 @@ export default {
 		categoryHeight: {
 			type: { name: 'string' },
 		},
-		initialSearchTerm: {
-			type: { name: 'string' },
-		},
 	},
 } as Meta<typeof GifPicker>;
 
 export const Home = {
 	args: {
-		tenorApiKey: process.env.STORYBOOK_TENOR_TOKEN,
+		apiKey: process.env.STORYBOOK_TENOR_TOKEN,
 	},
 };
 
@@ -79,14 +48,6 @@ export const DarkTheme = {
 	args: {
 		...Home.args,
 		theme: Theme.DARK,
-	},
-};
-
-export const Search = {
-	...Home,
-	args: {
-		...Home.args,
-		initialSearchTerm: 'patrick bateman',
 	},
 };
 

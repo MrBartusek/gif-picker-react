@@ -90,11 +90,17 @@ class TenorProvider extends GifProvider {
 
 	private parseGif(img: TenorResult): Gif {
 		const gif = img.media_formats.gif;
+		const preview = img.media_formats.tinygif;
 		return {
 			id: img.id,
 			imageUrl: gif.url,
 			width: gif.dims[0],
 			height: gif.dims[1],
+			preview: {
+				imageUrl: preview.url,
+				width: preview.dims[0],
+				height: preview.dims[1],
+			},
 		};
 	}
 }

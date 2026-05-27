@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import PickerContext from '../../context/PickerContext';
-import TenorContext from '../../context/TenorContext';
-import { TenorCategory } from '../../managers/TenorManager';
+import ProviderContext from '../../context/TenorContext';
 import { TenorImage } from '../../types/exposedTypes';
 import './Body.css';
 import CategoryList from './CategoryList';
 import SearchResult from './SearchResult';
 import TrendingResult from './TrendingResult';
+import { Gif, GifCategory } from '../../types/GifProvider';
 
 const MAX_COLUMN_WIDTH = 170;
 
@@ -19,11 +19,11 @@ export interface BodyProps {
 }
 
 function Body({ width }: BodyProps): React.JSX.Element {
-	const [categories, setCategories] = useState<TenorCategory[] | undefined>(undefined);
-	const [trending, setTrending] = useState<TenorImage | undefined>(undefined);
+	const [categories, setCategories] = useState<GifCategory[] | undefined>(undefined);
+	const [trending, setTrending] = useState<Gif | undefined>(undefined);
 	const [pickerContext] = useContext(PickerContext);
 	const [columnsCount, setColumnsCount] = useState(1);
-	const tenor = useContext(TenorContext);
+	const provider = useContext(ProviderContext);
 	const ref = useRef<HTMLDivElement>(null);
 
 	/**
@@ -31,10 +31,10 @@ function Body({ width }: BodyProps): React.JSX.Element {
 	 */
 	useEffect(() => {
 		(async (): Promise<any> => {
-			const categoryList = await tenor.categories();
+			const categoryList = await provider.getCategories();
 			setCategories(categoryList);
-			const trendingList = await tenor.trending(1);
-			setTrending(trendingList.images[0]);
+			const trendingList = await provider.getTrending();
+			setTrending(trendingList[0]);
 		})();
 	}, []);
 

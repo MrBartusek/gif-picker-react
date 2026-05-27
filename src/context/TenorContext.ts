@@ -1,6 +1,6 @@
 import * as React from 'react';
-import TenorManager from '../managers/TenorManager';
+import { GifProvider } from '../types/GifProvider';
 
-const TenorContext = React.createContext<TenorManager>(null!);
+const ProviderContext = React.createContext<GifProvider>(null!);
 
-export default TenorContext;
+export default ProviderContext;

@@ -1,55 +1,42 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import Body from './components/body/Body';
 import Header from './components/header/Header';
 import PickerMain from './components/PickerMain';
 import PickerContext from './context/PickerContext';
 import SettingsContext from './context/SettingsContext';
-import TenorContext from './context/TenorContext';
+import ProviderContext from './context/TenorContext';
 import './GifPickerReact.css';
 import usePickerContext from './hooks/usePickerContext';
 import useSettings from './hooks/useSettings';
-import TenorManager from './managers/TenorManager';
-import { ContentFilter, TenorImage, Theme } from './types/exposedTypes';
+import { TenorImage, Theme } from './types/exposedTypes';
+import { Gif, GifProvider } from './types/GifProvider';
 
 export interface GifPickerReactProps {
-	tenorApiKey: string;
-	onGifClick?: (gif: TenorImage) => void;
+	provider: GifProvider | (new () => GifProvider);
+	onGifClick?: (gif: Gif) => void;
 	autoFocusSearch?: boolean;
-	contentFilter?: ContentFilter;
-	initialSearchTerm?: string;
-	clientKey?: string;
-	country?: string;
-	locale?: string;
 	width?: number | string;
 	height?: number | string;
 	categoryHeight?: number | string;
 	theme?: Theme;
+  initialSearchTerm?: string
 }
 
 function GifPickerReact(props: GifPickerReactProps): React.JSX.Element {
 	const settings = useSettings(props);
 	const pickerContext = usePickerContext(settings.initialSearchTerm);
-	const tenorManager: TenorManager = useMemo(
-		() =>
-			new TenorManager(
-				settings.tenorApiKey,
-				settings.clientKey,
-				settings.country,
-				settings.locale,
-				settings.contentFilter,
-			),
-		[],
-	);
+  
+	const provider = props.provider instanceof GifProvider ? props.provider : new props.provider();
 
 	return (
 		<SettingsContext.Provider value={settings}>
 			<PickerContext.Provider value={pickerContext}>
-				<TenorContext.Provider value={tenorManager}>
+				<ProviderContext.Provider value={provider}>
 					<PickerMain>
 						<Header />
 						<Body width={props.width} />
 					</PickerMain>
-				</TenorContext.Provider>
+				</ProviderContext.Provider>
 			</PickerContext.Provider>
 		</SettingsContext.Provider>
 	);

@@ -1,22 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
-import TenorContext from '../../context/TenorContext';
-import { TenorResult } from '../../managers/TenorManager';
+import ProviderContext from '../../context/TenorContext';
 import GifList from './GifList';
+import { Gif } from '../../types/GifProvider';
 
 export interface TrendingResultProps {
 	columnsCount: number;
 }
 
 function TrendingResult({ columnsCount }: TrendingResultProps) {
-	const [trendingResult, setSearchResult] = useState<TenorResult>(null!);
+	const [trendingResult, setSearchResult] = useState<Gif[]>(null!);
 	const [isLoading, setLoading] = useState(true);
 
-	const tenor = useContext(TenorContext);
+	const provider = useContext(ProviderContext);
 
 	useEffect(() => {
 		setLoading(true);
 		(async () => {
-			const result = await tenor.trending();
+			const result = await provider.getTrending();
 			setSearchResult(result);
 			setLoading(false);
 		})();

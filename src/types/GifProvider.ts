@@ -5,11 +5,18 @@ export type GifCategory = {
 	name: string;
 };
 
+export type GifPreview = {
+	imageUrl: string;
+	height: number;
+	width: number;
+};
+
 export type Gif = {
 	id: string;
 	imageUrl: string;
 	height: number;
 	width: number;
+	preview?: GifPreview;
 };
 
 export type RegisterShareContext = {
