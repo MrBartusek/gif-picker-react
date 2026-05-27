@@ -1,3 +1,10 @@
+export enum ContentFilter {
+	HIGH = 'high',
+	MEDIUM = 'medium',
+	LOW = 'low',
+	OFF = 'off',
+}
+
 export interface TenorMediaFormat {
 	url: string;
 	dims: [number, number];

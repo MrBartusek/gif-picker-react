@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import SettingsContext from '../context/SettingsContext';
-import { Theme } from '../types/exposedTypes';
+import { Theme } from '../GifPickerReact';
 
 export interface PickerMainProps {
 	children: React.ReactNode;

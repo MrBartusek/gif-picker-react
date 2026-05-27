@@ -1,4 +1,4 @@
-import { ContentFilter } from '../types/exposedTypes';
+import { ContentFilter } from '../types/TenorTypes';
 import { Gif, GifCategory, GifProvider, RegisterShareContext } from '../types/GifProvider';
 import { TenorCategoriesResponse, TenorResult, TenorSearchResponse } from '../types/TenorTypes';
 

@@ -8,8 +8,13 @@ import ProviderContext from './context/TenorContext';
 import './GifPickerReact.css';
 import usePickerContext from './hooks/usePickerContext';
 import useSettings from './hooks/useSettings';
-import { TenorImage, Theme } from './types/exposedTypes';
 import { Gif, GifProvider } from './types/GifProvider';
+
+export enum Theme {
+	LIGHT = 'light',
+	DARK = 'dark',
+	AUTO = 'auto',
+}
 
 export interface GifPickerReactProps {
 	provider: GifProvider | (new () => GifProvider);

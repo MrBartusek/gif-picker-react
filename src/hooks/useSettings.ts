@@ -1,5 +1,5 @@
 import { GifPickerReactProps } from '../GifPickerReact';
-import { Theme } from '../types/exposedTypes';
+import { Theme } from '../GifPickerReact';
 import { Gif, GifProvider } from '../types/GifProvider';
 
 /**
