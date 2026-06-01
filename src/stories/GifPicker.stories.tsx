@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react-webpack5';
 import React from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
-import GifPicker, { Theme } from '..';
+import { GifPicker, Theme } from '..';
 import { Tenor } from '../providers/Tenor';
 
 export default {

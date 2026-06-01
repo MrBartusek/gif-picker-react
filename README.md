@@ -39,12 +39,12 @@ In order to use `GifPicker` element you are required to provide Tenor API key vi
 ## Usage
 
 ```js
-import GifPicker from 'gif-picker-react';
+import { GifPicker, Tenor } from 'gif-picker-react';
 
 function App() {
   return (
     <div>
-      <GifPicker tenorApiKey={"YOUR_API_KEY"} />
+      <GifPicker provider={Tenor("YOUR_API_KEY")} />
     </div>
   );
 }
