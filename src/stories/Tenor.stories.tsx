@@ -1,11 +1,9 @@
-import { createProviderStories } from './createProviderStories';
 import { Tenor } from '../providers/tenor';
+import { createProviderMeta } from './providerStory';
 
-const stories = createProviderStories({
+export default {
 	title: 'Providers/Tenor',
-	apiKey: process.env.STORYBOOK_TENOR_TOKEN,
-	makeProvider: (apiKey) => Tenor(apiKey),
-});
+	...createProviderMeta(() => Tenor(process.env.STORYBOOK_TENOR_TOKEN!)),
+};
 
-export default stories.meta;
-export const { Home, DarkTheme, HomeCategory, Trending } = stories;
+export { Home, DarkTheme, HomeCategory, Trending } from './providerStory';
