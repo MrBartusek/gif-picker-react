@@ -1,18 +1,18 @@
-import { ContentFilter } from '../types/TenorTypes';
+import { ContentFilter } from './tenor.types';
 import {
 	Gif,
 	GifProviderAttribution,
 	GifCategory,
 	GifProvider,
 	RegisterShareContext,
-} from '../types/GifProvider';
-import { TenorCategoriesResponse, TenorResult, TenorSearchResponse } from '../types/TenorTypes';
+} from '../../types/GifProvider';
+import { TenorCategoriesResponse, TenorResult, TenorSearchResponse } from './tenor.types';
 
 const MEDIA_FILTER = 'gif,tinygif';
 const BASE_URL = 'https://tenor.googleapis.com/v2/';
 const TENOR_MAX_LIMIT = 50;
 
-type TenorProviderConfig = {
+export type TenorProviderConfig = {
 	baseUrl?: string;
 	clientKey?: string;
 	country?: string;

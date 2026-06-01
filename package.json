@@ -37,6 +37,16 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./providers/*": {
+      "import": {
+        "types": "./dist/providers/*/index.d.mts",
+        "default": "./dist/providers/*/index.mjs"
+      },
+      "require": {
+        "types": "./dist/providers/*/index.d.cts",
+        "default": "./dist/providers/*/index.cjs"
+      }
+    },
     "./style.css": "./dist/style.css"
   },
   "files": [
