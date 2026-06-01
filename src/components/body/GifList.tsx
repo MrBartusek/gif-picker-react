@@ -57,11 +57,10 @@ function generateColumns(gifsList?: Gif[], columnsCount = 2) {
 
 	const columns: Gif[][] = new Array(columnsCount).fill(null).map(() => []);
 	const columnsHeight = new Array(columnsCount).fill(0);
-	const usePreview = gifsList.every((gif) => gif.preview != undefined);
 
 	for (const gif of gifsList) {
-		const height = usePreview ? gif.preview!.height : gif.height;
-		const width = usePreview ? gif.preview!.width : gif.width;
+		const height = gif.preview ? gif.preview.height : gif.height;
+		const width = gif.preview ? gif.preview.width : gif.width;
 		const aspectRatio = height / width;
 
 		// We want to put image of this loop in shortest column (smallest width)
