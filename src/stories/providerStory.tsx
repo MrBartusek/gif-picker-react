@@ -24,15 +24,18 @@ const PROVIDER_ARG_TYPES = {
 	},
 };
 
-export function createProviderMeta(createProvider: () => GifProvider) {
+export function createProviderMeta(
+	createProvider: (args: any) => GifProvider,
+	argTypes: Record<string, any> = {},
+) {
 	return {
 		component: (props: any) => (
 			<GifPicker
 				{...props}
-				provider={createProvider()}
+				provider={createProvider(props)}
 			/>
 		),
-		argTypes: PROVIDER_ARG_TYPES,
+		argTypes: { ...PROVIDER_ARG_TYPES, ...argTypes },
 	};
 }
 
