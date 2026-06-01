@@ -16,6 +16,7 @@ export type Gif = {
 	imageUrl: string;
 	height: number;
 	width: number;
+	description?: string;
 	preview?: GifPreview;
 };
 

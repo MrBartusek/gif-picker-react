@@ -41,7 +41,7 @@ function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 				height={image.height}
 				width={image.width}
 				loading="lazy"
-				alt=""
+				alt={gif.description ?? ''}
 			/>
 		</button>
 	);

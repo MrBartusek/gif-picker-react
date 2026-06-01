@@ -109,6 +109,7 @@ class TenorProvider extends GifProvider {
 			imageUrl: gif.url,
 			width: gif.dims[0],
 			height: gif.dims[1],
+			description: img.content_description,
 			preview: {
 				imageUrl: preview.url,
 				width: preview.dims[0],
