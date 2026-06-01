@@ -14,11 +14,17 @@ function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 	const provider = useContext(ProviderContext);
 
 	async function onClick(): Promise<void> {
-		const func = settings.onGifClick;
-		if (func) {
-			await func(gif);
+		try {
+			const func = settings.onGifClick;
+
+			if (func) {
+				await func(gif);
+			}
+
+			await provider.registerShare(gif, { searchTerm });
+		} catch (error) {
+			console.error('[gif-picker-react] Failed to handle GIF selection', error);
 		}
-		await provider.registerShare(gif, { searchTerm });
 	}
 
 	const image = gif.preview ?? gif;

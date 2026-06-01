@@ -6,7 +6,7 @@ import { Gif, GifProvider } from '../types/GifProvider';
  */
 export type GifPickerSettings = {
 	provider: GifProvider;
-	onGifClick?: (gif: Gif) => void;
+	onGifClick?: (gif: Gif) => Promise<void> | void;
 	autoFocusSearch: boolean;
 	width: string;
 	height: string;
