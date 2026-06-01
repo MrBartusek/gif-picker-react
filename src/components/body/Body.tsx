@@ -29,13 +29,31 @@ function Body({ width }: BodyProps): React.JSX.Element {
 	 * Load categories and first trending image for home page
 	 */
 	useEffect(() => {
-		(async (): Promise<any> => {
-			const categoryList = await provider.getCategories();
-			setCategories(categoryList);
-			const trendingList = await provider.getTrending();
-			setTrending(trendingList[0]);
+		let cancelled = false;
+		(async (): Promise<void> => {
+			try {
+				const [categoryList, trendingList] = await Promise.all([
+					provider.getCategories(),
+					provider.getTrending(),
+				]);
+
+				if (cancelled) return;
+
+				setCategories(categoryList);
+
+				if (trendingList.length > 0) {
+					setTrending(trendingList[0]);
+				}
+			} catch (error) {
+				if (cancelled) return;
+
+				console.error('[gif-picker-react] Failed to load home page', error);
+			}
 		})();
-	}, []);
+		return (): void => {
+			cancelled = true;
+		};
+	}, [provider]);
 
 	/**
 	 * Calculate amount of columns to display
