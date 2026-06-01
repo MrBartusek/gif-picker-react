@@ -28,12 +28,14 @@ function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 			type="button"
 			className="gpr-btn gpr-result-image"
 			onClick={onClick}
+			aria-label="Select GIF"
 		>
 			<img
 				src={image.imageUrl}
 				height={image.height}
 				width={image.width}
 				loading="lazy"
+				alt=""
 			/>
 		</button>
 	);
