@@ -1,12 +1,11 @@
-import { GifPickerReactProps } from '../GifPickerReact';
-import { Theme } from '../GifPickerReact';
+import { GifPickerReactProps, Theme } from '../GifPickerReact';
 import { Gif, GifProvider } from '../types/GifProvider';
 
 /**
  * This is a parsed version of props with filled defaults
  */
 export type GifPickerSettings = {
-	provider: GifProvider | (new () => GifProvider);
+	provider: GifProvider;
 	onGifClick?: (gif: Gif) => void;
 	autoFocusSearch: boolean;
 	width: string;

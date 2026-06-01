@@ -4,7 +4,7 @@ import Header from './components/header/Header';
 import PickerMain from './components/PickerMain';
 import PickerContext from './context/PickerContext';
 import SettingsContext from './context/SettingsContext';
-import ProviderContext from './context/TenorContext';
+import ProviderContext from './context/ProviderContext';
 import './GifPickerReact.css';
 import usePickerContext from './hooks/usePickerContext';
 import useSettings from './hooks/useSettings';
@@ -17,7 +17,7 @@ export enum Theme {
 }
 
 export interface GifPickerReactProps {
-	provider: GifProvider | (new () => GifProvider);
+	provider: GifProvider;
 	onGifClick?: (gif: Gif) => void;
 	autoFocusSearch?: boolean;
 	width?: number | string;
@@ -31,12 +31,10 @@ function GifPickerReact(props: GifPickerReactProps): React.JSX.Element {
 	const settings = useSettings(props);
 	const pickerContext = usePickerContext(settings.initialSearchTerm);
 
-	const provider = props.provider instanceof GifProvider ? props.provider : new props.provider();
-
 	return (
 		<SettingsContext.Provider value={settings}>
 			<PickerContext.Provider value={pickerContext}>
-				<ProviderContext.Provider value={provider}>
+				<ProviderContext.Provider value={props.provider}>
 					<PickerMain>
 						<Header />
 						<Body width={props.width} />

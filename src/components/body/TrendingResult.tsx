@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ProviderContext from '../../context/TenorContext';
+import ProviderContext from '../../context/ProviderContext';
 import GifList from './GifList';
 import { Gif } from '../../types/GifProvider';
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ProviderContext from '../../context/TenorContext';
+import ProviderContext from '../../context/ProviderContext';
 import GifList from './GifList';
 import { Gif } from '../../types/GifProvider';
 
@@ -11,12 +11,12 @@ export interface SearchResultProps {
 function SearchResult({ searchTerm, columnsCount }: SearchResultProps) {
 	const [searchResult, setSearchResult] = useState<Gif[]>(null!);
 	const [isLoading, setLoading] = useState(true);
-	const tenor = useContext(ProviderContext);
+	const provider = useContext(ProviderContext);
 
 	useEffect(() => {
 		setLoading(true);
 		async function search(): Promise<any> {
-			const result = await tenor.search(searchTerm);
+			const result = await provider.search(searchTerm);
 			setSearchResult(result);
 			setLoading(false);
 		}

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import PickerContext from '../../context/PickerContext';
-import ProviderContext from '../../context/TenorContext';
+import ProviderContext from '../../context/ProviderContext';
 import './Body.css';
 import CategoryList from './CategoryList';
 import SearchResult from './SearchResult';

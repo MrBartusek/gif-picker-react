@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import SettingsContext from '../../context/SettingsContext';
-import ProviderContext from '../../context/TenorContext';
+import ProviderContext from '../../context/ProviderContext';
 import './ResultImage.css';
 import { Gif } from '../../types/GifProvider';
 
@@ -21,6 +21,8 @@ function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 		await provider.registerShare(gif, { searchTerm });
 	}
 
+	const image = gif.preview ?? gif;
+
 	return (
 		<button
 			type="button"
@@ -28,9 +30,9 @@ function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 			onClick={onClick}
 		>
 			<img
-				src={gif.preview?.imageUrl || gif.imageUrl}
-				height={gif.preview?.height || gif.height}
-				width={gif.preview?.width || gif.width}
+				src={image.imageUrl}
+				height={image.height}
+				width={image.width}
 				loading="lazy"
 			/>
 		</button>

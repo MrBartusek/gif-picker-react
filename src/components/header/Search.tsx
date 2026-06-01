@@ -3,12 +3,13 @@ import PickerContext from '../../context/PickerContext';
 import SettingsContext from '../../context/SettingsContext';
 import ClearButton from './ClearButton';
 import './Search.css';
-import ProviderContext from '../../context/TenorContext';
+import ProviderContext from '../../context/ProviderContext';
 
 function Search(): React.JSX.Element {
 	const [pickerContext, setPickerContext] = useContext(PickerContext);
 	const settings = useContext(SettingsContext);
 	const provider = useContext(ProviderContext);
+	const attribution = provider.getAttribution();
 
 	function onChange(event: React.ChangeEvent<HTMLInputElement>): void {
 		const contextCopy = Object.assign({}, pickerContext);
@@ -26,8 +27,8 @@ function Search(): React.JSX.Element {
 		<div className="gpr-search-container">
 			<input
 				autoFocus={settings.autoFocusSearch}
-				aria-label={provider.getAttribution().searchPlaceholder}
-				placeholder={provider.getAttribution().searchPlaceholder}
+				aria-label={attribution.searchPlaceholder}
+				placeholder={attribution.searchPlaceholder}
 				className="gpr-search"
 				data-testid="gpr-search-input"
 				type="text"

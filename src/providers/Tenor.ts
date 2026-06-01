@@ -12,13 +12,13 @@ const MEDIA_FILTER = 'gif,tinygif';
 const BASE_URL = 'https://tenor.googleapis.com/v2/';
 const TENOR_MAX_LIMIT = 50;
 
-class TenorProviderConfig {
+type TenorProviderConfig = {
 	baseUrl?: string;
 	clientKey?: string;
 	country?: string;
 	locale?: string;
 	contentFilter?: ContentFilter;
-}
+};
 
 export function Tenor(apiKey: string, config?: TenorProviderConfig): GifProvider {
 	return new TenorProvider(apiKey, config);
@@ -91,6 +91,9 @@ class TenorProvider extends GifProvider {
 		}
 
 		const res = await fetch(url.toString());
+		if (!res.ok) {
+			throw new Error(`Tenor API request failed (${res.status} ${res.statusText})`);
+		}
 		return res.json() as Promise<T>;
 	}
 
