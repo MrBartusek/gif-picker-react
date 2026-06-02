@@ -94,7 +94,7 @@ This is an example `Gif` object:
 
 ## GIF Providers
 
-The `provider` prop accepts any instance of the `GifProvider` abstract class. You can pick one of the built-in providers or build your own:
+The `provider` prop accepts any instance of the `GifProvider` abstract class. You can pick one of the built-in providers or create your own:
 
 - [Tenor](#tenor)
 - [Custom Providers](#custom-providers)
