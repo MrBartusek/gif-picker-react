@@ -13,8 +13,9 @@ If a related issue doesn't exist, you can [open a new issue](https://github.com/
 
 If you don't have gif-picker-react running locally please follow this setup guide.
 
-1. Install newest LTS release of [Node.js](https://nodejs.org/en/), it has NPM package
-   manager bundled with it.
+1. Install newest LTS release of [Node.js](https://nodejs.org/en/) and the
+   [pnpm](https://pnpm.io/installation) package manager. If your Node.js ships with corepack,
+   you can simply run `corepack enable pnpm`.
 1. Generate an API key for at least one provider if you don't have one yet. The specific
    instructions for each provider are described in [`README.md`](README.md)
 1. Fork this repository using [Fork](https://github.com/MrBartusek/gif-picker-react/fork)
@@ -27,9 +28,9 @@ If you don't have gif-picker-react running locally please follow this setup guid
    ```sh
    cd gif-picker-react
    ```
-1. Install dependencies (Node.js and npm are required):
+1. Install dependencies (Node.js and pnpm are required):
    ```sh
-   npm install
+   pnpm install
    ```
 1. Create a new file in root of the repository named `.env`, you can alternatively do this
    via environmental variables.
@@ -41,7 +42,7 @@ If you don't have gif-picker-react running locally please follow this setup guid
 1. Run storybook server. It is a tool running in your browser that will allow you to easily
    preview your changes.
    ```sh
-   npm run storybook
+   pnpm storybook
    ```
 
 After successfully following this guide you should have a website running on your local machine.
@@ -59,6 +60,6 @@ This is a storybook server which is a tool that will allow you to easily work on
        git checkout -b update-header-color
    ```
 1. Commit your changes and push it to your fork of the repository.
-1. Make sure your changes are working locally. Run `npm run build` to check code style.
+1. Make sure your changes are working locally. Run `pnpm build` to check code style.
 1. Create a Pull Request (PR). Make sure to describe the changes that you made and use
    the `Fixes: #number` keyword if you were working on a issue.
