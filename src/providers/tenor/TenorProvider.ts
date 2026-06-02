@@ -11,6 +11,7 @@ import { TenorCategoriesResponse, TenorResult, TenorSearchResponse } from './ten
 const MEDIA_FILTER = 'gif,tinygif';
 const BASE_URL = 'https://tenor.googleapis.com/v2/';
 const TENOR_MAX_LIMIT = 50;
+const CLIENT_KEY = 'gif-picker-react';
 
 export type TenorProviderConfig = {
 	baseUrl?: string;
@@ -72,10 +73,8 @@ class TenorProvider extends GifProvider {
 
 		url.searchParams.set('key', this.apiKey);
 		url.searchParams.set('media_filter', MEDIA_FILTER);
+		url.searchParams.set('client_key', this.config.clientKey ?? CLIENT_KEY);
 
-		if (this.config.clientKey) {
-			url.searchParams.set('client_key', this.config.clientKey);
-		}
 		if (this.config.contentFilter) {
 			url.searchParams.set('contentfilter', this.config.contentFilter);
 		}
