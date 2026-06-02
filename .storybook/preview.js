@@ -2,9 +2,9 @@ export const parameters = {
 	controls: {
 		matchers: {
 			color: /(background|color)$/i,
-			date: /Date$/
-		}
+			date: /Date$/,
+		},
 	},
-	layout: 'centered'
+	layout: 'centered',
 };
 export const tags = ['autodocs'];

@@ -1,35 +1,47 @@
 import React, { useContext } from 'react';
 import SettingsContext from '../../context/SettingsContext';
-import TenorContext from '../../context/TenorContext';
-import { TenorImage } from '../../types/exposedTypes';
+import ProviderContext from '../../context/ProviderContext';
 import './ResultImage.css';
+import { Gif } from '../../types/GifProvider';
 
 export interface ResultImageProps {
-	image: TenorImage;
+	gif: Gif;
 	searchTerm?: string;
 }
 
-function ResultImage({ image, searchTerm }: ResultImageProps): React.JSX.Element {
+function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 	const settings = useContext(SettingsContext);
-	const tenor = useContext(TenorContext);
+	const provider = useContext(ProviderContext);
 
-	function onClick(): void {
-		const func = settings.onGifClick;
-		if (func) func(image);
-		tenor.registerShare(image, searchTerm);
+	async function onClick(): Promise<void> {
+		try {
+			const func = settings.onGifClick;
+
+			if (func) {
+				await func(gif);
+			}
+
+			await provider.registerShare(gif, { searchTerm });
+		} catch (error) {
+			console.error('[gif-picker-react] Failed to handle GIF selection', error);
+		}
 	}
+
+	const image = gif.preview ?? gif;
 
 	return (
 		<button
 			type="button"
 			className="gpr-btn gpr-result-image"
 			onClick={onClick}
+			aria-label="Select GIF"
 		>
 			<img
-				src={image.preview.url}
-				height={image.preview.height}
-				width={image.preview.width}
+				src={image.imageUrl}
+				height={image.height}
+				width={image.width}
 				loading="lazy"
+				alt={gif.description ?? ''}
 			/>
 		</button>
 	);

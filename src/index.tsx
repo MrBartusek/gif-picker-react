@@ -2,17 +2,15 @@ import React from 'react';
 import ErrorBoundary from './components/ErrorBoundary';
 import GifPickerReact, { GifPickerReactProps } from './GifPickerReact';
 
-export { ContentFilter, Theme } from './types/exposedTypes';
-export type { TenorImage } from './types/exposedTypes';
+export { Theme } from './GifPickerReact';
+export type { Gif } from './types/GifProvider';
 
 export interface GifPickerProps extends GifPickerReactProps {}
 
-function GifPicker(props: GifPickerProps): React.JSX.Element {
+export function GifPicker(props: GifPickerProps): React.JSX.Element {
 	return (
 		<ErrorBoundary>
 			<GifPickerReact {...props} />
 		</ErrorBoundary>
 	);
 }
-
-export default GifPicker;

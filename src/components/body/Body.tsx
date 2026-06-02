@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import PickerContext from '../../context/PickerContext';
-import TenorContext from '../../context/TenorContext';
-import { TenorCategory } from '../../managers/TenorManager';
-import { TenorImage } from '../../types/exposedTypes';
+import ProviderContext from '../../context/ProviderContext';
 import './Body.css';
 import CategoryList from './CategoryList';
 import SearchResult from './SearchResult';
 import TrendingResult from './TrendingResult';
+import { Gif, GifCategory } from '../../types/GifProvider';
 
 const MAX_COLUMN_WIDTH = 170;
 
@@ -19,24 +18,42 @@ export interface BodyProps {
 }
 
 function Body({ width }: BodyProps): React.JSX.Element {
-	const [categories, setCategories] = useState<TenorCategory[] | undefined>(undefined);
-	const [trending, setTrending] = useState<TenorImage | undefined>(undefined);
+	const [categories, setCategories] = useState<GifCategory[] | undefined>(undefined);
+	const [trending, setTrending] = useState<Gif | undefined>(undefined);
 	const [pickerContext] = useContext(PickerContext);
 	const [columnsCount, setColumnsCount] = useState(1);
-	const tenor = useContext(TenorContext);
+	const provider = useContext(ProviderContext);
 	const ref = useRef<HTMLDivElement>(null);
 
 	/**
 	 * Load categories and first trending image for home page
 	 */
 	useEffect(() => {
-		(async (): Promise<any> => {
-			const categoryList = await tenor.categories();
-			setCategories(categoryList);
-			const trendingList = await tenor.trending(1);
-			setTrending(trendingList.images[0]);
+		let cancelled = false;
+		(async (): Promise<void> => {
+			try {
+				const [categoryList, trendingList] = await Promise.all([
+					provider.getCategories(),
+					provider.getTrending(),
+				]);
+
+				if (cancelled) return;
+
+				setCategories(categoryList);
+
+				if (trendingList.length > 0) {
+					setTrending(trendingList[0]);
+				}
+			} catch (error) {
+				if (cancelled) return;
+
+				console.error('[gif-picker-react] Failed to load home page', error);
+			}
 		})();
-	}, []);
+		return (): void => {
+			cancelled = true;
+		};
+	}, [provider]);
 
 	/**
 	 * Calculate amount of columns to display

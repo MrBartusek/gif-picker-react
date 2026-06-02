@@ -1,6 +1,6 @@
 {
   "name": "gif-picker-react",
-  "description": "Tenor Gif Picker for React",
+  "description": "Multi-provider GIF Picker for React with pluggable provider support",
   "version": "1.5.0",
   "author": "MrBartusek <bartosz@dokurno.dev>",
   "license": "MIT",
@@ -37,6 +37,16 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./providers/*": {
+      "import": {
+        "types": "./dist/providers/*/index.d.mts",
+        "default": "./dist/providers/*/index.mjs"
+      },
+      "require": {
+        "types": "./dist/providers/*/index.d.cts",
+        "default": "./dist/providers/*/index.cjs"
+      }
+    },
     "./style.css": "./dist/style.css"
   },
   "files": [
@@ -48,6 +58,7 @@
     "@storybook/addon-links": "10.4.0",
     "@storybook/addon-webpack5-compiler-swc": "^4.0.3",
     "@storybook/react-webpack5": "10.4.0",
+    "@tsdown/css": "^0.22.0",
     "autoprefixer": "^10.5.0",
     "cssnano": "^8.0.1",
     "eslint": "^9.39.4",
@@ -61,11 +72,11 @@
     "prettier": "3.8.3",
     "react": "19.2.6",
     "react-dom": "19.2.6",
+    "remark-gfm": "^4.0.1",
     "storybook": "10.4.0",
     "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.4",
-    "@tsdown/css": "^0.22.0"
+    "typescript-eslint": "^8.59.4"
   },
   "peerDependencies": {
     "react": ">=17",

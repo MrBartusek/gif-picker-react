@@ -1,55 +1,45 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import Body from './components/body/Body';
 import Header from './components/header/Header';
 import PickerMain from './components/PickerMain';
 import PickerContext from './context/PickerContext';
 import SettingsContext from './context/SettingsContext';
-import TenorContext from './context/TenorContext';
+import ProviderContext from './context/ProviderContext';
 import './GifPickerReact.css';
 import usePickerContext from './hooks/usePickerContext';
 import useSettings from './hooks/useSettings';
-import TenorManager from './managers/TenorManager';
-import { ContentFilter, TenorImage, Theme } from './types/exposedTypes';
+import { Gif, GifProvider } from './types/GifProvider';
+
+export enum Theme {
+	LIGHT = 'light',
+	DARK = 'dark',
+	AUTO = 'auto',
+}
 
 export interface GifPickerReactProps {
-	tenorApiKey: string;
-	onGifClick?: (gif: TenorImage) => void;
+	provider: GifProvider;
+	onGifClick?: (gif: Gif) => void;
 	autoFocusSearch?: boolean;
-	contentFilter?: ContentFilter;
-	initialSearchTerm?: string;
-	clientKey?: string;
-	country?: string;
-	locale?: string;
 	width?: number | string;
 	height?: number | string;
 	categoryHeight?: number | string;
 	theme?: Theme;
+	initialSearchTerm?: string;
 }
 
 function GifPickerReact(props: GifPickerReactProps): React.JSX.Element {
 	const settings = useSettings(props);
 	const pickerContext = usePickerContext(settings.initialSearchTerm);
-	const tenorManager: TenorManager = useMemo(
-		() =>
-			new TenorManager(
-				settings.tenorApiKey,
-				settings.clientKey,
-				settings.country,
-				settings.locale,
-				settings.contentFilter,
-			),
-		[],
-	);
 
 	return (
 		<SettingsContext.Provider value={settings}>
 			<PickerContext.Provider value={pickerContext}>
-				<TenorContext.Provider value={tenorManager}>
+				<ProviderContext.Provider value={props.provider}>
 					<PickerMain>
 						<Header />
 						<Body width={props.width} />
 					</PickerMain>
-				</TenorContext.Provider>
+				</ProviderContext.Provider>
 			</PickerContext.Provider>
 		</SettingsContext.Provider>
 	);

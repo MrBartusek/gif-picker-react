@@ -1,14 +1,13 @@
 import React from 'react';
-import { TenorImage } from '../../types/exposedTypes';
-import { TenorCategory } from '../../managers/TenorManager';
+import { Gif, GifCategory } from '../../types/GifProvider';
 import CategoryPlaceholder from '../placeholders/CategoryPlaceholder';
 import './CategoryList.css';
 import FeaturedCategory from './FeaturedCategory';
 import TrendingCategory from './TrendingCategory';
 
 export interface CategoryListProps {
-	categories?: TenorCategory[];
-	trending?: TenorImage;
+	categories?: GifCategory[];
+	trending?: Gif;
 	columnsCount: number;
 }
 
@@ -39,11 +38,11 @@ function CategoryList({
 		>
 			{categories && trending ? (
 				<>
-					<TrendingCategory image={trending.url} />
+					<TrendingCategory image={trending.imageUrl} />
 					{getCleanedCategories()?.map((cat, i) => (
 						<FeaturedCategory
 							key={i}
-							image={cat.image}
+							image={cat.imageUrl}
 							name={cat.name}
 						/>
 					))}

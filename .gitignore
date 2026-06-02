@@ -6,3 +6,4 @@ dist
 .env
 build
 !example/.env
+.claude
