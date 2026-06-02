@@ -17,18 +17,23 @@ jobs:
     - name: 📥 Checkout the repository
       uses: actions/checkout@v3
     
+    - name: 📦 Set up pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 11
+
     - name: 🛠️ Set up Node 24
       uses: actions/setup-node@v4
       with:
         node-version: 24
+        cache: pnpm
+        cache-dependency-path: example/pnpm-lock.yaml
     
     - name: 📦 Install dependencies
-      uses: bahmutov/npm-install@v1
-      with:
-        working-directory: example
-    
+      run: pnpm install --frozen-lockfile
+
     - name: 🏗️ Build
-      run: npm run build
+      run: pnpm build
 
     - name: 🌐 Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3
