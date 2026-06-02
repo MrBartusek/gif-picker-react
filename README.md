@@ -9,7 +9,10 @@
 
 ![demo](./demo.gif)
 
-An [Tenor](https://tenor.comt) GIF picker component for React applications that runs on [Tenor API V2](https://developers.google.com/tenor/guides/quickstart). This picker fits styling of [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) and can be used next to it.
+A GIF picker component for React applications that supports [Tenor](https://tenor.com/), [Giphy](https://giphy.com/) and [Klipy](https://klipy.com/) out of the box, as well as custom providers. This picker fits styling of [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) and can be used next to it.
+
+> [!WARNING]
+> Google is [shutting down the Tenor API](https://support.google.com/tenor/answer/10455265): new keys can't be generated since **January 13, 2026** and the API stops working on **June 30, 2026**. Multi-provider support (Giphy, Klipy and custom providers) ships in **v2.0** (currently in development) - after the shutdown you'll need to switch to another provider.
 
 ## What to know before using
 
