@@ -15,8 +15,8 @@ If you don't have gif-picker-react running locally please follow this setup guid
 
 1. Install newest LTS release of [Node.js](https://nodejs.org/en/), it has NPM package
    manager bundled with it.
-1. Generate a Tenor API key if you don't have one yet. The specific instructions are
-   described in [`README.md`](README.md)
+1. Generate an API key for at least one provider if you don't have one yet. The specific
+   instructions for each provider are described in [`README.md`](README.md)
 1. Fork this repository using [Fork](https://github.com/MrBartusek/gif-picker-react/fork)
    button. This will create a new repository on your account named `<your username>/gif-picker-react`
 1. Clone this repo to wherever you want:
@@ -33,10 +33,11 @@ If you don't have gif-picker-react running locally please follow this setup guid
    ```
 1. Create a new file in root of the repository named `.env`, you can alternatively do this
    via environmental variables.
-1. Populate this file with your api key in following format:
+1. Populate this file with the token for at least one provider, for example:
     ```ini
     STORYBOOK_TENOR_TOKEN="YOUR_API_TOKEN"
     ```
+   The full list of supported provider tokens is shown on the Storybook introduction page.
 1. Run storybook server. It is a tool running in your browser that will allow you to easily
    preview your changes.
    ```sh
