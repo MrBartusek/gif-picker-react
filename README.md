@@ -47,9 +47,9 @@ The following props are accepted by the picker:
 | onGifClick | `function` | | Callback function that is called when a gif is clicked. The function receives the [`Gif`](#gif) object as a parameter. |
 | theme | `Theme` | `Theme.LIGHT` | Controls the theme of the picker. If you are using Typescript you can use `Theme` enum. Possible values are `light`, `dark` and `auto`.
 | autoFocusSearch | `boolean` | `true` | Controls the auto focus of the search input. |
-| width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
-| height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
-| categoryHeight | `number / string` | `100` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
+| width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or any accepted css width as string.
+| height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or any accepted css width as string.
+| categoryHeight | `number / string` | `100` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or any accepted css width as string.
 | initialSearchTerm | `string` | | Sets the initial search term when the picker is opened.
 
 ### Gif
@@ -116,7 +116,7 @@ import { Tenor } from 'gif-picker-react/providers/tenor';
 In order to use the `GifPicker` element with the `Tenor` provider you are required to
 provide a Tenor API key. To obtain this key please follow this simple guide:
 
-1. Login in to [Google Cloud Console](https://console.cloud.google.com)
+1. Log in to [Google Cloud Console](https://console.cloud.google.com)
 1. Create a [new project](https://console.cloud.google.com/projectcreate)
 1. In Google Cloud Marketplace navigate to [Tenor API](https://console.cloud.google.com/marketplace/product/google/tenor.googleapis.com)
 1. Click on `Enable`
@@ -124,7 +124,7 @@ provide a Tenor API key. To obtain this key please follow this simple guide:
 1. Click `+ create credentials` and create *API key*, copy generated API key
 1. Pass this key to the `Tenor` provider, e.g. `Tenor("YOUR_API_KEY")`
 
-#### Configuraiton
+#### Configuration
 
 The `Tenor` function optionally accepts a configuration object with the following options:
 
@@ -146,7 +146,7 @@ You can connect any GIF source by extending the `GifProvider` abstract class and
 
 ### Custom Picker Width and Height
 
-To customize the dimensions of the picker, use the height and width props. You can pass in a number that will be treated as pixel size, or your any accepted css width/height as string.
+To customize the dimensions of the picker, use the height and width props. You can pass in a number that will be treated as pixel size, or any accepted css width/height as string.
 
 ```jsx
 <GifPicker height={500} width={400} />
@@ -164,7 +164,7 @@ The list of possible variables is quite extensive, but the main ones you may wan
 
 - `--gpr-bg-color` - Background color of the picker.
 - `--gpr-text-color` - Font color on the picker.
-- `--gpr-highlight-color` - Color on the hover on focus on some search bar, categories and gif.
+- `--gpr-highlight-color` - Color on hover or focus on the search bar, categories and gif.
 
 You can find full list of all variables in [GifPickerReact.css](https://github.com/MrBartusek/gif-picker-react/blob/master/src/GifPickerReact.css).
 
