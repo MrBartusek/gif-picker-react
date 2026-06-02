@@ -14,40 +14,24 @@ A GIF picker component for React applications that supports [Tenor](https://teno
 > [!WARNING]
 > **Google is [shutting down the Tenor API](https://support.google.com/tenor/answer/10455265)**: new keys can't be generated since **January 13, 2026** and the API stops working on **June 30, 2026**. Multi-provider support (Giphy, Klipy and custom providers) ships in **v2.0.0** ([currently in development](https://github.com/MrBartusek/gif-picker-react/milestone/1)).
 
-## What to know before using
-
-- In order to access Tenor API you are **required** to provide API key. This is a free and simple process that takes less than 60 seconds.
-- Tenor requires [attribution]([https://developers.google.com/tenor/guides/attribution]) from products that use their API. This
-  library comply with that rule by adding *Search Tenor* placeholder to the search bar.
-
 ## Installation
 
 ```bash
 npm install gif-picker-react
 ```
 
-## Obtaining Tenor API v2 key
-
-In order to use `GifPicker` element you are required to provide Tenor API key via
-`tenorApiKey` prop. To obtain this key please follow this simple guide:
-
-1. Login in to [Google Cloud Console](https://console.cloud.google.com)
-1. Create a [new project](https://console.cloud.google.com/projectcreate)
-1. In Google Cloud Marketplace navigate to [Tenor API](https://console.cloud.google.com/marketplace/product/google/tenor.googleapis.com)
-1. Click on `Enable`
-1. In navigation menu go to *APIs and services* tab and select [Credentials](https://console.cloud.google.com/apis/credentials)
-1. Click `+ create credentials` and create *API key*, copy generated API key
-1. Pass this key as prop to `tenorApiKey`
+> You can consider [pnpm](https://pnpm.io/) as a safer alternative to `npm`.
 
 ## Usage
 
-```js
+```tsx
 import GifPicker from 'gif-picker-react';
+import { Tenor } from 'gif-picker-react/providers/tenor';
 
 function App() {
   return (
     <div>
-      <GifPicker tenorApiKey={"YOUR_API_KEY"} />
+      <GifPicker provider={Tenor("YOUR_API_KEY")} />
     </div>
   );
 }
@@ -59,66 +43,95 @@ The following props are accepted by the picker:
 
 | Prop | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| tenorApiKey | `string` | **Required** | Tenor v2 API key, obtained from [Google Cloud Console](https://console.cloud.google.com) |
-| onGifClick | `function` | | Callback function that is called when an gif is clicked. The function receives the [`TenorImage`](#tenorimage) object as a parameter. |
+| provider | `GifProvider` | **Required** | The GIF provider used to fetch gifs, see [GIF Providers](#gif-providers) |
+| onGifClick | `function` | | Callback function that is called when a gif is clicked. The function receives the [`Gif`](#gif) object as a parameter. |
 | theme | `Theme` | `Theme.LIGHT` | Controls the theme of the picker. If you are using Typescript you can use `Theme` enum. Possible values are `light`, `dark` and `auto`.
 | autoFocusSearch | `boolean` | `true` | Controls the auto focus of the search input. |
-| contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [Content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use `ContentFilter` enum. Possible values are `high`, `medium`, `low`, `off`  |
-| clientKey | `string` | `gif-picker-react` | Name of your application. Used to differentiate multiple applications using same API key. |
-| country | `string` | `US` | Specify the country of origin for the request. To do so, provide its two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
-| locale | `string (xx_YY)` | `en_US` | Specify the default language to interpret the search string. xx is the language's [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code, while the optional _YY value is the two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code.
 | width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | categoryHeight | `number / string` | `100` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or your any accepted css width as string.
 | initialSearchTerm | `string` | | Sets the initial search term when the picker is opened.
 
-### TenorImage
+### Gif
 
-This object is provided as an argument to callback specified in `onGifClick`:
-
-| Property      | Type       | Description |
-| ------------- | ---------- | ----------- |
-| id            | `string`   | Tenor result identifier |
-| tenorUrl      | `string`   | The full URL to view the post on [tenor.com](https://tenor.com/) |
-| shortTenorUrl | `string`   | Short URL to view the post on [tenor.com](https://tenor.com/) |
-| description   | `string`   | Textual description of the content. You can use this do populate image object `alt` attribute |
-| createdAt     | `Date`     | Date object that represents when this post was created. |
-| tags          | `string[]` | Array of tags for the post |
-| url           | `string`   | Direct URL to the image source |
-| height        | `number`   | Height of the image in pixels |
-| width         | `number`   | Width of the image in pixels |
-| preview       | `TenorImagePreview` | Gif preview object with dimensions scaled down |
-
-### TenorImagePreview
-
-This object is used for displaying the preview image gifs in the picker. You can use it to render smaller and lower-resolution versions of the gifs.
+This object is provided as an argument to callback specified in `onGifClick`. It is provider-agnostic, so the same shape is returned regardless of which provider you use.
 
 | Property      | Type       | Description |
 | ------------- | ---------- | ----------- |
-| url           | `string`   | Direct URL to the preview image source |
+| id            | `string`   | Provider result identifier |
+| imageUrl      | `string`   | Direct URL to the gif source |
+| height        | `number`   | Height of the gif in pixels |
+| width         | `number`   | Width of the gif in pixels |
+| description   | `string`   | Optional textual description of the content. You can use this to populate the image object `alt` attribute |
+| preview       | `GifPreview` | Optional preview object with dimensions scaled down |
+
+### GifPreview
+
+This object is used for displaying the preview gifs in the picker. You can use it to render smaller and lower-resolution versions of the gifs.
+
+| Property      | Type       | Description |
+| ------------- | ---------- | ----------- |
+| imageUrl      | `string`   | Direct URL to the preview image source |
 | height        | `number`   | Height of the preview image in pixels |
 | width         | `number`   | Width of the preview image in pixels |
 
-This is an example `TenorImage` object:
+This is an example `Gif` object:
 
 ```js
 {
   id: "16596569648018104856",
-  tenorUrl: "https://tenor.com/view/american-psycho-patrick-bateman-american-psycho-gif-7212093",
-  shortTenorUrl: "https://tenor.com/Eqmf.gif",
-  description: "American Psycho Patrick Bateman GIF",
-  createdAt: Date,
-  tags: [ "American Psycho", "Patrick Bateman", "American", "psycho"],
-  url: "https://media.tenor.com/5lLcKZgmIhgAAAAC/american-psycho-patrick-bateman.gif",
+  imageUrl: "https://media.tenor.com/5lLcKZgmIhgAAAAC/american-psycho-patrick-bateman.gif",
   height: 240,
   width: 244,
+  description: "American Psycho Patrick Bateman GIF",
   preview: {
-    url: "https://media.tenor.com/5lLcKZgmIhgAAAAM/american-psycho-patrick-bateman.gif",
+    imageUrl: "https://media.tenor.com/5lLcKZgmIhgAAAAM/american-psycho-patrick-bateman.gif",
     height: 120,
     width: 122
   }
 }
 ```
+
+## GIF Providers
+
+The `provider` prop accepts any instance of the `GifProvider` abstract class. You can pick one of the built-in providers or build your own.
+
+### Tenor
+
+> [!WARNING]
+> **Google is [shutting down the Tenor API](https://support.google.com/tenor/answer/10455265)**: new keys can't be generated since **January 13, 2026** and the API stops working on **June 30, 2026**. Multi-provider support (Giphy, Klipy and custom providers) ships in **v2.0.0** ([currently in development](https://github.com/MrBartusek/gif-picker-react/milestone/1)).
+
+```tsx
+import GifPicker from 'gif-picker-react';
+import { Tenor } from 'gif-picker-react/providers/tenor';
+
+<GifPicker provider={Tenor("YOUR_API_KEY")} />
+```
+
+#### Obtaining Tenor API v2 key
+
+In order to use the `GifPicker` element with the `Tenor` provider you are required to
+provide a Tenor API key. To obtain this key please follow this simple guide:
+
+1. Login in to [Google Cloud Console](https://console.cloud.google.com)
+1. Create a [new project](https://console.cloud.google.com/projectcreate)
+1. In Google Cloud Marketplace navigate to [Tenor API](https://console.cloud.google.com/marketplace/product/google/tenor.googleapis.com)
+1. Click on `Enable`
+1. In navigation menu go to *APIs and services* tab and select [Credentials](https://console.cloud.google.com/apis/credentials)
+1. Click `+ create credentials` and create *API key*, copy generated API key
+1. Pass this key to the `Tenor` provider, e.g. `Tenor("YOUR_API_KEY")`
+
+#### Configuraiton
+
+The `Tenor` function optionally accepts a configuration object with the following options:
+
+| Option | Type | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| baseUrl | `string` | `https://tenor.googleapis.com/v2/` | Base URL used for Tenor API requests. |
+| clientKey | `string` | `gif-picker-react` | Name of your application. Used to differentiate multiple applications using the same API key. |
+| country | `string` | `US` | Specify the country of origin for the request, as a two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
+| locale | `string (xx_YY)` | `en_US` | Specify the default language to interpret the search string. xx is the language's [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code, while the optional _YY value is the two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
+| contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
 
 ## Customization
 
