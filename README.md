@@ -94,7 +94,10 @@ This is an example `Gif` object:
 
 ## GIF Providers
 
-The `provider` prop accepts any instance of the `GifProvider` abstract class. You can pick one of the built-in providers or build your own.
+The `provider` prop accepts any instance of the `GifProvider` abstract class. You can pick one of the built-in providers or build your own:
+
+- [Tenor](#tenor)
+- [Custom Providers](#custom-providers)
 
 ### Tenor
 
@@ -132,6 +135,12 @@ The `Tenor` function optionally accepts a configuration object with the followin
 | country | `string` | `US` | Specify the country of origin for the request, as a two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
 | locale | `string (xx_YY)` | `en_US` | Specify the default language to interpret the search string. xx is the language's [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code, while the optional _YY value is the two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
 | contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
+
+### Custom Providers
+
+> This section should be improved - [#50](https://github.com/MrBartusek/gif-picker-react/issues/50)
+
+You can connect any GIF source by extending the `GifProvider` abstract class and passing an instance to the `provider` prop.
 
 ## Customization
 
