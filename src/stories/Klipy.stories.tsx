@@ -3,7 +3,7 @@ import { createProviderMeta } from './providerStory';
 
 export default {
 	title: 'Providers/Klipy',
-	...createProviderMeta((args) => Klipy(process.env.STORYBOOK_KLIPY_TOKEN!, args), {
+	...createProviderMeta((args) => Klipy(import.meta.env.STORYBOOK_KLIPY_TOKEN!, args), {
 		contentFilter: {
 			options: Object.values(ContentFilter),
 			control: { type: 'select' },
