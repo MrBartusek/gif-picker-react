@@ -30,7 +30,8 @@ class TenorProvider implements GifProvider {
 		const data = await this.fetchApi<TenorCategoriesResponse>('categories', { type: 'featured' });
 
 		return data.tags.map((tag) => ({
-			name: tag.searchterm,
+			name: tag.name,
+			searchTerm: tag.searchterm,
 			imageUrl: tag.image,
 		}));
 	}

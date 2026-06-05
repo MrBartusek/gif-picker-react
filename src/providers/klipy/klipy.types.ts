@@ -5,6 +5,13 @@ export enum ContentFilter {
 	OFF = 'off',
 }
 
+export enum KlipyQuality {
+	HD = 'hd',
+	MD = 'md',
+	SM = 'sm',
+	XS = 'xs',
+}
+
 export interface KlipyMediaFormat {
 	url: string;
 	width: number;
@@ -13,7 +20,7 @@ export interface KlipyMediaFormat {
 }
 
 export interface KlipyFileVariant {
-	gif: KlipyMediaFormat;
+	gif?: KlipyMediaFormat;
 	webp?: KlipyMediaFormat;
 	jpg?: KlipyMediaFormat;
 	mp4?: KlipyMediaFormat;
@@ -24,12 +31,7 @@ export interface KlipyItem {
 	id: number;
 	slug: string;
 	title: string;
-	file: {
-		hd: KlipyFileVariant;
-		md: KlipyFileVariant;
-		sm: KlipyFileVariant;
-		xs: KlipyFileVariant;
-	};
+	file: Record<KlipyQuality, KlipyFileVariant>;
 	tags: string[];
 	type: string;
 	blur_preview?: string;

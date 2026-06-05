@@ -168,7 +168,8 @@ The `Klipy` function optionally accepts a configuration object with the followin
 | baseUrl | `string` | `https://api.klipy.com/api/v1/` | Base URL used for Klipy API requests. |
 | customerId | `string` | | A stable, unique identifier for the current user in your system (e.g. a hash or UUID). Used by Klipy for per-user personalization and anonymous share analytics. |
 | locale | `string` | | Country code / language of the user as a two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) code (e.g. `us`), optionally in `xx_YY` form (e.g. `en_US`). |
-| contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Klipy content safety filter level. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
+| contentFilter | `ContentFilter` | Klipy server default | Controls the Klipy content safety filter level. When unset, no filter is sent and the Klipy server default applies. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
+| quality | `KlipyQuality` | `KlipyQuality.MD` | Which size tier is used as the full-resolution image (the one passed to `onGifClick`). The grid preview always uses the small (`sm`) tier. If you are using Typescript you can use the `KlipyQuality` enum. Possible values are `hd`, `md`, `sm` and `xs`. |
 
 ### Custom Providers
 

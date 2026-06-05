@@ -1,2 +1,2 @@
 export { Klipy, type KlipyProviderConfig } from './KlipyProvider';
-export { ContentFilter } from './klipy.types';
+export { ContentFilter, KlipyQuality } from './klipy.types';
