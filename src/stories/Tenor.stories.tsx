@@ -3,7 +3,7 @@ import { createProviderMeta } from './providerStory';
 
 export default {
 	title: 'Providers/Tenor',
-	...createProviderMeta((args) => Tenor(process.env.STORYBOOK_TENOR_TOKEN!, args), {
+	...createProviderMeta((args) => Tenor(import.meta.env.STORYBOOK_TENOR_TOKEN!, args), {
 		contentFilter: {
 			options: Object.values(ContentFilter),
 			control: { type: 'select' },

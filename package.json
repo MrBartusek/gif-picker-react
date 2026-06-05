@@ -56,8 +56,7 @@
     "@eslint/js": "^9.39.4",
     "@storybook/addon-docs": "10.4.0",
     "@storybook/addon-links": "10.4.0",
-    "@storybook/addon-webpack5-compiler-swc": "^4.0.3",
-    "@storybook/react-webpack5": "10.4.0",
+    "@storybook/react-vite": "10.4.0",
     "@tsdown/css": "^0.22.0",
     "@types/react": "19.2.15",
     "@types/react-dom": "^19.2.3",
@@ -78,7 +77,8 @@
     "storybook": "10.4.0",
     "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.4"
+    "typescript-eslint": "^8.59.4",
+    "vite": "^7.1.12"
   },
   "peerDependencies": {
     "react": ">=17",
