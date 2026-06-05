@@ -140,7 +140,7 @@ Besides the built-in providers, you can write or import a custom one. A provider
 own backend, or a wrapper around an existing client. For real-world examples, see the built-in providers in the [`providers/` folder](https://github.com/MrBartusek/gif-picker-react/tree/master/src/providers).
 
 Providers should implement the [`GifProvider` interface][gif-provider-interface]. When using TypeScript you can use `implements GifProvider`, but it is not required; any class or object that
-satisfies this interface can be used as a provider. The return shapes ([`Gif`](#gif), [`GifPreview`](#gifpreview), `GifCategory`) are the same provider-agnostic objects documented above.
+satisfies this interface can be used as a provider. The return shapes (`Gif`, `GifPreview`, `GifCategory`) are the same provider-agnostic objects documented above.
 
 #### Example
 
