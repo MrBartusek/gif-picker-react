@@ -24,6 +24,9 @@ const config: StorybookConfig = {
 		check: false,
 		reactDocgen: false,
 	},
+	features: {
+		sidebarOnboardingChecklist: false,
+	},
 };
 
 export default config;
