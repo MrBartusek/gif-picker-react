@@ -141,6 +141,10 @@ The `Tenor` function optionally accepts a configuration object with the followin
 
 [Klipy](https://klipy.com/) is a GIF, sticker and clip provider.
 
+> [!NOTE]
+> Klipy ads are not supported by the picker. Ad objects returned by the Klipy API are filtered out, so make sure ads are disabled for your app key in the Klipy Partner Panel.
+
+
 ```tsx
 import { GifPicker } from 'gif-picker-react';
 import { Klipy } from 'gif-picker-react/providers/klipy';

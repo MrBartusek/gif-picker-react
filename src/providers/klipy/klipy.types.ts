@@ -5,6 +5,11 @@ export enum ContentFilter {
 	OFF = 'off',
 }
 
+export enum KlipyItemType {
+	GIF = 'gif',
+	AD = 'ad',
+}
+
 export enum KlipyQuality {
 	HD = 'hd',
 	MD = 'md',
@@ -33,7 +38,7 @@ export interface KlipyItem {
 	title: string;
 	file: Record<KlipyQuality, KlipyFileVariant>;
 	tags: string[];
-	type: string;
+	type: KlipyItemType;
 	blur_preview?: string;
 }
 

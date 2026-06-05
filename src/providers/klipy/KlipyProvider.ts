@@ -5,6 +5,7 @@ import {
 	KlipyCategoriesData,
 	KlipyEnvelope,
 	KlipyItem,
+	KlipyItemType,
 	KlipyListData,
 	KlipyQuality,
 } from './klipy.types';
@@ -131,7 +132,7 @@ class KlipyProvider implements GifProvider {
 	}
 
 	private parseGif(item: KlipyItem): Gif | null {
-		if (item.type !== 'gif') {
+		if (item.type !== KlipyItemType.GIF) {
 			return null;
 		}
 
