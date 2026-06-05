@@ -135,7 +135,7 @@ The `Tenor` function optionally accepts a configuration object with the followin
 | clientKey | `string` | `gif-picker-react` | Name of your application. Used to differentiate multiple applications using the same API key. |
 | country | `string` | `US` | Specify the country of origin for the request, as a two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
 | locale | `string (xx_YY)` | `en_US` | Specify the default language to interpret the search string. xx is the language's [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code, while the optional _YY value is the two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
-| contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
+| contentFilter | `ContentFilter` | | Controls the Tenor [content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
 
 ### Klipy
 
@@ -172,8 +172,8 @@ The `Klipy` function optionally accepts a configuration object with the followin
 | baseUrl | `string` | `https://api.klipy.com/api/v1/` | Base URL used for Klipy API requests. |
 | customerId | `string` | | A stable, unique identifier for the current user in your system (e.g. a hash or UUID). Used by Klipy for per-user personalization and anonymous share analytics. |
 | locale | `string` | | Country code / language of the user as a two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) code (e.g. `us`), optionally in `xx_YY` form (e.g. `en_US`). |
-| contentFilter | `ContentFilter` | Klipy server default | Controls the Klipy content safety filter level. When unset, no filter is sent and the Klipy server default applies. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
-| quality | `KlipyQuality` | `KlipyQuality.MD` | Which size tier is used as the full-resolution image (the one passed to `onGifClick`). The grid preview always uses the small (`sm`) tier. If you are using Typescript you can use the `KlipyQuality` enum. Possible values are `hd`, `md`, `sm` and `xs`. |
+| contentFilter | `ContentFilter` | | Controls the Klipy content safety filter level. When unset, no filter is sent and the Klipy server default applies. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
+| quality | `KlipyQuality` | `KlipyQuality.MD` | Which size tier is passed to `onGifClick`. The grid preview always uses the small (`sm`) tier. If you are using Typescript you can use the `KlipyQuality` enum. Possible values are `hd`, `md`, `sm` and `xs`. |
 
 ### Custom Providers
 
