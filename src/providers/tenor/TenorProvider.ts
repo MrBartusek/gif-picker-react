@@ -20,13 +20,11 @@ export function Tenor(apiKey: string, config?: TenorProviderConfig): GifProvider
 	return new TenorProvider(apiKey, config);
 }
 
-class TenorProvider extends GifProvider {
+class TenorProvider implements GifProvider {
 	constructor(
 		private apiKey: string,
 		private config: TenorProviderConfig = {},
-	) {
-		super();
-	}
+	) {}
 
 	public async getCategories(): Promise<GifCategory[]> {
 		const data = await this.fetchApi<TenorCategoriesResponse>('categories', { type: 'featured' });
