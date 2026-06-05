@@ -59,6 +59,8 @@
     "@storybook/addon-webpack5-compiler-swc": "^4.0.3",
     "@storybook/react-webpack5": "10.4.0",
     "@tsdown/css": "^0.22.0",
+    "@types/react": "19.2.15",
+    "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.5.0",
     "cssnano": "^8.0.1",
     "eslint": "^9.39.4",
