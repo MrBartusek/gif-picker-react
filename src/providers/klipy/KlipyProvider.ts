@@ -56,7 +56,7 @@ class KlipyProvider implements GifProvider {
 			page: 1,
 			per_page: KLIPY_MAX_PER_PAGE,
 			format_filter: FORMAT_FILTER,
-			...this.commonParams(),
+			...this.buildParams(),
 		});
 
 		return this.parseGifs(data.data);
@@ -67,7 +67,7 @@ class KlipyProvider implements GifProvider {
 			page: 1,
 			per_page: KLIPY_MAX_PER_PAGE,
 			format_filter: FORMAT_FILTER,
-			...this.commonParams(),
+			...this.buildParams(),
 		});
 
 		return this.parseGifs(data.data);
@@ -90,17 +90,21 @@ class KlipyProvider implements GifProvider {
 		return { searchPlaceholder: 'Search KLIPY' };
 	}
 
-	private commonParams(): Record<string, string> {
+	private buildParams(): Record<string, string> {
 		const params: Record<string, string> = {};
+
 		if (this.config.locale) {
 			params.locale = this.config.locale;
 		}
+
 		if (this.config.contentFilter) {
 			params.content_filter = this.config.contentFilter;
 		}
+
 		if (this.config.customerId) {
 			params.customer_id = this.config.customerId;
 		}
+
 		return params;
 	}
 
