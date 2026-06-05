@@ -30,10 +30,14 @@ export function Klipy(appKey: string, config?: KlipyProviderConfig): GifProvider
 }
 
 class KlipyProvider implements GifProvider {
+	private readonly baseUrl: string;
+
 	constructor(
 		private appKey: string,
 		private config: KlipyProviderConfig = {},
-	) {}
+	) {
+		this.baseUrl = (config.baseUrl ?? BASE_URL).replace(/\/+$/, '') + '/';
+	}
 
 	public async getCategories(): Promise<GifCategory[]> {
 		const params: Record<string, string> = {};
@@ -113,8 +117,7 @@ class KlipyProvider implements GifProvider {
 		params?: Record<string, any>,
 		init?: RequestInit,
 	): Promise<T> {
-		const baseUrl = this.config.baseUrl ?? BASE_URL;
-		const url = new URL(`${baseUrl}${this.appKey}/gifs/${endpoint}`);
+		const url = new URL(`${this.appKey}/gifs/${endpoint}`, this.baseUrl);
 
 		if (params) {
 			Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, String(v)));
