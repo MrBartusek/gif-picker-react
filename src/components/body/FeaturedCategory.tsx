@@ -5,14 +5,15 @@ import Category from './Category';
 export interface FeaturedCategory {
 	image: string;
 	name: string;
+	searchTerm: string;
 }
 
-function FeaturedCategory({ image, name }: FeaturedCategory): React.JSX.Element {
+function FeaturedCategory({ image, name, searchTerm }: FeaturedCategory): React.JSX.Element {
 	const [pickerContext, setPickerContext] = useContext(PickerContext);
 
 	function onClick(): void {
 		const contextCopy = Object.assign({}, pickerContext);
-		contextCopy.searchTerm = name;
+		contextCopy.searchTerm = searchTerm;
 		setPickerContext(contextCopy);
 	}
 

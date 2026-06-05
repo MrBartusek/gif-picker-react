@@ -44,6 +44,7 @@ function CategoryList({
 							key={i}
 							image={cat.imageUrl}
 							name={cat.name}
+							searchTerm={cat.searchTerm ?? cat.name}
 						/>
 					))}
 				</>
