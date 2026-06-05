@@ -95,9 +95,12 @@ This is an example `Gif` object:
 The `provider` prop accepts any object that implements the `GifProvider` interface. You can pick one of the built-in providers or create your own:
 
 - [Tenor](#tenor)
+- [Klipy](#klipy)
 - [Custom Providers](#custom-providers)
 
 ### Tenor
+
+[Tenor](https://tenor.com/) is a GIF provider by Google.
 
 > [!WARNING]
 > **Google is [shutting down the Tenor API](https://support.google.com/tenor/answer/10455265)**: new keys can't be generated since **January 13, 2026** and the API stops working on **June 30, 2026**. Multi-provider support (Giphy, Klipy and custom providers) ships in **v2.0.0** ([currently in development](https://github.com/MrBartusek/gif-picker-react/milestone/1)).
@@ -133,6 +136,39 @@ The `Tenor` function optionally accepts a configuration object with the followin
 | country | `string` | `US` | Specify the country of origin for the request, as a two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
 | locale | `string (xx_YY)` | `en_US` | Specify the default language to interpret the search string. xx is the language's [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code, while the optional _YY value is the two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) country code. |
 | contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Tenor [content filtering](https://developers.google.com/tenor/guides/content-filtering) options. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
+
+### Klipy
+
+[Klipy](https://klipy.com/) is a GIF, sticker and clip provider.
+
+```tsx
+import { GifPicker } from 'gif-picker-react';
+import { Klipy } from 'gif-picker-react/providers/klipy';
+
+<GifPicker provider={Klipy("YOUR_APP_KEY")} />
+```
+
+#### Obtaining a Klipy app key
+
+In order to use the `GifPicker` element with the `Klipy` provider you are required to
+provide a Klipy app key. To obtain this key please follow this simple guide:
+
+1. Sign up at the [Klipy Partner Panel](https://partner.klipy.com)
+1. Navigate to the *API Keys* page
+1. Select *Add Platform* and create your platform to generate an app key
+1. Copy the generated app key
+1. Pass this key to the `Klipy` provider, e.g. `Klipy("YOUR_APP_KEY")`
+
+#### Configuration
+
+The `Klipy` function optionally accepts a configuration object with the following options:
+
+| Option | Type | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| baseUrl | `string` | `https://api.klipy.com/api/v1/` | Base URL used for Klipy API requests. |
+| customerId | `string` | | A stable, unique identifier for the current user in your system (e.g. a hash or UUID). Used by Klipy for per-user personalization and anonymous share analytics. |
+| locale | `string` | | Country code / language of the user as a two-letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) code (e.g. `us`), optionally in `xx_YY` form (e.g. `en_US`). |
+| contentFilter | `ContentFilter` | `ContentFilter.OFF` | Controls the Klipy content safety filter level. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
 
 ### Custom Providers
 
