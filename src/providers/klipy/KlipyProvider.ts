@@ -13,8 +13,8 @@ import {
 const BASE_URL = 'https://api.klipy.com/api/v1/';
 const FORMAT_FILTER = 'gif';
 const KLIPY_MAX_PER_PAGE = 50;
-const PREVIEW_SIZE = KlipyQuality.SM;
 const DEFAULT_QUALITY = KlipyQuality.MD;
+const DEFAULT_PREVIEW_QUALITY = KlipyQuality.SM;
 
 export type KlipyProviderConfig = {
 	baseUrl?: string;
@@ -22,6 +22,7 @@ export type KlipyProviderConfig = {
 	locale?: string;
 	contentFilter?: ContentFilter;
 	quality?: KlipyQuality;
+	previewQuality?: KlipyQuality;
 };
 
 export function Klipy(appKey: string, config?: KlipyProviderConfig): GifProvider {
@@ -120,10 +121,11 @@ class KlipyProvider implements GifProvider {
 			throw new Error(`Klipy API request failed (${res.status} ${res.statusText})`);
 		}
 
-		const body = (await res.json()) as KlipyEnvelope<T>;
+		const body: KlipyEnvelope<T> = await res.json();
 		if (!body.result) {
 			throw new Error('Klipy API request failed (result: false)');
 		}
+
 		return body.data;
 	}
 
@@ -136,8 +138,11 @@ class KlipyProvider implements GifProvider {
 			return null;
 		}
 
-		const full = item.file?.[this.config.quality ?? DEFAULT_QUALITY]?.gif;
-		const preview = item.file?.[PREVIEW_SIZE]?.gif;
+		const fullQuality = this.config.quality ?? DEFAULT_QUALITY;
+		const previewQuality = this.config.previewQuality ?? DEFAULT_PREVIEW_QUALITY;
+
+		const full = item.file?.[fullQuality]?.gif;
+		const preview = item.file?.[previewQuality]?.gif;
 		if (!full || !preview) {
 			return null;
 		}

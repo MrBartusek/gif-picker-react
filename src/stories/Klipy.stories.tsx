@@ -1,4 +1,4 @@
-import { ContentFilter, Klipy } from '../providers/klipy';
+import { ContentFilter, Klipy, KlipyQuality } from '../providers/klipy';
 import { createProviderMeta } from './providerStory';
 
 export default {
@@ -6,6 +6,16 @@ export default {
 	...createProviderMeta((args) => Klipy(import.meta.env.STORYBOOK_KLIPY_TOKEN!, args), {
 		contentFilter: {
 			options: Object.values(ContentFilter),
+			control: { type: 'select' },
+			table: { category: 'Klipy' },
+		},
+		quality: {
+			options: Object.values(KlipyQuality),
+			control: { type: 'select' },
+			table: { category: 'Klipy' },
+		},
+		previewQuality: {
+			options: Object.values(KlipyQuality),
 			control: { type: 'select' },
 			table: { category: 'Klipy' },
 		},
@@ -20,6 +30,8 @@ export default {
 	}),
 	args: {
 		contentFilter: ContentFilter.OFF,
+		quality: KlipyQuality.MD,
+		previewQuality: KlipyQuality.SM,
 	},
 };
 
