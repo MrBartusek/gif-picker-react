@@ -145,8 +145,8 @@ class KlipyProvider implements GifProvider {
 		const fullQuality = this.config.quality ?? DEFAULT_QUALITY;
 		const previewQuality = this.config.previewQuality ?? DEFAULT_PREVIEW_QUALITY;
 
-		const full = item.file?.[fullQuality]?.gif;
-		const preview = item.file?.[previewQuality]?.gif;
+		const full = item.file[fullQuality].gif;
+		const preview = item.file[previewQuality].gif;
 		if (!full || !preview) {
 			return null;
 		}
