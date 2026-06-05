@@ -8,7 +8,8 @@ import ProviderContext from './context/ProviderContext';
 import './GifPickerReact.css';
 import usePickerContext from './hooks/usePickerContext';
 import useSettings from './hooks/useSettings';
-import { Gif, GifProvider } from './types/GifProvider';
+import { GifProvider } from './types/GifProvider';
+import { Gif } from './types/types';
 
 export enum Theme {
 	LIGHT = 'light',

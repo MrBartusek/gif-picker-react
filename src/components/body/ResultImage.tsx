@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import SettingsContext from '../../context/SettingsContext';
 import ProviderContext from '../../context/ProviderContext';
 import './ResultImage.css';
-import { Gif } from '../../types/GifProvider';
+import { Gif } from '../../types/types';
 
 export interface ResultImageProps {
 	gif: Gif;
@@ -21,7 +21,7 @@ function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 				await func(gif);
 			}
 
-			await provider.registerShare(gif, { searchTerm });
+			await provider.registerShare?.(gif, { searchTerm });
 		} catch (error) {
 			console.error('[gif-picker-react] Failed to handle GIF selection', error);
 		}

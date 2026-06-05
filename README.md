@@ -5,8 +5,6 @@
 [![npm bundle size](https://img.shields.io/bundlephobia/min/gif-picker-react)](https://bundlephobia.com/package/gif-picker-react)
 [![downloads](https://img.shields.io/npm/dw/gif-picker-react)][npm]
 
-[npm]: https://www.npmjs.com/package/gif-picker-react
-
 ![demo](./demo.gif)
 
 A GIF picker component for React applications that supports [Tenor](https://tenor.com/), [Giphy](https://giphy.com/) and [Klipy](https://klipy.com/) and custom providers. This picker fits styling of [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) and can be used next to it.
@@ -25,7 +23,7 @@ npm install gif-picker-react
 ## Usage
 
 ```tsx
-import GifPicker from 'gif-picker-react';
+import { GifPicker } from 'gif-picker-react';
 import { Tenor } from 'gif-picker-react/providers/tenor';
 
 function App() {
@@ -94,7 +92,7 @@ This is an example `Gif` object:
 
 ## GIF Providers
 
-The `provider` prop accepts any instance of the `GifProvider` abstract class. You can pick one of the built-in providers or create your own:
+The `provider` prop accepts any object that implements the `GifProvider` interface. You can pick one of the built-in providers or create your own:
 
 - [Tenor](#tenor)
 - [Custom Providers](#custom-providers)
@@ -105,7 +103,7 @@ The `provider` prop accepts any instance of the `GifProvider` abstract class. Yo
 > **Google is [shutting down the Tenor API](https://support.google.com/tenor/answer/10455265)**: new keys can't be generated since **January 13, 2026** and the API stops working on **June 30, 2026**. Multi-provider support (Giphy, Klipy and custom providers) ships in **v2.0.0** ([currently in development](https://github.com/MrBartusek/gif-picker-react/milestone/1)).
 
 ```tsx
-import GifPicker from 'gif-picker-react';
+import { GifPicker } from 'gif-picker-react';
 import { Tenor } from 'gif-picker-react/providers/tenor';
 
 <GifPicker provider={Tenor("YOUR_API_KEY")} />
@@ -138,9 +136,64 @@ The `Tenor` function optionally accepts a configuration object with the followin
 
 ### Custom Providers
 
-> This section should be improved - [#50](https://github.com/MrBartusek/gif-picker-react/issues/50)
+Besides the built-in providers, you can write or import a custom one. A provider just needs to implement the [`GifProvider` interface][gif-provider-interface]. The picker calls its methods to fetch GIFs. You can connect any GIF source: an unsupported third-party API, your
+own backend, or a wrapper around an existing client. For real-world examples, see the built-in providers in the [`providers/` folder](https://github.com/MrBartusek/gif-picker-react/tree/master/src/providers).
 
-You can connect any GIF source by extending the `GifProvider` abstract class and passing an instance to the `provider` prop.
+Providers should implement the [`GifProvider` interface][gif-provider-interface]. When using TypeScript you can use `implements GifProvider`, but it is not required; any class or object that
+satisfies this interface can be used as a provider. The return shapes (`Gif`, `GifPreview`, `GifCategory`) are the same provider-agnostic objects documented above.
+
+#### Example
+
+The recommended approach is a factory function that returns the provider object:
+
+```tsx
+import { GifProvider, Gif } from 'gif-picker-react';
+
+export function Example(apiKey: string): GifProvider {
+  return new ExampleProvider(apiKey);
+}
+
+class ExampleProvider implements GifProvider {
+  constructor(private apiKey: string) {}
+
+  async getTrending() {
+    const data = await fetch(`https://api.example.com/trending?key=${this.apiKey}`)
+      .then((res) => res.json());
+    return data.items.map((item: any) => this.toGif(item));
+  }
+
+  async search(term: string) {
+    const data = await fetch(`https://api.example.com/search?q=${term}&key=${this.apiKey}`)
+      .then((res) => res.json());
+    return data.items.map((item: any) => this.toGif(item));
+  }
+
+  async getCategories() {
+    const data = await fetch(`https://api.example.com/categories?key=${this.apiKey}`)
+      .then((res) => res.json());
+    return data.items.map((category: any) => ({ name: category.name, imageUrl: category.image }));
+  }
+
+  private toGif(item: any) {
+    return {
+      id: item.id,
+      imageUrl: item.url,
+      width: item.width,
+      height: item.height,
+      description: item.title,
+      preview: { imageUrl: item.thumb, width: item.thumbWidth, height: item.thumbHeight },
+    };
+  }
+}
+```
+
+Then pass it to the picker:
+
+```tsx
+import { GifPicker } from 'gif-picker-react';
+
+<GifPicker provider={Example('YOUR_API_KEY')} />
+```
 
 ## Customization
 
@@ -173,3 +226,6 @@ You can find full list of all variables in [GifPickerReact.css](https://github.c
 Want to contribute to the project?
 
 First of all, thanks! Check [`CONTRIBUTING.md`](CONTRIBUTING.md) for more details.
+
+[npm]: https://www.npmjs.com/package/gif-picker-react
+[gif-provider-interface]: https://github.com/MrBartusek/gif-picker-react/blob/master/src/types/GifProvider.ts

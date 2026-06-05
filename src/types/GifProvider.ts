@@ -1,24 +1,33 @@
-type Awaitable<T> = T | PromiseLike<T>;
+import { Awaitable, Gif, GifCategory } from './types';
 
-export type GifCategory = {
-	imageUrl: string;
-	name: string;
-};
+export interface GifProvider {
+	/**
+	 * Fetches list of currently featured, trending or home page GIFs
+	 */
+	getTrending(): Awaitable<Gif[]>;
 
-export type GifPreview = {
-	imageUrl: string;
-	height: number;
-	width: number;
-};
+	/**
+	 * Fetches most popular GIFs categories with their cover images
+	 */
+	getCategories(): Awaitable<GifCategory[]>;
 
-export type Gif = {
-	id: string;
-	imageUrl: string;
-	height: number;
-	width: number;
-	description?: string;
-	preview?: GifPreview;
-};
+	/**
+	 * Searches GIFs by user-provided search term
+	 */
+	search(term: string): Awaitable<Gif[]>;
+
+	/**
+	 * If provider supports it, invoked after gif is clicked. This may
+	 * be required by provider for analytics.
+	 */
+	registerShare?(gif: Gif, context: RegisterShareContext): Awaitable<void>;
+
+	/**
+	 * Provides configuration of required attribution rules for
+	 * specific provider.
+	 */
+	getAttribution?(): Partial<GifProviderAttribution>;
+}
 
 export type RegisterShareContext = {
 	searchTerm?: string;
@@ -27,17 +36,3 @@ export type RegisterShareContext = {
 export type GifProviderAttribution = {
 	searchPlaceholder: string;
 };
-
-export abstract class GifProvider {
-	abstract getTrending(): Awaitable<Gif[]>;
-	abstract getCategories(): Awaitable<GifCategory[]>;
-	abstract search(term: string): Awaitable<Gif[]>;
-
-	registerShare(_gif: Gif, _context: RegisterShareContext): Awaitable<void> {
-		return;
-	}
-
-	getAttribution(): GifProviderAttribution {
-		return { searchPlaceholder: 'Search GIFs' };
-	}
-}

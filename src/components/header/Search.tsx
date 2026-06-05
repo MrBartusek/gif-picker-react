@@ -3,13 +3,12 @@ import PickerContext from '../../context/PickerContext';
 import SettingsContext from '../../context/SettingsContext';
 import ClearButton from './ClearButton';
 import './Search.css';
-import ProviderContext from '../../context/ProviderContext';
+import useAttribution from '../../hooks/useAttribution';
 
 function Search(): React.JSX.Element {
 	const [pickerContext, setPickerContext] = useContext(PickerContext);
 	const settings = useContext(SettingsContext);
-	const provider = useContext(ProviderContext);
-	const attribution = provider.getAttribution();
+	const attribution = useAttribution();
 
 	function onChange(event: React.ChangeEvent<HTMLInputElement>): void {
 		const contextCopy = Object.assign({}, pickerContext);

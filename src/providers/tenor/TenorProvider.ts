@@ -1,11 +1,6 @@
 import { ContentFilter } from './tenor.types';
-import {
-	Gif,
-	GifProviderAttribution,
-	GifCategory,
-	GifProvider,
-	RegisterShareContext,
-} from '../../types/GifProvider';
+import { GifProvider, GifProviderAttribution, RegisterShareContext } from '../../types/GifProvider';
+import { Gif, GifCategory } from '../../types/types';
 import { TenorCategoriesResponse, TenorResult, TenorSearchResponse } from './tenor.types';
 
 const MEDIA_FILTER = 'gif,tinygif';
@@ -25,13 +20,11 @@ export function Tenor(apiKey: string, config?: TenorProviderConfig): GifProvider
 	return new TenorProvider(apiKey, config);
 }
 
-class TenorProvider extends GifProvider {
+class TenorProvider implements GifProvider {
 	constructor(
 		private apiKey: string,
 		private config: TenorProviderConfig = {},
-	) {
-		super();
-	}
+	) {}
 
 	public async getCategories(): Promise<GifCategory[]> {
 		const data = await this.fetchApi<TenorCategoriesResponse>('categories', { type: 'featured' });

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import './GifList.css';
 import GifListPlaceholder from './GifListPlaceholder';
 import ResultImage from './ResultImage';
-import { Gif } from '../../types/GifProvider';
+import { Gif } from '../../types/types';
 
 export interface GifListProps {
 	isLoading: boolean;
