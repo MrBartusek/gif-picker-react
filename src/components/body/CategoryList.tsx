@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gif, GifCategory } from '../../types/GifProvider';
+import { Gif, GifCategory } from '../../types/types';
 import CategoryPlaceholder from '../placeholders/CategoryPlaceholder';
 import './CategoryList.css';
 import FeaturedCategory from './FeaturedCategory';

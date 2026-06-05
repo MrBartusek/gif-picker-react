@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import SettingsContext from '../../context/SettingsContext';
 import ProviderContext from '../../context/ProviderContext';
 import './ResultImage.css';
-import { Gif } from '../../types/GifProvider';
+import { Gif } from '../../types/types';
 
 export interface ResultImageProps {
 	gif: Gif;

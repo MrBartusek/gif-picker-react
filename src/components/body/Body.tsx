@@ -5,7 +5,7 @@ import './Body.css';
 import CategoryList from './CategoryList';
 import SearchResult from './SearchResult';
 import TrendingResult from './TrendingResult';
-import { Gif, GifCategory } from '../../types/GifProvider';
+import { Gif, GifCategory } from '../../types/types';
 
 const MAX_COLUMN_WIDTH = 170;
 

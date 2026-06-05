@@ -1,32 +1,4 @@
-type Awaitable<T> = T | PromiseLike<T>;
-
-export type GifCategory = {
-	imageUrl: string;
-	name: string;
-};
-
-export type GifPreview = {
-	imageUrl: string;
-	height: number;
-	width: number;
-};
-
-export type Gif = {
-	id: string;
-	imageUrl: string;
-	height: number;
-	width: number;
-	description?: string;
-	preview?: GifPreview;
-};
-
-export type RegisterShareContext = {
-	searchTerm?: string;
-};
-
-export type GifProviderAttribution = {
-	searchPlaceholder: string;
-};
+import { Awaitable, Gif, GifCategory } from './types';
 
 export abstract class GifProvider {
 	abstract getTrending(): Awaitable<Gif[]>;
@@ -41,3 +13,11 @@ export abstract class GifProvider {
 		return { searchPlaceholder: 'Search GIFs' };
 	}
 }
+
+export type RegisterShareContext = {
+	searchTerm?: string;
+};
+
+export type GifProviderAttribution = {
+	searchPlaceholder: string;
+};

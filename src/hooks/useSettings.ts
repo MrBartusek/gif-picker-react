@@ -1,5 +1,6 @@
 import { GifPickerReactProps, Theme } from '../GifPickerReact';
-import { Gif, GifProvider } from '../types/GifProvider';
+import { GifProvider } from '../types/GifProvider';
+import { Gif } from '../types/types';
 
 /**
  * This is a parsed version of props with filled defaults
