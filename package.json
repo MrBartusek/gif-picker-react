@@ -1,7 +1,7 @@
 {
   "name": "gif-picker-react",
   "description": "Multi-provider GIF Picker for React with pluggable provider support",
-  "version": "1.5.0",
+  "version": "2.0.0-rc.1",
   "author": "MrBartusek <bartosz@dokurno.dev>",
   "license": "MIT",
   "keywords": [
