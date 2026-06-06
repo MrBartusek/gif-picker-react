@@ -7,10 +7,7 @@
 
 ![demo](./demo.gif)
 
-A GIF picker component for React applications that supports [Tenor](https://tenor.com/), [Giphy](https://giphy.com/) and [Klipy](https://klipy.com/) and custom providers. This picker fits styling of [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) and can be used next to it.
-
-> [!WARNING]
-> **Google is [shutting down the Tenor API](https://support.google.com/tenor/answer/10455265)**: new keys can't be generated since **January 13, 2026** and the API stops working on **June 30, 2026**. Multi-provider support (Giphy, Klipy and custom providers) ships in **v2.0.0** ([currently in development](https://github.com/MrBartusek/gif-picker-react/milestone/1)).
+A GIF picker component for React applications that supports [Giphy](https://giphy.com/), [Klipy](https://klipy.com/) and custom providers. This picker fits styling of [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) and can be used next to it.
 
 ## Installation
 
@@ -24,12 +21,12 @@ npm install gif-picker-react
 
 ```tsx
 import { GifPicker } from 'gif-picker-react';
-import { Tenor } from 'gif-picker-react/providers/tenor';
+import { Klipy } from 'gif-picker-react/providers/klipy';
 
 function App() {
   return (
     <div>
-      <GifPicker provider={Tenor("YOUR_API_KEY")} />
+      <GifPicker provider={Klipy("YOUR_API_KEY")} />
     </div>
   );
 }
@@ -102,8 +99,8 @@ The `provider` prop accepts any object that implements the `GifProvider` interfa
 
 **[Tenor](https://tenor.com/)** is a GIF provider by Google.
 
-> [!WARNING]
-> **Google is [shutting down the Tenor API](https://support.google.com/tenor/answer/10455265)**: new keys can't be generated since **January 13, 2026** and the API stops working on **June 30, 2026**. Multi-provider support (Giphy, Klipy and custom providers) ships in **v2.0.0** ([currently in development](https://github.com/MrBartusek/gif-picker-react/milestone/1)).
+> [!CAUTION]
+> **Google is [shutting down the Tenor API](https://support.google.com/tenor/answer/10455265) on June 30, 2026.** Since `gif-picker-react` `v1.5.0` and below only support Tenor, those versions stop working entirely on that date. The `Tenor` provider remains available in `v2.0.0`, but it too only works until the deadline. To keep your GIF picker working, upgrade to `v2.0.0` and switch to another provider such as [Klipy](#klipy) or [Giphy](#giphy) before June 30, 2026.
 
 ```tsx
 import { GifPicker } from 'gif-picker-react';
@@ -139,7 +136,7 @@ The `Tenor` function optionally accepts a configuration object with the followin
 
 ### Klipy
 
-**[Klipy](https://klipy.com/)** is a GIF, sticker and clip provider built as a drop-in Tenor replacement, so it can be used to migrate off the Tenor API as it shuts down.
+**[Klipy](https://klipy.com/)** is a GIF provider built by former Tenor employees. The API is free and ad-supported, with no paid plan.
 
 > [!NOTE]
 > Klipy ads are not supported by the picker. Ad objects returned by the Klipy API are filtered out, so make sure ads are disabled for your app key in the Klipy Partner Panel.
