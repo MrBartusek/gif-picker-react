@@ -1,5 +1,5 @@
 import { GifProvider, GifProviderAttribution, RegisterShareContext } from '../../types/GifProvider';
-import { Gif, GifCategory } from '../../types/types';
+import { Gif, GifCategory, GifProviderName } from '../../types/types';
 import {
 	ContentFilter,
 	KlipyCategoriesData,
@@ -136,11 +136,13 @@ class KlipyProvider implements GifProvider {
 		return body.data;
 	}
 
-	private parseGifs(items: KlipyItem[]): Gif[] {
-		return items.map((item) => this.parseGif(item)).filter((gif): gif is Gif => gif !== null);
+	private parseGifs(items: KlipyItem[]): Gif<KlipyItem>[] {
+		return items
+			.map((item) => this.parseGif(item))
+			.filter((gif): gif is Gif<KlipyItem> => gif !== null);
 	}
 
-	private parseGif(item: KlipyItem): Gif | null {
+	private parseGif(item: KlipyItem): Gif<KlipyItem> | null {
 		if (item.type !== KlipyItemType.GIF) {
 			return null;
 		}
@@ -165,6 +167,8 @@ class KlipyProvider implements GifProvider {
 				width: preview.width,
 				height: preview.height,
 			},
+			provider: GifProviderName.KLIPY,
+			raw: item,
 		};
 	}
 }

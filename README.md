@@ -65,6 +65,8 @@ This object is provided as an argument to callback specified in `onGifClick`. It
 | width         | `number`   | Width of the gif in pixels |
 | description   | `string`   | Optional textual description of the content. You can use this to populate the image object `alt` attribute |
 | preview       | `GifPreview` | Optional preview object with dimensions scaled down |
+| provider      | `string`   | Identifies the provider this gif came from. |
+| raw           | `T`        | The original, unmodified provider payload this gif was parsed from. |
 
 ### GifPreview
 
@@ -80,16 +82,18 @@ This is an example `Gif` object:
 
 ```js
 {
-  id: "16596569648018104856",
-  imageUrl: "https://media.tenor.com/5lLcKZgmIhgAAAAC/american-psycho-patrick-bateman.gif",
+  id: "american-psycho-patrick-bateman-18--kkZ9e46dI",
+  imageUrl: "https://static.klipy.com/ii/d6b0ce929193df3c242ac34b5654d2ce/5f/9a/8IRfeIxH.gif",
   height: 240,
   width: 244,
-  description: "American Psycho Patrick Bateman GIF",
+  description: "Christian Bale's Patrick Bateman: Confused Smile",
   preview: {
-    imageUrl: "https://media.tenor.com/5lLcKZgmIhgAAAAM/american-psycho-patrick-bateman.gif",
+    imageUrl: "https://static.klipy.com/ii/d6b0ce929193df3c242ac34b5654d2ce/5f/9a/2Hb1mWqg.gif",
     height: 120,
     width: 122
-  }
+  },
+  provider: "klipy",
+  raw: { /* the original Klipy API item */ }
 }
 ```
 
@@ -246,6 +250,8 @@ class ExampleProvider implements GifProvider {
       height: item.height,
       description: item.title,
       preview: { imageUrl: item.thumb, width: item.thumbWidth, height: item.thumbHeight },
+      provider: 'example',
+      raw: item,
     };
   }
 }
