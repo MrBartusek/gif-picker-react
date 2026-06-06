@@ -50,7 +50,7 @@ The following props are accepted by the picker:
 | autoFocusSearch | `boolean` | `true` | Controls the auto focus of the search input. |
 | width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or any accepted css width as string.
 | height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or any accepted css width as string.
-| categoryHeight | `number / string` | `100` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or any accepted css width as string.
+| categoryHeight | `number / string` | `95` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or any accepted css width as string. |
 | initialSearchTerm | `string` | | Sets the initial search term when the picker is opened.
 
 ### Gif
@@ -103,6 +103,7 @@ The `provider` prop accepts any object that implements the `GifProvider` interfa
 
 - [Tenor](#tenor)
 - [Klipy](#klipy)
+- [Giphy](#giphy)
 - [Custom Providers](#custom-providers)
 
 ### Tenor
@@ -202,6 +203,50 @@ The `Klipy` function optionally accepts a configuration object with the followin
 | quality | `KlipyQuality` | `KlipyQuality.MD` | Which size tier is passed to `onGifClick`. If you are using Typescript you can use the `KlipyQuality` enum. Possible values are `hd`, `md`, `sm` and `xs`. |
 | previewQuality | `KlipyQuality` | `KlipyQuality.SM` | Which size tier is used for the preview gifs rendered in the picker grid. If you are using Typescript you can use the `KlipyQuality` enum. Possible values are `hd`, `md`, `sm` and `xs`. |
 | showBranding | `boolean` | `false` | Shows the optional `Powered by KLIPY` mark in the picker footer. |
+
+### Giphy
+
+**[Giphy](https://giphy.com/)** is one of the largest GIF providers, owned by Shutterstock. The free tier is capped at 100 calls/hour; higher limits need a paid production key, with pricing negotiated with Giphy directly.
+
+> [!NOTE]
+> Giphy highly recommends sending [analytics (pingback) events](https://developers.giphy.com/docs/api/endpoint/#action-register), but the provider does not support them yet.
+
+```tsx
+import { GifPicker } from 'gif-picker-react';
+import { Giphy } from 'gif-picker-react/providers/giphy';
+
+<GifPicker provider={Giphy("YOUR_API_KEY")} />
+```
+
+#### Obtaining a Giphy API key
+
+In order to use the `GifPicker` element with the `Giphy` provider you are required to
+provide a Giphy API key. To obtain this key please follow this simple guide:
+
+1. Sign in to the [Giphy Developers Dashboard](https://developers.giphy.com/dashboard/)
+1. Click *Create an API Key*
+1. When prompted to choose between *SDK* and *API*, select *API*
+1. Generate the API key and copy it
+1. Pass this key to the `Giphy` provider, e.g. `Giphy("YOUR_API_KEY")`
+
+#### Attribution
+
+As per the [Giphy API docs](https://developers.giphy.com/docs/api/) and [API Terms of Service](https://support.giphy.com/hc/en-us/articles/360028134111-GIPHY-API-Terms-of-Service), applications using the Giphy API must:
+
+1. Clearly display the `Powered by GIPHY` logo wherever Giphy content is shown.
+2. Provide Giphy user and/or source attribution where available.
+
+The picker handles the first requirement for you by rendering the official `Powered by GIPHY` logo in the picker footer. It also sets a `Search GIPHY` placeholder on the search input, which is not strictly required but follows Giphy's branding. You may also be required to attribute the creator / source when displaying a GIF, though Giphy's documentation on this is quite vague.
+
+#### Configuration
+
+The `Giphy` function optionally accepts a configuration object with the following options:
+
+| Option | Type | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| baseUrl | `string` | `https://api.giphy.com/v1/` | Base URL used for Giphy API requests. |
+| lang | `string` | | Specify the default language to interpret the search string, as a two-letter [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code. |
+| rating | `ContentRating` | | Controls the Giphy [content rating](https://developers.giphy.com/docs/optional-settings/#rating) filter. When unset, no rating is sent and the Giphy server default applies. If you are using Typescript you can use the `ContentRating` enum. Possible values are `g`, `pg`, `pg-13` and `r`. |
 
 ### Custom Providers
 

@@ -26,7 +26,7 @@ function useSettings(props: GifPickerReactProps): GifPickerSettings {
 		autoFocusSearch: props.autoFocusSearch ?? true,
 		height: praseDimension(props.height ?? 450),
 		width: praseDimension(props.width ?? 350),
-		categoryHeight: praseDimension(props.categoryHeight ?? 100),
+		categoryHeight: praseDimension(props.categoryHeight ?? 95),
 		theme: getTheme(props.theme),
 		initialSearchTerm: props.initialSearchTerm ?? '',
 	};
