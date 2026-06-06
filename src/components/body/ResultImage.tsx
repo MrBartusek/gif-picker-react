@@ -15,15 +15,15 @@ function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 
 	async function onClick(): Promise<void> {
 		try {
-			const func = settings.onGifClick;
-
-			if (func) {
-				await func(gif);
-			}
-
-			await provider.onClick?.(gif, { searchTerm });
+			await settings.onGifClick?.(gif);
 		} catch (error) {
 			console.error('[gif-picker-react] Failed to handle GIF selection', error);
+		}
+
+		try {
+			await provider.onClick?.(gif, { searchTerm });
+		} catch (error) {
+			console.error('[gif-picker-react] Failed to register GIF click', error);
 		}
 	}
 
