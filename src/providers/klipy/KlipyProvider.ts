@@ -9,6 +9,8 @@ import {
 	KlipyListData,
 	KlipyQuality,
 } from './klipy.types';
+import poweredByKlipyGray from './assets/powered-by-klipy-gray.svg';
+import poweredByKlipyWhite from './assets/powered-by-klipy-white.svg';
 
 const BASE_URL = 'https://api.klipy.com/api/v1/';
 const FORMAT_FILTER = 'gif';
@@ -23,6 +25,7 @@ export type KlipyProviderConfig = {
 	contentFilter?: ContentFilter;
 	quality?: KlipyQuality;
 	previewQuality?: KlipyQuality;
+	showBranding?: boolean;
 };
 
 export function Klipy(appKey: string, config?: KlipyProviderConfig): GifProvider {
@@ -91,7 +94,20 @@ class KlipyProvider implements GifProvider {
 	}
 
 	public getAttribution(): GifProviderAttribution {
-		return { searchPlaceholder: 'Search KLIPY' };
+		const attribution: GifProviderAttribution = {
+			searchPlaceholder: 'Search KLIPY',
+		};
+
+		if (this.config.showBranding) {
+			attribution.branding = {
+				logo: poweredByKlipyGray,
+				logoDark: poweredByKlipyWhite,
+				alt: 'Powered by KLIPY',
+				href: 'https://klipy.com',
+			};
+		}
+
+		return attribution;
 	}
 
 	private buildParams(): Record<string, string> {

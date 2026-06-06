@@ -187,7 +187,7 @@ As per the [developer docs](https://docs.klipy.com/attribution), applications us
 2. A Klipy watermark on the shared content message card - **strongly recommended**.
 3. A visible `Powered by KLIPY` mark wherever Klipy content is shown - **optional**.
 
-The picker handles the required part for you by setting the `Search KLIPY` placeholder on the search input when using the `Klipy` provider. The watermark and `Powered by KLIPY` mark are up to you to add when displaying or sharing Klipy GIFs outside the picker.
+The picker handles the required part for you by setting the `Search KLIPY` placeholder on the search input when using the `Klipy` provider. The *optional* `Powered by KLIPY` mark can be shown in the picker footer by setting the `showBranding` config option. The *strongly recommended* watermark is up to you to add when displaying or sharing Klipy GIFs outside the picker.
 
 #### Configuration
 
@@ -201,6 +201,7 @@ The `Klipy` function optionally accepts a configuration object with the followin
 | contentFilter | `ContentFilter` | | Controls the Klipy content safety filter level. When unset, no filter is sent and the Klipy server default applies. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
 | quality | `KlipyQuality` | `KlipyQuality.MD` | Which size tier is passed to `onGifClick`. If you are using Typescript you can use the `KlipyQuality` enum. Possible values are `hd`, `md`, `sm` and `xs`. |
 | previewQuality | `KlipyQuality` | `KlipyQuality.SM` | Which size tier is used for the preview gifs rendered in the picker grid. If you are using Typescript you can use the `KlipyQuality` enum. Possible values are `hd`, `md`, `sm` and `xs`. |
+| showBranding | `boolean` | `false` | Shows the optional `Powered by KLIPY` mark in the picker footer. |
 
 ### Custom Providers
 

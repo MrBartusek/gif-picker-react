@@ -1,0 +1,16 @@
+.GifPickerReact .gpr-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    padding: var(--gpr-footer-padding);
+    border-top: 1px solid var(--gpr-picker-border-color);
+}
+
+.GifPickerReact .gpr-footer-link {
+    display: inline-flex;
+}
+
+.GifPickerReact .gpr-footer-logo {
+    height: var(--gpr-footer-logo-height);
+}

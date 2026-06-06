@@ -40,5 +40,19 @@ export type GifEventContext = {
 };
 
 export type GifProviderAttribution = {
+	/**
+	 * Placeholder shown in the search input, used instead of the default
+	 * "Search GIFs".
+	 */
 	searchPlaceholder: string;
+
+	/**
+	 * Optional provider logo shown in the picker footer (e.g. a "Powered by ..." mark).
+	 */
+	branding?: {
+		logo: string;
+		logoDark?: string;
+		alt?: string;
+		href?: string;
+	};
 };
