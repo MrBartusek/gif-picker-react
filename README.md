@@ -9,6 +9,12 @@
 
 A GIF picker component for React applications that supports [Giphy](https://giphy.com/), [Klipy](https://klipy.com/) and custom providers. This picker fits styling of [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) and can be used next to it.
 
+## What to know before using
+
+- Every built-in provider **requires an API key** to access its API, see the relevant [provider section](#gif-providers) for instructions.
+- Every built-in provider has its own **attribution rules**. Make sure to read the provider's *Attribution* section before using it.
+- The provider API keys are meant to live in your frontend code. If you would rather keep the key on your backend and proxy the requests, you can write a [custom provider](#custom-providers) that talks to your own API instead.
+
 ## Installation
 
 ```bash
@@ -122,6 +128,16 @@ provide a Tenor API key. To obtain this key please follow this simple guide:
 1. Click `+ create credentials` and create *API key*, copy generated API key
 1. Pass this key to the `Tenor` provider, e.g. `Tenor("YOUR_API_KEY")`
 
+#### Attribution
+
+As per the [developer docs](https://developers.google.com/tenor/guides/attribution), Tenor requires that you attribute all content retrieved from its API using **at least one** of the following three marks:
+
+1. `Powered by Tenor` - during the GIF browsing experience.
+2. `Search Tenor` - as the placeholder text in the search box.
+3. `Via Tenor` - in the footer of a shared GIF.
+
+The picker handles this for you by setting the `Search Tenor` placeholder on the search input when using the `Tenor` provider. You can also add the `Via Tenor` mark in the footer of a shared GIF.
+
 #### Configuration
 
 The `Tenor` function optionally accepts a configuration object with the following options:
@@ -158,6 +174,16 @@ provide a Klipy app key. To obtain this key please follow this simple guide:
 1. Select *Add Platform* and create your platform to generate an app key
 1. Copy the generated app key
 1. Pass this key to the `Klipy` provider, e.g. `Klipy("YOUR_APP_KEY")`
+
+#### Attribution
+
+As per the [developer docs](https://docs.klipy.com/attribution), applications using the Klipy API must include clear attribution:
+
+1. `Search KLIPY` placeholder text in the search input - **required**.
+2. A Klipy watermark on the shared content message card - **strongly recommended**.
+3. A visible `Powered by KLIPY` mark wherever Klipy content is shown - **optional**.
+
+The picker handles the required part for you by setting the `Search KLIPY` placeholder on the search input when using the `Klipy` provider. The watermark and `Powered by KLIPY` mark are up to you to add when displaying or sharing Klipy GIFs outside the picker.
 
 #### Configuration
 
