@@ -1,11 +1,18 @@
 import { GifProvider, GifProviderAttribution } from '../../types/GifProvider';
 import { Gif, GifCategory, GifProviderName } from '../../types/types';
-import { ContentRating, GiphyCategoriesResponse, GiphyGif, GiphyListResponse } from './giphy.types';
+import {
+	ContentRating,
+	GiphyCategoriesResponse,
+	GiphyGif,
+	GiphyListResponse,
+	GiphyMeta,
+} from './giphy.types';
 import poweredByGiphyOnLight from './assets/powered-by-giphy-on-light.png';
 import poweredByGiphyOnDark from './assets/powered-by-giphy-on-dark.png';
 
 const BASE_URL = 'https://api.giphy.com/v1/';
 const GIPHY_MAX_LIMIT = 50;
+const GIPHY_MAX_QUERY_LENGTH = 50;
 
 export type GiphyProviderConfig = {
 	baseUrl?: string;
@@ -24,27 +31,40 @@ class GiphyProvider implements GifProvider {
 		private apiKey: string,
 		private config: GiphyProviderConfig = {},
 	) {
-		this.baseUrl = (config.baseUrl ?? BASE_URL).replace(/\/+$/, '') + '/';
+		this.baseUrl = (config.baseUrl ?? BASE_URL).replace(/\/+$/, '');
 	}
 
 	public async getCategories(): Promise<GifCategory[]> {
-		const data = await this.fetchApi<GiphyCategoriesResponse>('/gifs/categories');
+		const params: Record<string, string> = {};
+		if (this.config.lang) {
+			params.lang = this.config.lang;
+		}
 
-		return data.data.map((category) => ({
-			name: category.name,
-			searchTerm: category.name,
-			imageUrl: category.gif.images.fixed_width.url,
-		}));
+		const data = await this.fetchApi<GiphyCategoriesResponse>('/gifs/categories', params);
+
+		return data.data
+			.map((category): GifCategory | null => {
+				const cover = category.gif?.images?.fixed_width?.url;
+				if (!cover) {
+					return null;
+				}
+				return {
+					name: category.name,
+					searchTerm: category.name,
+					imageUrl: cover,
+				};
+			})
+			.filter((category): category is GifCategory => category !== null);
 	}
 
 	public async search(term: string): Promise<Gif[]> {
 		const data = await this.fetchApi<GiphyListResponse>('/gifs/search', {
-			q: term,
+			q: term.slice(0, GIPHY_MAX_QUERY_LENGTH),
 			limit: GIPHY_MAX_LIMIT,
 			...this.buildParams(),
 		});
 
-		return data.data.map((item) => this.parseGif(item));
+		return this.parseGifs(data.data);
 	}
 
 	public async getTrending(): Promise<Gif[]> {
@@ -53,7 +73,7 @@ class GiphyProvider implements GifProvider {
 			...this.buildParams(),
 		});
 
-		return data.data.map((item) => this.parseGif(item));
+		return this.parseGifs(data.data);
 	}
 
 	public getAttribution(): GifProviderAttribution {
@@ -83,7 +103,7 @@ class GiphyProvider implements GifProvider {
 	}
 
 	private async fetchApi<T = any>(endpoint: string, params?: Record<string, any>): Promise<T> {
-		const url = new URL(endpoint, this.baseUrl);
+		const url = new URL(`${this.baseUrl}${endpoint}`);
 
 		url.searchParams.set('api_key', this.apiKey);
 
@@ -96,12 +116,27 @@ class GiphyProvider implements GifProvider {
 			throw new Error(`Giphy API request failed (${res.status} ${res.statusText})`);
 		}
 
-		return res.json() as Promise<T>;
+		const body: T & { meta?: GiphyMeta } = await res.json();
+		if (!body.meta || !body.meta.response_id) {
+			throw new Error('Giphy API returned a empty response');
+		}
+
+		return body;
 	}
 
-	private parseGif(item: GiphyGif): Gif<GiphyGif> {
+	private parseGifs(items: GiphyGif[]): Gif<GiphyGif>[] {
+		return items
+			.map((item) => this.parseGif(item))
+			.filter((gif): gif is Gif<GiphyGif> => gif !== null);
+	}
+
+	private parseGif(item: GiphyGif): Gif<GiphyGif> | null {
 		const full = item.images.original;
 		const preview = item.images.fixed_width;
+
+		if (!full || !preview) {
+			return null;
+		}
 
 		return {
 			id: item.id,
