@@ -51,8 +51,8 @@ export type GifProviderAttribution = {
 	 */
 	branding?: {
 		logo: string;
+		href: string;
 		logoDark?: string;
 		alt?: string;
-		href?: string;
 	};
 };
