@@ -50,7 +50,7 @@ The following props are accepted by the picker:
 | autoFocusSearch | `boolean` | `true` | Controls the auto focus of the search input. |
 | width | `number / string` | `350` | Controls the width of the picker. You can provide a number that will be treated as pixel size, or any accepted css width as string.
 | height | `number / string` | `450` | Controls the height of the picker. You can provide a number that will be treated as pixel size, or any accepted css width as string.
-| categoryHeight | `number / string` | `95` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or any accepted css width as string.
+| categoryHeight | `number / string` | `95` | Controls the height of the home page reaction category. You can provide a number that will be treated as pixel size, or any accepted css width as string. |
 | initialSearchTerm | `string` | | Sets the initial search term when the picker is opened.
 
 ### Gif
