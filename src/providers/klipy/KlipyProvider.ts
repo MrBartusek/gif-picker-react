@@ -1,4 +1,4 @@
-import { GifProvider, GifProviderAttribution, RegisterShareContext } from '../../types/GifProvider';
+import { GifProvider, GifProviderAttribution, GifEventContext } from '../../types/GifProvider';
 import { Gif, GifCategory, GifProviderName } from '../../types/types';
 import {
 	ContentFilter,
@@ -77,7 +77,7 @@ class KlipyProvider implements GifProvider {
 		return this.parseGifs(data.data);
 	}
 
-	public async registerShare(gif: Gif, context: RegisterShareContext): Promise<void> {
+	public async onClick(gif: Gif, context: GifEventContext): Promise<void> {
 		const body: Record<string, string> = { q: context.searchTerm ?? '' };
 		if (this.config.customerId) {
 			body.customer_id = this.config.customerId;

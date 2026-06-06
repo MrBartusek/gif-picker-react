@@ -21,9 +21,17 @@ function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 				await func(gif);
 			}
 
-			await provider.registerShare?.(gif, { searchTerm });
+			await provider.onClick?.(gif, { searchTerm });
 		} catch (error) {
 			console.error('[gif-picker-react] Failed to handle GIF selection', error);
+		}
+	}
+
+	async function handleLoad(): Promise<void> {
+		try {
+			await provider.onLoad?.(gif, { searchTerm });
+		} catch (error) {
+			console.error('[gif-picker-react] Failed to handle GIF load', error);
 		}
 	}
 
@@ -41,6 +49,7 @@ function ResultImage({ gif, searchTerm }: ResultImageProps): React.JSX.Element {
 				height={image.height}
 				width={image.width}
 				loading="lazy"
+				onLoad={handleLoad}
 				alt={gif.description ?? ''}
 			/>
 		</button>

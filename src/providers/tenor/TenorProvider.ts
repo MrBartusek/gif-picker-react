@@ -1,5 +1,5 @@
 import { ContentFilter } from './tenor.types';
-import { GifProvider, GifProviderAttribution, RegisterShareContext } from '../../types/GifProvider';
+import { GifProvider, GifProviderAttribution, GifEventContext } from '../../types/GifProvider';
 import { Gif, GifCategory, GifProviderName } from '../../types/types';
 import { TenorCategoriesResponse, TenorResult, TenorSearchResponse } from './tenor.types';
 
@@ -55,7 +55,7 @@ class TenorProvider implements GifProvider {
 		return data.results.map((r) => this.parseGif(r));
 	}
 
-	public async registerShare(gif: Gif, context: RegisterShareContext): Promise<void> {
+	public async onClick(gif: Gif, context: GifEventContext): Promise<void> {
 		await this.fetchApi('registershare', {
 			id: gif.id,
 			...(context.searchTerm && { q: context.searchTerm }),

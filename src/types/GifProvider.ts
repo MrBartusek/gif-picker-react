@@ -20,7 +20,13 @@ export interface GifProvider {
 	 * If provider supports it, invoked after gif is clicked. This may
 	 * be required by provider for analytics.
 	 */
-	registerShare?(gif: Gif, context: RegisterShareContext): Awaitable<void>;
+	onClick?(gif: Gif, context: GifEventContext): Awaitable<void>;
+
+	/**
+	 * If provider supports it, invoked after gif image loads. This may
+	 * be required by provider for analytics.
+	 */
+	onLoad?(gif: Gif, context: GifEventContext): Awaitable<void>;
 
 	/**
 	 * Provides configuration of required attribution rules for
@@ -29,7 +35,7 @@ export interface GifProvider {
 	getAttribution?(): Partial<GifProviderAttribution>;
 }
 
-export type RegisterShareContext = {
+export type GifEventContext = {
 	searchTerm?: string;
 };
 
