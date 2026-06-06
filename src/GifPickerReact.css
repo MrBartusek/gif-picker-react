@@ -39,6 +39,10 @@
 
     /* Placeholder */
     --gpr-placeholder-color: #d3d3d3;
+
+    /* Footer */
+    --gpr-footer-padding: 12px var(--gpr-horizontal-padding);
+    --gpr-footer-logo-height: 12px;
 }
 
 .GifPickerReact.gpr-dark-theme {

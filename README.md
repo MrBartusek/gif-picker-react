@@ -65,6 +65,8 @@ This object is provided as an argument to callback specified in `onGifClick`. It
 | width         | `number`   | Width of the gif in pixels |
 | description   | `string`   | Optional textual description of the content. You can use this to populate the image object `alt` attribute |
 | preview       | `GifPreview` | Optional preview object with dimensions scaled down |
+| provider      | `string`   | Identifies the provider this gif came from. |
+| raw           | `T`        | The original, unmodified provider payload this gif was parsed from. |
 
 ### GifPreview
 
@@ -80,16 +82,18 @@ This is an example `Gif` object:
 
 ```js
 {
-  id: "16596569648018104856",
-  imageUrl: "https://media.tenor.com/5lLcKZgmIhgAAAAC/american-psycho-patrick-bateman.gif",
+  id: "american-psycho-patrick-bateman-18--kkZ9e46dI",
+  imageUrl: "https://static.klipy.com/ii/d6b0ce929193df3c242ac34b5654d2ce/5f/9a/8IRfeIxH.gif",
   height: 240,
   width: 244,
-  description: "American Psycho Patrick Bateman GIF",
+  description: "Christian Bale's Patrick Bateman: Confused Smile",
   preview: {
-    imageUrl: "https://media.tenor.com/5lLcKZgmIhgAAAAM/american-psycho-patrick-bateman.gif",
+    imageUrl: "https://static.klipy.com/ii/d6b0ce929193df3c242ac34b5654d2ce/5f/9a/2Hb1mWqg.gif",
     height: 120,
     width: 122
-  }
+  },
+  provider: "klipy",
+  raw: { /* the original Klipy API item */ }
 }
 ```
 
@@ -183,7 +187,7 @@ As per the [developer docs](https://docs.klipy.com/attribution), applications us
 2. A Klipy watermark on the shared content message card - **strongly recommended**.
 3. A visible `Powered by KLIPY` mark wherever Klipy content is shown - **optional**.
 
-The picker handles the required part for you by setting the `Search KLIPY` placeholder on the search input when using the `Klipy` provider. The watermark and `Powered by KLIPY` mark are up to you to add when displaying or sharing Klipy GIFs outside the picker.
+The picker handles the required part for you by setting the `Search KLIPY` placeholder on the search input when using the `Klipy` provider. The *optional* `Powered by KLIPY` mark can be shown in the picker footer by setting the `showBranding` config option. The *strongly recommended* watermark is up to you to add when displaying or sharing Klipy GIFs outside the picker.
 
 #### Configuration
 
@@ -197,6 +201,7 @@ The `Klipy` function optionally accepts a configuration object with the followin
 | contentFilter | `ContentFilter` | | Controls the Klipy content safety filter level. When unset, no filter is sent and the Klipy server default applies. If you are using Typescript you can use the `ContentFilter` enum. Possible values are `high`, `medium`, `low` and `off`. |
 | quality | `KlipyQuality` | `KlipyQuality.MD` | Which size tier is passed to `onGifClick`. If you are using Typescript you can use the `KlipyQuality` enum. Possible values are `hd`, `md`, `sm` and `xs`. |
 | previewQuality | `KlipyQuality` | `KlipyQuality.SM` | Which size tier is used for the preview gifs rendered in the picker grid. If you are using Typescript you can use the `KlipyQuality` enum. Possible values are `hd`, `md`, `sm` and `xs`. |
+| showBranding | `boolean` | `false` | Shows the optional `Powered by KLIPY` mark in the picker footer. |
 
 ### Custom Providers
 
@@ -246,6 +251,8 @@ class ExampleProvider implements GifProvider {
       height: item.height,
       description: item.title,
       preview: { imageUrl: item.thumb, width: item.thumbWidth, height: item.thumbHeight },
+      provider: 'example',
+      raw: item,
     };
   }
 }

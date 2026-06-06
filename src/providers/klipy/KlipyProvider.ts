@@ -1,5 +1,5 @@
-import { GifProvider, GifProviderAttribution, RegisterShareContext } from '../../types/GifProvider';
-import { Gif, GifCategory } from '../../types/types';
+import { GifProvider, GifProviderAttribution, GifEventContext } from '../../types/GifProvider';
+import { Gif, GifCategory, GifProviderName } from '../../types/types';
 import {
 	ContentFilter,
 	KlipyCategoriesData,
@@ -9,6 +9,8 @@ import {
 	KlipyListData,
 	KlipyQuality,
 } from './klipy.types';
+import poweredByKlipyGray from './assets/powered-by-klipy-gray.svg';
+import poweredByKlipyWhite from './assets/powered-by-klipy-white.svg';
 
 const BASE_URL = 'https://api.klipy.com/api/v1/';
 const FORMAT_FILTER = 'gif';
@@ -23,6 +25,7 @@ export type KlipyProviderConfig = {
 	contentFilter?: ContentFilter;
 	quality?: KlipyQuality;
 	previewQuality?: KlipyQuality;
+	showBranding?: boolean;
 };
 
 export function Klipy(appKey: string, config?: KlipyProviderConfig): GifProvider {
@@ -77,7 +80,7 @@ class KlipyProvider implements GifProvider {
 		return this.parseGifs(data.data);
 	}
 
-	public async registerShare(gif: Gif, context: RegisterShareContext): Promise<void> {
+	public async onClick(gif: Gif, context: GifEventContext): Promise<void> {
 		const body: Record<string, string> = { q: context.searchTerm ?? '' };
 		if (this.config.customerId) {
 			body.customer_id = this.config.customerId;
@@ -91,7 +94,20 @@ class KlipyProvider implements GifProvider {
 	}
 
 	public getAttribution(): GifProviderAttribution {
-		return { searchPlaceholder: 'Search KLIPY' };
+		const attribution: GifProviderAttribution = {
+			searchPlaceholder: 'Search KLIPY',
+		};
+
+		if (this.config.showBranding) {
+			attribution.branding = {
+				logo: poweredByKlipyGray,
+				logoDark: poweredByKlipyWhite,
+				alt: 'Powered by KLIPY',
+				href: 'https://klipy.com',
+			};
+		}
+
+		return attribution;
 	}
 
 	private buildParams(): Record<string, string> {
@@ -136,11 +152,13 @@ class KlipyProvider implements GifProvider {
 		return body.data;
 	}
 
-	private parseGifs(items: KlipyItem[]): Gif[] {
-		return items.map((item) => this.parseGif(item)).filter((gif): gif is Gif => gif !== null);
+	private parseGifs(items: KlipyItem[]): Gif<KlipyItem>[] {
+		return items
+			.map((item) => this.parseGif(item))
+			.filter((gif): gif is Gif<KlipyItem> => gif !== null);
 	}
 
-	private parseGif(item: KlipyItem): Gif | null {
+	private parseGif(item: KlipyItem): Gif<KlipyItem> | null {
 		if (item.type !== KlipyItemType.GIF) {
 			return null;
 		}
@@ -165,6 +183,8 @@ class KlipyProvider implements GifProvider {
 				width: preview.width,
 				height: preview.height,
 			},
+			provider: GifProviderName.KLIPY,
+			raw: item,
 		};
 	}
 }

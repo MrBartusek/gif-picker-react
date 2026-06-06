@@ -1,6 +1,6 @@
 import { ContentFilter } from './tenor.types';
-import { GifProvider, GifProviderAttribution, RegisterShareContext } from '../../types/GifProvider';
-import { Gif, GifCategory } from '../../types/types';
+import { GifProvider, GifProviderAttribution, GifEventContext } from '../../types/GifProvider';
+import { Gif, GifCategory, GifProviderName } from '../../types/types';
 import { TenorCategoriesResponse, TenorResult, TenorSearchResponse } from './tenor.types';
 
 const MEDIA_FILTER = 'gif,tinygif';
@@ -55,7 +55,7 @@ class TenorProvider implements GifProvider {
 		return data.results.map((r) => this.parseGif(r));
 	}
 
-	public async registerShare(gif: Gif, context: RegisterShareContext): Promise<void> {
+	public async onClick(gif: Gif, context: GifEventContext): Promise<void> {
 		await this.fetchApi('registershare', {
 			id: gif.id,
 			...(context.searchTerm && { q: context.searchTerm }),
@@ -94,7 +94,7 @@ class TenorProvider implements GifProvider {
 		return { searchPlaceholder: 'Search Tenor' };
 	}
 
-	private parseGif(img: TenorResult): Gif {
+	private parseGif(img: TenorResult): Gif<TenorResult> {
 		const gif = img.media_formats.gif;
 		const preview = img.media_formats.tinygif;
 		return {
@@ -108,6 +108,8 @@ class TenorProvider implements GifProvider {
 				width: preview.dims[0],
 				height: preview.dims[1],
 			},
+			provider: GifProviderName.TENOR,
+			raw: img,
 		};
 	}
 }

@@ -1,5 +1,11 @@
 export type Awaitable<T> = T | PromiseLike<T>;
 
+export enum GifProviderName {
+	TENOR = 'tenor',
+	KLIPY = 'klipy',
+	GIPHY = 'giphy',
+}
+
 export type GifCategory = {
 	imageUrl: string;
 
@@ -15,11 +21,13 @@ export type GifPreview = {
 	width: number;
 };
 
-export type Gif = {
+export type Gif<T = unknown> = {
 	id: string;
 	imageUrl: string;
 	height: number;
 	width: number;
 	description?: string;
 	preview?: GifPreview;
+	provider: string;
+	raw: T;
 };

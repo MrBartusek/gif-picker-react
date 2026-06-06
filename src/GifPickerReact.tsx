@@ -1,5 +1,6 @@
 import React from 'react';
 import Body from './components/body/Body';
+import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import PickerMain from './components/PickerMain';
 import PickerContext from './context/PickerContext';
@@ -39,6 +40,7 @@ function GifPickerReact(props: GifPickerReactProps): React.JSX.Element {
 					<PickerMain>
 						<Header />
 						<Body width={props.width} />
+						<Footer />
 					</PickerMain>
 				</ProviderContext.Provider>
 			</PickerContext.Provider>

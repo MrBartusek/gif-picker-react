@@ -9,4 +9,5 @@ export default defineConfig({
 	dts: true,
 	format: ['cjs', 'esm'],
 	css: { inject: true },
+	loader: { '.png': 'dataurl', '.svg': 'dataurl' },
 });

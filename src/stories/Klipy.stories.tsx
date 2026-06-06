@@ -27,11 +27,16 @@ export default {
 			control: { type: 'text' },
 			table: { category: 'Klipy' },
 		},
+		showBranding: {
+			control: { type: 'boolean' },
+			table: { category: 'Klipy' },
+		},
 	}),
 	args: {
 		contentFilter: ContentFilter.OFF,
 		quality: KlipyQuality.MD,
 		previewQuality: KlipyQuality.SM,
+		showBranding: true,
 	},
 };
 
