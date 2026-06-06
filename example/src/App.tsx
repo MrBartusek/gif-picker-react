@@ -1,11 +1,12 @@
-import GifPicker, { TenorImage } from 'gif-picker-react';
+import { GifPicker, Gif } from 'gif-picker-react';
+import { Klipy } from 'gif-picker-react/providers/klipy';
 import { useState } from 'react';
 import './App.css';
 
-const TENOR_API_KEY = 'AIzaSyBh5BTijm12gMpzUYpyfbKN8pjszpUR1FE';
+const KLIPY_APP_KEY = 'bAq6J4tOAyDBvzAwuo3fUcDYIxkAvEYxMVXNEyaxggkau1iqsYXy3lGWvJeSSSQR';
 
 function App(): JSX.Element {
-	const [ selected, setSelected ] = useState<TenorImage>(null!);
+	const [ selected, setSelected ] = useState<Gif>(null!);
 
 	return (
 		<div className="App">
@@ -15,19 +16,19 @@ function App(): JSX.Element {
 				{selected && (
 					<>
 						<img
-							src={selected.url}
+							src={selected.imageUrl}
 							className="gif-preview"
-							alt="Selected GIF"
+							alt={selected.description ?? 'Selected GIF'}
 						/>
-						<a href={selected.shortTenorUrl} target="_blank" rel="noreferrer">
-							{selected.shortTenorUrl}
+						<a href={selected.imageUrl} target="_blank" rel="noreferrer">
+							{selected.imageUrl}
 						</a>
 					</>
 				)}
 			</div>
 
 			<GifPicker
-        tenorApiKey={TENOR_API_KEY}
+        provider={Klipy(KLIPY_APP_KEY)}
         onGifClick={setSelected}
       />
 
