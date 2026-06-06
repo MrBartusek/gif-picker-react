@@ -6,8 +6,11 @@
   "license": "MIT",
   "keywords": [
     "react",
+    "gif",
+    "gif-picker",
     "tenor",
-    "gif"
+    "giphy",
+    "klipy"
   ],
   "repository": {
     "type": "git",
