@@ -8,6 +8,6 @@ export default defineConfig({
 	clean: true,
 	dts: true,
 	format: ['cjs', 'esm'],
-	css: { inject: true },
+	css: { inject: true, transformer: 'postcss' },
 	loader: { '.png': 'dataurl', '.svg': 'dataurl' },
 });
