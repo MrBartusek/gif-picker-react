@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       gif-picker-react:
-        specifier: 2.0.0-rc.2
-        version: 2.0.0-rc.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 2.0.0
+        version: 2.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -640,8 +640,8 @@ packages:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
 
-  gif-picker-react@2.0.0-rc.2:
-    resolution: {integrity: sha512-FNYFbyvsxOzoJOPy3VJrGPRdBGsOl/B295NcCmGbD0IFwViA0UqT4FkTevMchaZ7d7rAtU2PWOj6fbGDS+LeDQ==}
+  gif-picker-react@2.0.0:
+    resolution: {integrity: sha512-kY5969XCJFPRKj1gF+LMY6OyLV5HNXZkR4h0fWBBYrJUKuh5ntcJetget8MBgKX/n+2kuu/hXW5IG0Yn9xgtDA==}
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
@@ -1634,7 +1634,7 @@ snapshots:
 
   gensync@1.0.0-beta.2: {}
 
-  gif-picker-react@2.0.0-rc.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  gif-picker-react@2.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
