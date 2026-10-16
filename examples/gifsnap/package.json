@@ -1,0 +1,20 @@
+{
+	"name": "gif-picker-react-gifsnap-example",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"test": "pnpm build && node --test test/*.test.mjs"
+	},
+	"dependencies": {
+		"@rowix/gifsnap-js": "0.1.0",
+		"gif-picker-react": "2.0.0",
+		"react": "19.2.6",
+		"react-dom": "19.2.6"
+	},
+	"devDependencies": {
+		"@types/react": "19.2.15",
+		"typescript": "6.0.3"
+	}
+}
