@@ -256,6 +256,8 @@ own backend, or a wrapper around an existing client. For real-world examples, se
 Providers should implement the [`GifProvider` interface][gif-provider-interface]. When using TypeScript you can use `implements GifProvider`, but it is not required; any class or object that
 satisfies this interface can be used as a provider. The return shapes (`Gif`, `GifPreview`, `GifCategory`) are the same provider-agnostic objects documented above.
 
+For an optional SDK-backed adapter with tests, see the [GifSnap custom provider example](examples/gifsnap). It maps animated media and preserves the original response metadata without adding a dependency to the picker.
+
 #### Example
 
 The recommended approach is a factory function that returns the provider object:
