@@ -38,6 +38,60 @@ function stub(data) {
 	return { requests, fetch };
 }
 
+const smallPreview = (overrides = {}) => ({
+	url: 'https://media.example/hello-small.webp?token=preview',
+	mime_type: 'image/webp',
+	width: 160,
+	height: 90,
+	byte_size: 65536,
+	animated: true,
+	...overrides,
+});
+
+test('uses a small animated preview while preserving the original selection and metadata', async () => {
+	for (const animated_preview of [
+		smallPreview(),
+		smallPreview({ url: 'https://media.example/hello-small.gif?key=b', mime_type: 'image/gif' }),
+		smallPreview({ url: 'https://media.example/animation?format=webp', byte_size: undefined }),
+	]) {
+		const original = item({ animated_preview });
+		const [gif] = await createGifSnapProvider({ fetch: stub([original]).fetch }).search('hello');
+		assert.equal(gif.preview.imageUrl, animated_preview.url);
+		assert.deepEqual([gif.preview.width, gif.preview.height], [160, 90]);
+		assert.equal(gif.imageUrl, original.url);
+		assert.deepEqual([gif.width, gif.height], [320, 180]);
+		assert.deepEqual(gif.raw, JSON.parse(JSON.stringify(original)));
+	}
+});
+
+test('falls back to the original animation for unusable optional previews', async () => {
+	for (const animated_preview of [
+		null,
+		[],
+		'still-poster.jpg',
+		smallPreview({ animated: false }),
+		smallPreview({ animated: 'true' }),
+		smallPreview({ mime_type: 'image/jpeg' }),
+		smallPreview({ mime_type: 'video/mp4', url: 'https://media.example/clip.mp4' }),
+		smallPreview({ width: 0 }),
+		smallPreview({ height: 481 }),
+		smallPreview({ width: 2.5 }),
+		smallPreview({ width: '160' }),
+		smallPreview({ byte_size: 524289 }),
+		smallPreview({ byte_size: -1 }),
+		smallPreview({ byte_size: '65536' }),
+		smallPreview({ url: 'javascript:alert(1)' }),
+		smallPreview({ url: '//media.example/hello-small.webp' }),
+		smallPreview({ url: 'https://user:password@media.example/hello-small.webp' }),
+		smallPreview({ url: 'https://media.example/poster.jpg' }),
+	]) {
+		const original = item({ animated_preview });
+		const [gif] = await createGifSnapProvider({ fetch: stub([original]).fetch }).getTrending();
+		assert.deepEqual(gif.preview, { imageUrl: original.url, width: 320, height: 180 });
+		assert.equal(gif.imageUrl, original.url);
+	}
+});
+
 test('maps an animated asset, preserves query parameters and original metadata', async () => {
 	const original = item({ attribution_url: 'https://example.org/creator' });
 	const fake = stub([original]);

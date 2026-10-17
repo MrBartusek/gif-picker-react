@@ -41,8 +41,14 @@ shape. Do not put server credentials in frontend code.
 
 ## Behavior and limits
 
-- Uses the animated `url` for both selection and the preview. `preview_url` can
-  be a still poster. Full animated assets can be larger than thumbnails.
+- Uses a valid `animated_preview` GIF/WebP rendition for the picker, retaining
+  the original `url` and dimensions for selection. This works with the pinned
+  SDK 0.1.0; the adapter validates its optional metadata. Preview dimensions must
+  be at most 480 px, and a reported size must be at most 512 KiB.
+- Falls back to the original animation when preview metadata is missing or
+  invalid, or specifies a video format. It does not use `preview_url`, which can
+  be a still poster. These are metadata checks, not a guarantee of media delivery;
+  the host picker has no image-error fallback hook.
 - Preserves the original API item in `gif.raw`, including source metadata, and
   keeps complete media URLs, including query parameters.
 - Removes repeated IDs, exact media URLs and API-provided content aliases.
@@ -68,5 +74,6 @@ pnpm test
 
 The isolated fixture pins the published SDK and picker versions. Tests use a
 mock `fetch`; they make no API requests and need no credentials. They cover
-animated media mapping, deduplication, trending fallback, errors and result bounds.
+animated preview selection, original-media preservation, malformed metadata,
+deduplication, trending fallback, errors and result bounds.
 The build also type-checks the React usage example against the published picker.
